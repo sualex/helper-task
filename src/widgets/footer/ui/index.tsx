@@ -16,7 +16,11 @@ export function Footer({ children, ...props }: StackProps) {
         `}
         {...props}
       >
-        <Toolbar>
+        <Toolbar
+          css={css`
+            min-height: 72px;
+          `}
+        >
           <Container
             component="nav"
             maxWidth="desktop"
@@ -24,19 +28,11 @@ export function Footer({ children, ...props }: StackProps) {
               border: 1px dotted blue;
               display: flex;
               align-items: center;
-              justify-content: space-between;
+              justify-content: center;
               padding: 0 ${theme?.spacing(2.5)};
             `}
           >
-            <Stack
-              component="nav"
-              css={css`
-                //border: 4px solid green;
-                padding-right: 9.5px;
-              `}
-            >
-              {children}
-            </Stack>
+            {children}
           </Container>
         </Toolbar>
       </Stack>

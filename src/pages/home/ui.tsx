@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
 
 import { Main } from "@/shared/ui";
@@ -24,7 +25,25 @@ export const HomePage: NextPage = () => {
           border: 2px solid crimson;
         `}
       />
-      <Footer />
+      <Footer>
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <Typography
+            css={css`
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 26px;
+              letter-spacing: 0em;
+              text-align: left;
+              color: #838383;
+            `}
+          >
+            Уже есть аккаунт?
+          </Typography>
+          <Button href="/login" variant="link">
+            Войти
+          </Button>
+        </Stack>
+      </Footer>
     </>
   );
 };

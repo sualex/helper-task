@@ -29,21 +29,43 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
           border: `1px solid #D4D4D4`,
           "&:hover": {
             backgroundColor: theme.palette.common.white,
-            // borderColor: theme.palette.green_200.main,
             borderColor: `#838383`,
-            // color: theme.palette.grey_950.main,
           },
           [`&.${buttonClasses.focusVisible}`]: {
-            // borderColor: theme.palette.green_400.main,
             borderColor: `#838383`,
-            // boxShadow: "0px 0px 0px 4px #BCDCC0",
           },
           [`&.${buttonClasses.disabled}`]: {
-            // borderColor: theme.palette.green_200.main,
             borderColor: "transparent",
             backgroundColor: `#D4D4D4`,
-            // color: theme.palette.grey_300,
             color: `#F3F3F3`,
+          },
+        };
+      },
+    },
+    {
+      props: { variant: "link", color: "primary" },
+      style: ({ theme }) => {
+        return {
+          background: `none`,
+          border: `none`,
+          borderRadius: 0,
+          height: "auto",
+          lineHeight: "normal",
+          padding: 0,
+          minWidth: "auto",
+          "&:hover": {
+            background: `none`,
+            borderColor: "transparent",
+            color: theme?.palette?.primary?.main,
+          },
+          [`&.${buttonClasses.focusVisible}`]: {
+            background: `none`,
+            borderColor: "transparent",
+          },
+          [`&.${buttonClasses.disabled}`]: {
+            background: `none`,
+            borderColor: "transparent",
+            color: `#D4D4D4`,
           },
         };
       },
