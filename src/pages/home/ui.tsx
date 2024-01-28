@@ -1,4 +1,4 @@
-import { Stack, css } from "@mui/material";
+import { Stack, Typography, css } from "@mui/material";
 import type { NextPage } from "next";
 
 export const HomePage: NextPage = () => (
@@ -6,5 +6,7 @@ export const HomePage: NextPage = () => (
     css={css`
       border: 4px solid red;
     `}
-  />
+  >
+    <Typography>Васяяяяяяяяя</Typography>
+  </Stack>
 );

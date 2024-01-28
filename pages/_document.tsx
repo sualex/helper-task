@@ -13,13 +13,13 @@ import {
 } from "next/document";
 import * as React from "react";
 
-import theme, { roboto } from "@/app/styles/theme";
+import theme, { inter } from "@/app/styles/theme";
 
 export default function MyDocument(
   props: DocumentProps & DocumentHeadTagsProps
 ) {
   return (
-    <Html lang="ru" className={roboto.className}>
+    <Html lang="ru" className={inter.className}>
       <Head>
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.ico" />
