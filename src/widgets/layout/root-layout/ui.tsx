@@ -1,19 +1,18 @@
 import { css } from "@emotion/react";
-import { Container, ContainerProps } from "@mui/material";
+import { StackProps } from "@mui/material/Stack";
 
-export const RootLayout = ({ children, ...props }: ContainerProps) => {
+import { Main } from "@/shared/ui";
+
+export const RootLayout = ({ children, ...props }: StackProps) => {
   return (
-    <Container
-      component="main"
-      maxWidth="sm"
+    <Main
       css={css`
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+        min-height: 100vh;
+        border: 8px solid crimson;
       `}
       {...props}
     >
       {children}
-    </Container>
+    </Main>
   );
 };
