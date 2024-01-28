@@ -6,7 +6,6 @@ export const MuiCssBaseline: Components<DefaultTheme>["MuiCssBaseline"] = {
   styleOverrides: (theme) => css`
     body {
       background: #f3f3f3;
-      min-height: 100%;
     }
   `,
 };

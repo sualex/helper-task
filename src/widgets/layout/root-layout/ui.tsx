@@ -1,18 +1,18 @@
 import { css } from "@emotion/react";
 import { StackProps } from "@mui/material/Stack";
 
-import { Main } from "@/shared/ui";
+import { Section } from "@/shared/ui";
 
 export const RootLayout = ({ children, ...props }: StackProps) => {
   return (
-    <Main
+    <Section
       css={css`
         min-height: 100vh;
-        border: 2px solid crimson;
+        border: 4px solid green;
       `}
       {...props}
     >
       {children}
-    </Main>
+    </Section>
   );
 };
