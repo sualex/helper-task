@@ -23,7 +23,7 @@ export function Header({
             maxWidth="desktop"
             disableGutters={isMobile}
             css={css`
-              border: 1px dotted yellow;
+              border: 1px dotted blue;
               display: flex;
               align-items: center;
               justify-content: space-between;

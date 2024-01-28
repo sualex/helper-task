@@ -7,6 +7,6 @@ export const MuiButtonBase: Components<DefaultTheme>["MuiButtonBase"] = {
   defaultProps: {
     // make Button with href behave as Next link
     LinkComponent: NextLinkBehaviour,
-    // disableRipple: true,
+    disableRipple: true,
   },
 };
