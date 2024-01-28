@@ -1,0 +1,1 @@
+export { NextLinkBehaviour } from "./ui";

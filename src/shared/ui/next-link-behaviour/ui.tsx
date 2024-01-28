@@ -59,7 +59,7 @@ export type LinkProps = {
 } & Omit<NextLinkComposedProps, "to" | "linkAs" | "href"> &
   Omit<MuiLinkProps, "href">;
 
-export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
+export const NextLinkBehaviour = React.forwardRef<HTMLAnchorElement, LinkProps>(
   function Link(props, ref) {
     const {
       activeClassName = "active",

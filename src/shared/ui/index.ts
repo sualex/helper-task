@@ -1,2 +1,2 @@
 export * from "./main";
-export * from "./link";
+export * from "./next-link-behaviour";
