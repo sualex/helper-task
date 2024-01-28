@@ -8,7 +8,7 @@ export const RootLayout = ({ children, ...props }: StackProps) => {
     <Main
       css={css`
         min-height: 100vh;
-        border: 8px solid crimson;
+        border: 2px solid crimson;
       `}
       {...props}
     >

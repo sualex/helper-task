@@ -8,6 +8,11 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
   },
   styleOverrides: {
     root: ({ ownerState }) => ({
+      height: {
+        small: "30px",
+        medium: "40px",
+        large: "50px",
+      }[ownerState.size!],
       borderRadius: 5,
       textTransform: "none",
       fontSize: "16px",
