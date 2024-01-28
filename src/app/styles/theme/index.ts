@@ -1,6 +1,7 @@
-import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 import { Inter } from "next/font/google";
+
+import { components } from "./ui";
 
 export const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600"],
@@ -21,17 +22,18 @@ export default createTheme({
     },
   },
   palette: {
-    primary: {
-      main: "#556cd6",
-    },
-    secondary: {
-      main: "#19857b",
-    },
-    error: {
-      main: red.A400,
+    mode: "light",
+    text: {
+      primary: "#000000",
     },
   },
   typography: {
     fontFamily: inter.style.fontFamily,
   },
+  mixins: {
+    toolbar: {
+      minHeight: 80,
+    },
+  },
+  components,
 });
