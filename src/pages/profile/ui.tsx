@@ -24,14 +24,6 @@ export const ProfilePage: NextPage = () => {
           Войти
         </Button>
       </Header>
-      <Box
-        css={css`
-          position: relative;
-          height: 200px;
-        `}
-      >
-        <Image alt="Logo" src="/cover.png" fill priority />
-      </Box>
       <Main
         flex={1}
         css={css`
@@ -39,19 +31,40 @@ export const ProfilePage: NextPage = () => {
         `}
       >
         <Container
-          maxWidth="md"
+          maxWidth="desktop"
+          disableGutters={isMobile}
           css={css`
-            &&& {
-              flex: 1;
-              display: flex;
-              flex-direction: column;
-              // justify-content: ${isMobile ? "flex-start" : "center"};
-              padding: 0 ${isMobile ? 20 : 0};
-              margin-top: -50px;
-            }
+            display: flex;
+            flex-direction: column;
           `}
         >
-          <UserProfile />
+          <Box
+            css={css`
+              position: relative;
+              height: 200px;
+            `}
+          >
+            <Image
+              alt="Cover"
+              src={isMobile ? "/cover-small.png" : "/cover.png"}
+              fill
+            />
+          </Box>
+          <Container
+            maxWidth="md"
+            css={css`
+              &&& {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                // justify-content: ${isMobile ? "flex-start" : "center"};
+                padding: 0 ${isMobile ? 20 : 0};
+                margin-top: -50px;
+              }
+            `}
+          >
+            <UserProfile />
+          </Container>
         </Container>
       </Main>
     </>

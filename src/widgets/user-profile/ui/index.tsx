@@ -10,7 +10,6 @@ import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import * as React from "react";
 
-import { getErrorMessage } from "@/shared/lib/error";
 import { Article } from "@/shared/ui";
 
 import { useUser } from "../api";
@@ -23,11 +22,10 @@ export const UserProfile = ({ ...props }: ListProps) => {
     slug: router?.query?.slug as string,
   });
 
-  return profile?.error ? (
-    <Typography variant="h5" alignSelf="center">
-      {getErrorMessage(profile?.error)}
-    </Typography>
-  ) : (
+  return profile?.error ? null : (
+    // <Typography variant="h5" alignSelf="center">
+    //   {getErrorMessage(profile?.error)}
+    // </Typography>
     <Article spacing={3} css={css``}>
       <Avatar
         sx={{ width: 100, height: 100 }}

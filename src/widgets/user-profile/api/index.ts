@@ -7,7 +7,7 @@ import { UserRequest } from "@/shared/api/yoldi";
 export function useUser(requestParameters: UserRequest) {
   const router = useRouter();
   return useSWR(
-    "/api/user/{slug}",
+    () => router?.isReady && "/api/user/{slug}",
     (url) => {
       return userApi?.user(requestParameters);
     },
