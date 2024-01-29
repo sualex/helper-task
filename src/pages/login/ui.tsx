@@ -1,9 +1,10 @@
 import { css } from "@emotion/react";
-import { Button, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
 
 import { Main } from "@/shared/ui";
+import { LoginDialog } from "@/widgets/auth";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
@@ -24,7 +25,22 @@ export const LoginPage: NextPage = () => {
         css={css`
           border: 6px solid yellow;
         `}
-      />
+      >
+        <Container
+          maxWidth="sm"
+          disableGutters
+          css={css`
+            border: 2px solid red;
+            max-width: 400px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          `}
+        >
+          <LoginDialog />
+        </Container>
+      </Main>
       <Footer>
         <Stack direction="row" alignItems="center" spacing={1}>
           <Typography
