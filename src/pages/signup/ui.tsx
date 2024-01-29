@@ -9,7 +9,7 @@ import { LoginDialog } from "@/widgets/auth";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
-export const LoginPage: NextPage = () => {
+export const SignupPage: NextPage = () => {
   const isMobile = useMediaDown("sm");
   return (
     <>
@@ -56,10 +56,10 @@ export const LoginPage: NextPage = () => {
               color: #838383;
             `}
           >
-            Еще нет аккаунта?
+            Уже есть аккаунт?
           </Typography>
-          <Button href="/signup" variant="link">
-            Зарегистрироваться
+          <Button href="/login" variant="link">
+            Войти
           </Button>
         </Stack>
       </Footer>
