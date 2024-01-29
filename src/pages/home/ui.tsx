@@ -2,38 +2,12 @@ import { css } from "@emotion/react";
 import { Button, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
-import { useEffect } from "react";
 
-import { authApi } from "@/shared/api";
 import { Main } from "@/shared/ui";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
 export const HomePage: NextPage = () => {
-  useEffect(() => {
-    // ProfileApi.myProfile()
-    //   .then((res) => {
-    //     console.log("xxxxxxxxxxxxxxxxxxxxxx rrrrrrrrrrrrr ", res);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    authApi
-      .login({
-        loginDto: {
-          email: "admin@admin.ru",
-          password: "123456",
-        },
-      })
-      .then((res) => {
-        console.log("xxxxxxxxxxxxxxxxxxxxxx rrrrrrrrrrrrr ", res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <>
       <Header>

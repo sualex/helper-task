@@ -1,3 +1,5 @@
+import { ResponseError } from "@/shared/api/yoldi";
+
 export type ErrorWithMessage = {
   message: string;
 };
@@ -13,7 +15,6 @@ function isErrorWithMessage(error: unknown): error is ErrorWithMessage {
 
 function toErrorWithMessage(maybeError: unknown): ErrorWithMessage {
   if (isErrorWithMessage(maybeError)) return maybeError;
-
   try {
     return new Error(JSON.stringify(maybeError));
   } catch {
@@ -23,6 +24,22 @@ function toErrorWithMessage(maybeError: unknown): ErrorWithMessage {
   }
 }
 
-export function getErrorMessage(error: unknown) {
+export async function getErrorMessage(error: unknown) {
+  if (error instanceof ResponseError) {
+    try {
+      const { response } = error;
+      if (response) {
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType?.includes("application/json")) {
+          const responseData = await response.json();
+          if (responseData.message) {
+            return responseData?.message;
+          }
+        }
+      }
+    } catch {
+      //
+    }
+  }
   return toErrorWithMessage(error).message;
 }

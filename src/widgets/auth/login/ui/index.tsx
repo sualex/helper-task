@@ -5,7 +5,10 @@ import { useState } from "react";
 import * as React from "react";
 import { FormContainer } from "react-hook-form-mui";
 
+import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
+import { getErrorMessage } from "@/shared/lib/error";
+import { useLoginMutation } from "@/widgets/auth/login/api";
 
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
@@ -16,30 +19,28 @@ export function LoginDialog({ ...props }: StackProps) {
   const isMobile = useMediaDown("sm");
 
   const [isFetching, setIsFetching] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState<string>();
 
-  // const onSuccess = useCallback(async ({ phone, password }: ISignInQuery) => {
-  //   try {
-  //     setIsFetching(true);
-  //     const { error } = await signIn({
-  //       query: { phone, password },
-  //     });
-  //     if (error) {
-  //       setErrorMessage(error);
-  //     } else {
-  //       const deck = await getDeck();
-  //       console.log("xxxxxxxxxxxxxxxx deckkkkkkkkkkkk ", deck);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setIsFetching(false);
-  //   }
-  // }, []);
+  const loginMutation = useLoginMutation();
 
   return (
     <FormContainer
-      // onSuccess={onSuccess}
+      onSuccess={async (loginDto: LoginDto) => {
+        setIsFetching(true);
+        setErrorMessage("");
+        try {
+          const result = await loginMutation?.trigger({
+            requestParameters: {
+              loginDto,
+            },
+          });
+          console.log("xxxxxxxxxxxxxxxxxxxxxxx ", result);
+        } catch (error) {
+          setErrorMessage(await getErrorMessage(error));
+        } finally {
+          setIsFetching(false);
+        }
+      }}
       FormProps={{
         style: {
           flex: isMobile ? 1 : "initial",
@@ -53,8 +54,8 @@ export function LoginDialog({ ...props }: StackProps) {
       }}
     >
       <Title />
-      {errorMessage && <Typography color="error">{errorMessage}</Typography>}
       <Stack gap="1rem" padding="0 5px">
+        {errorMessage && <Typography color="error">{errorMessage}</Typography>}
         <LoginElement name="email" />
         <PasswordElement name="password" />
       </Stack>
