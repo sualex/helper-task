@@ -23,6 +23,9 @@ export default function MyDocument(
       <Head>
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="prefetch" href="/cover.png" />
+        <link rel="prefetch" href="/logo.png" />
+        <link rel="prefetch" href="/cover-small.png" />
         <meta name="emotion-insertion-point" content="" />
         <DocumentHeadTags {...props} />
       </Head>
