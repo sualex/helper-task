@@ -1,19 +1,13 @@
-import * as apis from "./apis/index";
-import * as runtime from "./runtime";
+import * as apis from "./yoldi";
+import * as runtime from "./yoldi";
 
-export * from "./models/index";
+export const configuration = new runtime.Configuration({
+  basePath: "",
+  headers: {
+    Accept: "application/json",
+  },
+});
 
-export const AuthApi = new apis.AuthApi(
-  new runtime.Configuration({
-    basePath: "",
-    headers: {
-      Accept: "application/json",
-    },
-  })
-);
-
-export const ProfileApi = new apis.ProfileApi(
-  new runtime.Configuration({
-    basePath: "",
-  })
-);
+export const authApi = new apis.AuthApi(configuration);
+export const profileApi = new apis.ProfileApi(configuration);
+export const userApi = new apis.UserApi(configuration);

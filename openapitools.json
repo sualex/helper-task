@@ -6,7 +6,7 @@
     "generators": {
       "upstream": {
         "generatorName": "typescript-fetch",
-        "output": "src/shared/api",
+        "output": "src/shared/api/yoldi",
         "skipValidateSpec": true,
         "inputSpec": "https://frontend-test-api.yoldi.agency/api/docs-json",
         "enablePostProcessFile": true,

@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
 import { useEffect } from "react";
 
-import { AuthApi } from "@/shared/api";
+import { authApi } from "@/shared/api";
 import { Main } from "@/shared/ui";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
@@ -19,12 +19,13 @@ export const HomePage: NextPage = () => {
     //     console.log(error);
     //   });
 
-    AuthApi.login({
-      loginDto: {
-        email: "admin@admin.ru",
-        password: "123456",
-      },
-    })
+    authApi
+      .login({
+        loginDto: {
+          email: "admin@admin.ru",
+          password: "123456",
+        },
+      })
       .then((res) => {
         console.log("xxxxxxxxxxxxxxxxxxxxxx rrrrrrrrrrrrr ", res);
       })

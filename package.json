@@ -5,7 +5,6 @@
   "scripts": {
     "api-generate": "cross-env TS_POST_PROCESS_FILE=\"node ./node_modules/prettier/bin/prettier.cjs --write\" openapi-generator-cli generate",
     "build": "next build",
-    "clean": "npx --yes shx rm -rf ./node_modules/.yarn-integrity ./.next ./build",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "lint": "next lint",
     "start": "next start"
