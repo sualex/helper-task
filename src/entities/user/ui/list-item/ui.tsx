@@ -56,7 +56,7 @@ export const UserListItem = ({
       <ListItemButton
         component={NextLinkBehaviour}
         disableRipple={false}
-        href={`/profile/${profile?.email}`}
+        href={`/profile/${profile?.slug}`}
         css={css`
           gap: 20px;
           padding: ${isMobile ? "4px 8px" : "8px 16px"};

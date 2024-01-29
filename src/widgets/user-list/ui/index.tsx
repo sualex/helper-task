@@ -52,18 +52,10 @@ export const UserList = ({ ...props }: ListProps) => {
               {...props}
             >
               {users?.data?.map((profile) => {
-                return <UserListItem key={profile?.email} profile={profile} />;
+                return <UserListItem key={profile?.slug} profile={profile} />;
               })}
             </List>
           </Nav>
-          {/*<Divider />*/}
-          {/*<Section direction="row" justifyContent="center" padding="0.5rem">*/}
-          {/*  <Pagination*/}
-          {/*    aria-label="Cписок страниц"*/}
-          {/*    count={elements?.data?.pages}*/}
-          {/*    page={Number(router?.query?.page) || 1}*/}
-          {/*  />*/}
-          {/*</Section>*/}
         </>
       )}
     </Article>
