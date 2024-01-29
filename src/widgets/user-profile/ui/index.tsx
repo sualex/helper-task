@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import {
   Avatar,
-  LinearProgress,
   ListProps,
+  Skeleton,
   Typography,
   useTheme,
 } from "@mui/material";
@@ -22,28 +22,38 @@ export const UserProfile = ({ ...props }: ListProps) => {
     slug: router?.query?.slug as string,
   });
 
-  return profile?.error ? null : (
-    // <Typography variant="h5" alignSelf="center">
-    //   {getErrorMessage(profile?.error)}
-    // </Typography>
-    <Article spacing={3} css={css``}>
-      <Avatar
-        sx={{ width: 100, height: 100 }}
-        css={css`
-          &&& {
-            color: ${theme?.palette?.common?.black};
+  return (
+    <Article spacing={3} position="relative">
+      {!profile?.data ? (
+        <Skeleton
+          animation="wave"
+          variant="circular"
+          width={100}
+          height={100}
+          css={css`
             background-color: #f3f3f3;
             border: 1px solid #e6e6e6;
-            font-size: 36px;
-            font-weight: 400;
-            line-height: 50px;
-            letter-spacing: 0em;
-            text-align: center;
-          }
-        `}
-      >
-        {profile?.data?.name?.[0]}
-      </Avatar>
+          `}
+        />
+      ) : (
+        <Avatar
+          sx={{ width: 100, height: 100 }}
+          css={css`
+            &&& {
+              color: ${theme?.palette?.common?.black};
+              background-color: #f3f3f3;
+              border: 1px solid #e6e6e6;
+              font-size: 36px;
+              font-weight: 400;
+              line-height: 50px;
+              letter-spacing: 0em;
+              text-align: center;
+            }
+          `}
+        >
+          {profile?.data?.name?.[0]}
+        </Avatar>
+      )}
       <Stack spacing={1}>
         <Typography
           variant="h1"
@@ -81,8 +91,6 @@ export const UserProfile = ({ ...props }: ListProps) => {
       >
         {profile?.data?.description}
       </Typography>
-      {profile?.isLoading && <LinearProgress />}
-      {!!profile?.data && <>{/**/}</>}
     </Article>
   );
 };

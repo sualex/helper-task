@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { SWRDevTools } from "swr-devtools";
 
 import { RootLayout } from "@/widgets/layout";
 
@@ -12,11 +13,13 @@ const App = (props: AppProps) => {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <MuiProvider {...props}>
-        <RootLayout>
-          <Component {...pageProps} />
-        </RootLayout>
-      </MuiProvider>
+      <SWRDevTools>
+        <MuiProvider {...props}>
+          <RootLayout>
+            <Component {...pageProps} />
+          </RootLayout>
+        </MuiProvider>
+      </SWRDevTools>
     </>
   );
 };

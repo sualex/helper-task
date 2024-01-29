@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 import * as React from "react";
 
 import { UserListItem } from "@/entities/user";
-import { getErrorMessage } from "@/shared/lib/error";
 import { Article, Nav } from "@/shared/ui";
 
 import { useUsers } from "../api";
@@ -18,14 +17,8 @@ import { useUsers } from "../api";
 export const UserList = ({ ...props }: ListProps) => {
   const router = useRouter();
   const theme = useTheme();
-
   const users = useUsers();
-
-  return users?.error ? (
-    <Typography variant="h5" alignSelf="center">
-      {getErrorMessage(users?.error)}
-    </Typography>
-  ) : (
+  return (
     <Article spacing={3} css={css``}>
       <div />
       <div />
@@ -41,8 +34,9 @@ export const UserList = ({ ...props }: ListProps) => {
       >
         Список аккаунтов
       </Typography>
-      {users?.isLoading && <LinearProgress />}
-      {!!users?.data && (
+      {!users?.data ? (
+        <LinearProgress />
+      ) : (
         <>
           <Nav aria-label="Cписок элементов">
             <List

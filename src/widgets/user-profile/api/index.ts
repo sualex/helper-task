@@ -7,12 +7,12 @@ import { UserRequest } from "@/shared/api/yoldi";
 export function useUser(requestParameters: UserRequest) {
   const router = useRouter();
   return useSWR(
-    () => router?.isReady && "/api/user/{slug}",
+    () => router?.isReady && ["/api/user", requestParameters.slug],
     (url) => {
       return userApi?.user(requestParameters);
     },
     {
-      // isPaused: () => !router.isReady,
+      revalidateOnFocus: false,
     }
   );
 }

@@ -32,7 +32,7 @@ export const ProfilePage: NextPage = () => {
       >
         <Container
           maxWidth="desktop"
-          disableGutters={isSm}
+          disableGutters
           css={css`
             display: flex;
             flex-direction: column;
@@ -48,6 +48,7 @@ export const ProfilePage: NextPage = () => {
               alt="Cover"
               src={isSm ? "/cover-small.png" : "/cover.png"}
               fill
+              priority
             />
           </Box>
           <Container
