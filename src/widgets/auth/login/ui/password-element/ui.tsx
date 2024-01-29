@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { IconButton } from "@mui/material";
@@ -9,6 +10,8 @@ import {
   TextFieldElementProps,
   useWatch,
 } from "react-hook-form-mui";
+
+import IconLock from "@/shared/ui/icons/lock-solid.svg";
 
 export default function PasswordElement({
   ...props
@@ -33,6 +36,16 @@ export default function PasswordElement({
         required: "Обязательное поле",
       }}
       InputProps={{
+        startAdornment: (
+          <InputAdornment
+            position="end"
+            sx={{
+              marginRight: 0,
+            }}
+          >
+            <IconLock />
+          </InputAdornment>
+        ),
         ...(isAdornmentVisible && {
           endAdornment: (
             <InputAdornment
@@ -58,6 +71,14 @@ export default function PasswordElement({
           ),
         }),
       }}
+      css={css`
+        &&& {
+          .MuiInputBase-root {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+        }
+      `}
       {...props}
     />
   );
