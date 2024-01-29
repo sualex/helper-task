@@ -5,7 +5,7 @@ import type { NextPage } from "next";
 
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { LoginDialog } from "@/widgets/auth";
+import { SignupDialog } from "@/widgets/auth/signup";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
@@ -41,7 +41,7 @@ export const SignupPage: NextPage = () => {
             justify-content: ${isMobile ? "flex-start" : "center"};
           `}
         >
-          <LoginDialog />
+          <SignupDialog />
         </Container>
       </Main>
       <Footer>
