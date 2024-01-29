@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { useEffect } from "react";
 
 import { UserListItem } from "@/entities/user";
 import { getErrorMessage } from "@/shared/lib/error";
@@ -21,10 +20,6 @@ export const UserList = ({ ...props }: ListProps) => {
   const theme = useTheme();
 
   const users = useUsers();
-
-  useEffect(() => {
-    console.log("xxxxxxxxxxxxxxxxxxxxxx ", users?.data);
-  }, [users.data]);
 
   return users?.error ? (
     <Typography variant="h5" alignSelf="center">
