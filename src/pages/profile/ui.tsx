@@ -30,7 +30,7 @@ export const ProfilePage: NextPage = () => {
           height: 200px;
         `}
       >
-        <Image alt="Logo" src="/cover.png" fill />
+        <Image alt="Logo" src="/cover.png" fill priority />
       </Box>
       <Main
         flex={1}
