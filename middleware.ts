@@ -9,6 +9,10 @@ export const config = {
 };
 
 export async function middleware(req: NextRequest, res: NextResponse) {
+  const accept = req?.headers.get("accept");
+  if (accept !== "application/json") {
+    return NextResponse.next();
+  }
   const date = new Date();
   console.log(
     `[${date.toLocaleDateString()} ${date.toLocaleTimeString()}]`,
@@ -16,8 +20,5 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     ` ${req?.method} `,
     `${apiUrl}${req?.nextUrl?.pathname}`
   );
-  //back-end proxy
-  return NextResponse.rewrite(
-    new URL(`${apiUrl}${req?.nextUrl?.pathname}`, req?.url)
-  );
+  return NextResponse.rewrite(new URL(req?.nextUrl?.pathname, apiUrl));
 }

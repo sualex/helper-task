@@ -6,6 +6,9 @@ export * from "./models/index";
 export const AuthApi = new apis.AuthApi(
   new runtime.Configuration({
     basePath: "",
+    headers: {
+      Accept: "application/json",
+    },
   })
 );
 
