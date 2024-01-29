@@ -8,7 +8,6 @@ export const RootLayout = ({ children, ...props }: StackProps) => {
     <Section
       css={css`
         min-height: 100vh;
-        border: 4px solid green;
       `}
       {...props}
     >

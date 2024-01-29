@@ -65,7 +65,8 @@ export function SignupDialog({ ...props }: StackProps) {
         type="submit"
         variant="primary"
         size="large"
-        disabled={isFetching}
+        // disabled={isFetching}
+        disabled
       >
         Войти
       </Button>

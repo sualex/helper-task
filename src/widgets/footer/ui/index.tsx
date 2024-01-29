@@ -25,7 +25,6 @@ export function Footer({ children, ...props }: StackProps) {
             component="nav"
             maxWidth="desktop"
             css={css`
-              border: 1px dotted blue;
               display: flex;
               align-items: center;
               justify-content: center;

@@ -23,17 +23,11 @@ export const LoginPage: NextPage = () => {
           Войти
         </Button>
       </Header>
-      <Main
-        flex={1}
-        css={css`
-          border: 6px solid yellow;
-        `}
-      >
+      <Main flex={1}>
         <Container
           maxWidth="sm"
           disableGutters
           css={css`
-            border: 2px solid red;
             max-width: 400px;
             flex: 1;
             display: flex;

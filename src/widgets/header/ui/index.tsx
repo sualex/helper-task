@@ -24,7 +24,6 @@ export function Header({
             component="nav"
             maxWidth="desktop"
             css={css`
-              border: 1px dotted blue;
               display: flex;
               align-items: center;
               justify-content: space-between;

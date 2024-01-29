@@ -1,13 +1,15 @@
 import { css } from "@emotion/react";
-import { Button, Typography } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Button, Container, useTheme } from "@mui/material";
 import type { NextPage } from "next";
 
+import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
+import { UserList } from "@/widgets/user-list";
 
 export const HomePage: NextPage = () => {
+  const isMobile = useMediaDown("sm");
+  const theme = useTheme();
   return (
     <>
       <Header>
@@ -23,28 +25,24 @@ export const HomePage: NextPage = () => {
       <Main
         flex={1}
         css={css`
-          border: 2px solid crimson;
+          background-color: ${theme?.palette?.common?.white};
         `}
-      />
-      <Footer>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <Typography
-            css={css`
-              font-size: 16px;
-              font-weight: 400;
-              line-height: 26px;
-              letter-spacing: 0em;
-              text-align: left;
-              color: #838383;
-            `}
-          >
-            Уже есть аккаунт?
-          </Typography>
-          <Button href="/login" variant="link">
-            Войти
-          </Button>
-        </Stack>
-      </Footer>
+      >
+        <Container
+          maxWidth="md"
+          css={css`
+            &&& {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              // justify-content: ${isMobile ? "flex-start" : "center"};
+              padding: 0 ${isMobile ? 20 : 0};
+            }
+          `}
+        >
+          <UserList />
+        </Container>
+      </Main>
     </>
   );
 };
