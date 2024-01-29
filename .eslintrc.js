@@ -89,13 +89,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        "src/stories/**/*.ts",
-        "src/stories/**/*.tsx",
-        "src/**/*.stories.tsx",
-      ],
+      files: ["src/shared/api/**/*.ts"],
       rules: {
-        "i18next/no-literal-string": "off",
+        "unicorn/filename-case": "off",
       },
     },
   ],

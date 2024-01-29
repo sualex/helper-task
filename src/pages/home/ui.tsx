@@ -37,7 +37,7 @@ export const HomePage: NextPage = () => {
     <>
       <Header>
         <Button
-          href="/api/login"
+          href="/login"
           css={css`
             width: 114px;
           `}
@@ -65,7 +65,7 @@ export const HomePage: NextPage = () => {
           >
             Уже есть аккаунт?
           </Typography>
-          <Button href="/api/login" variant="link">
+          <Button href="/login" variant="link">
             Войти
           </Button>
         </Stack>
