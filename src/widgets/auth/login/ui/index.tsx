@@ -1,4 +1,4 @@
-import { Button, StackProps, useTheme } from "@mui/material";
+import { Box, Button, Fade, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
@@ -14,7 +14,7 @@ import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-export function LoginDialog({ ...props }: StackProps) {
+export function LoginDialog({ ...props }) {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
@@ -24,50 +24,56 @@ export function LoginDialog({ ...props }: StackProps) {
   const loginMutation = useLoginMutation();
 
   return (
-    <FormContainer
-      onSuccess={async (loginDto: LoginDto) => {
-        setIsFetching(true);
-        setErrorMessage("");
-        try {
-          const result = await loginMutation?.trigger({
-            requestParameters: {
-              loginDto,
+    <Fade in timeout={1000}>
+      <Box>
+        <FormContainer
+          onSuccess={async (loginDto: LoginDto) => {
+            setIsFetching(true);
+            setErrorMessage("");
+            try {
+              const result = await loginMutation?.trigger({
+                requestParameters: {
+                  loginDto,
+                },
+              });
+              console.log("xxxxxxxxxxxxxxxxxxxxxxx ", result);
+            } catch (error) {
+              setErrorMessage(await getErrorMessage(error));
+            } finally {
+              setIsFetching(false);
+            }
+          }}
+          FormProps={{
+            style: {
+              flex: isMobile ? 1 : "initial",
+              display: "flex",
+              flexDirection: "column",
+              gap: "25px",
+              // borderRadius: "4px",
+              padding: "30px",
+              backgroundColor: theme.palette.common.white,
             },
-          });
-          console.log("xxxxxxxxxxxxxxxxxxxxxxx ", result);
-        } catch (error) {
-          setErrorMessage(await getErrorMessage(error));
-        } finally {
-          setIsFetching(false);
-        }
-      }}
-      FormProps={{
-        style: {
-          flex: isMobile ? 1 : "initial",
-          display: "flex",
-          flexDirection: "column",
-          gap: "25px",
-          // borderRadius: "4px",
-          padding: "30px",
-          backgroundColor: theme.palette.common.white,
-        },
-      }}
-    >
-      <Title />
-      <Stack gap="1rem" padding="0 5px">
-        {errorMessage && <Typography color="error">{errorMessage}</Typography>}
-        <LoginElement name="email" />
-        <PasswordElement name="password" />
-      </Stack>
-      <Button
-        type="submit"
-        variant="primary"
-        size="large"
-        // disabled={isFetching}
-        disabled
-      >
-        Войти
-      </Button>
-    </FormContainer>
+          }}
+        >
+          <Title />
+          <Stack gap="1rem" padding="0 5px">
+            {errorMessage && (
+              <Typography color="error">{errorMessage}</Typography>
+            )}
+            <LoginElement name="email" />
+            <PasswordElement name="password" />
+          </Stack>
+          <Button
+            type="submit"
+            variant="primary"
+            size="large"
+            // disabled={isFetching}
+            disabled
+          >
+            Войти
+          </Button>
+        </FormContainer>
+      </Box>
+    </Fade>
   );
 }
