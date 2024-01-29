@@ -5,16 +5,18 @@ import { useState } from "react";
 import * as React from "react";
 import { FormContainer } from "react-hook-form-mui";
 
+import { useMediaDown } from "@/shared/lib";
+
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
 export function LoginDialog({ ...props }: StackProps) {
   const theme = useTheme();
-  // const isMobile = useMediaDown("sm");
+  const isMobile = useMediaDown("sm");
 
   const [isFetching, setIsFetching] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
 
   // const onSuccess = useCallback(async ({ phone, password }: ISignInQuery) => {
   //   try {
@@ -40,6 +42,7 @@ export function LoginDialog({ ...props }: StackProps) {
       // onSuccess={onSuccess}
       FormProps={{
         style: {
+          flex: isMobile ? 1 : "initial",
           display: "flex",
           flexDirection: "column",
           gap: "25px",
@@ -52,11 +55,16 @@ export function LoginDialog({ ...props }: StackProps) {
       <Title />
       {errorMessage && <Typography color="error">{errorMessage}</Typography>}
       <Stack gap="1rem" padding="0 5px">
-        <LoginElement name="phone" />
+        <LoginElement name="email" />
         <PasswordElement name="password" />
       </Stack>
-      <Button type="submit" disabled={isFetching}>
-        Sign in
+      <Button
+        type="submit"
+        variant="primary"
+        size="large"
+        disabled={isFetching}
+      >
+        Войти
       </Button>
     </FormContainer>
   );

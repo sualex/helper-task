@@ -6,11 +6,11 @@ export default function LoginElement({
 }: Omit<TextFieldElementProps, "variant">) {
   return (
     <TextFieldElement
-      label="Phone"
-      placeholder="+799999999"
+      // label="Phone"
+      placeholder="E-mail"
       required
       validation={{
-        required: "Required",
+        required: "Обязательное поле",
       }}
       {...props}
     />

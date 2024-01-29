@@ -26,11 +26,11 @@ export default function PasswordElement({
   return (
     <TextFieldElement
       type={showPassword ? "text" : "password"}
-      label="Password"
-      placeholder="Type password"
+      // label="Password"
+      placeholder="Пароль"
       required
       validation={{
-        required: "Required",
+        required: "Обязательное поле",
       }}
       InputProps={{
         ...(isAdornmentVisible && {

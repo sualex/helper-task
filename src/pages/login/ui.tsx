@@ -3,12 +3,14 @@ import { Button, Container, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
 
+import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
 import { LoginDialog } from "@/widgets/auth";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
 export const LoginPage: NextPage = () => {
+  const isMobile = useMediaDown("sm");
   return (
     <>
       <Header>
@@ -35,7 +37,7 @@ export const LoginPage: NextPage = () => {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: ${isMobile ? "flex-start" : "center"};
           `}
         >
           <LoginDialog />

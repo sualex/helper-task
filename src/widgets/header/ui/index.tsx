@@ -14,9 +14,7 @@ export function Header({
   ...props
 }: AppBarProps) {
   const theme = useTheme();
-
   const isMobile = useMediaDown("sm");
-
   return (
     <>
       {position === "fixed" && <Toolbar />}

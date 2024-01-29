@@ -23,6 +23,9 @@ export default createTheme({
   },
   palette: {
     mode: "light",
+    error: {
+      main: "#F00000",
+    },
     text: {
       primary: "#000000",
     },

@@ -22,6 +22,28 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
   },
   variants: [
     {
+      props: { variant: "primary", color: "primary" },
+      style: ({ theme }) => ({
+        color: theme.palette.common.white,
+        backgroundColor: theme.palette.common.black,
+        borderColor: "transparent",
+        boxShadow: `none`,
+        "&:hover": {
+          backgroundColor: theme.palette.common.black,
+          borderColor: "transparent",
+        },
+        [`&.${buttonClasses.focusVisible}`]: {
+          borderColor: "#838383",
+          // boxShadow: "0px 0px 0px 4px #BCDCC0",
+        },
+        [`&.${buttonClasses.disabled}`]: {
+          backgroundColor: `#D4D4D4`,
+          // borderColor: theme.palette.green_100.main,
+          color: "#F3F3F3",
+        },
+      }),
+    },
+    {
       props: { variant: "secondary", color: "primary" },
       style: ({ theme }) => {
         return {

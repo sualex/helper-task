@@ -5,6 +5,8 @@ import { MuiAppBar } from "./mui-app-bar";
 import { MuiButton } from "./mui-button";
 import { MuiButtonBase } from "./mui-button-base";
 import { MuiCssBaseline } from "./mui-css-base-line";
+import { MuiFormHelperText } from "./mui-form-helper-text";
+import { MuiTextField } from "./mui-text-field";
 import { MuiToolbar } from "./mui-toolbar";
 
 export const components: Components<DefaultTheme> = {
@@ -13,4 +15,6 @@ export const components: Components<DefaultTheme> = {
   MuiButton,
   MuiToolbar,
   MuiCssBaseline,
+  MuiTextField,
+  MuiFormHelperText,
 };
