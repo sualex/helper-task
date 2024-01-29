@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import { RootLayout } from "@/widgets/layout";
 
-import { MuiProvider, ReactQueryProvider } from "./providers";
+import { MuiProvider } from "./providers";
 
 const App = (props: AppProps) => {
   const { Component, pageProps } = props;
@@ -12,13 +12,11 @@ const App = (props: AppProps) => {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ReactQueryProvider pageProps={pageProps}>
-        <MuiProvider {...props}>
-          <RootLayout>
-            <Component {...pageProps} />
-          </RootLayout>
-        </MuiProvider>
-      </ReactQueryProvider>
+      <MuiProvider {...props}>
+        <RootLayout>
+          <Component {...pageProps} />
+        </RootLayout>
+      </MuiProvider>
     </>
   );
 };
