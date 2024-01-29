@@ -14,7 +14,7 @@ export function Header({
   ...props
 }: AppBarProps) {
   const theme = useTheme();
-  const isMobile = useMediaDown("sm");
+  const isSm = useMediaDown("md");
   return (
     <>
       {position === "fixed" && <Toolbar />}
@@ -32,7 +32,7 @@ export function Header({
           >
             <Stack direction="row" alignItems="center" spacing={2.5}>
               <Logo />
-              {!isMobile && <Title />}
+              {!isSm && <Title />}
             </Stack>
             <Stack
               component="nav"

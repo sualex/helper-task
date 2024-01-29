@@ -10,7 +10,7 @@ import { Header } from "@/widgets/header";
 import { UserProfile } from "@/widgets/user-profile";
 
 export const ProfilePage: NextPage = () => {
-  const isMobile = useMediaDown("sm");
+  const isSm = useMediaDown("md");
   const theme = useTheme();
   return (
     <>
@@ -32,7 +32,7 @@ export const ProfilePage: NextPage = () => {
       >
         <Container
           maxWidth="desktop"
-          disableGutters={isMobile}
+          disableGutters={isSm}
           css={css`
             display: flex;
             flex-direction: column;
@@ -46,7 +46,7 @@ export const ProfilePage: NextPage = () => {
           >
             <Image
               alt="Cover"
-              src={isMobile ? "/cover-small.png" : "/cover.png"}
+              src={isSm ? "/cover-small.png" : "/cover.png"}
               fill
             />
           </Box>
@@ -57,8 +57,8 @@ export const ProfilePage: NextPage = () => {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
-                // justify-content: ${isMobile ? "flex-start" : "center"};
-                padding: 0 ${isMobile ? 20 : 0};
+                // justify-content: ${isSm ? "flex-start" : "center"};
+                padding: 0 ${isSm ? 20 : 0};
                 margin-top: -50px;
               }
             `}
