@@ -3,17 +3,18 @@
 Clone, install dependencies:
 
 ```bash
-yarn install
-# or
 npm install
 ```
 Run locally in dev mode:
 ```bash
-yarn dev
+npm run dev
 ```
 Run locally in production mode:
 ```bash
-yarn build
-yarn start
+npm run build
+npm run start
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Or
+###  [Try out LIVE DEMO](https://helper-task.vercel.app/)️
