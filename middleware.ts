@@ -1,24 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// const apiUrl = process.env.API_URL;
+import { logger, navigation } from "@/shared/lib/server";
 
-const apiUrl = `https://frontend-test-api.yoldi.agency`;
+const API_URL = `https://frontend-test-api.yoldi.agency`;
 
 export const config = {
   matcher: ["/api/:path*"],
 };
 
+const log = logger();
+
 export async function middleware(req: NextRequest, res: NextResponse) {
-  const accept = req?.headers.get("accept");
-  if (accept !== "application/json") {
+  if (navigation(req)) {
     return NextResponse.next();
   }
-  const date = new Date();
-  console.log(
-    `[${date.toLocaleDateString()} ${date.toLocaleTimeString()}]`,
-    ` REWRITE`,
-    ` ${req?.method} `,
-    `${apiUrl}${req?.nextUrl?.pathname}`
-  );
-  return NextResponse.rewrite(new URL(req?.nextUrl?.pathname, apiUrl));
+  const targetUrl = new URL(req?.nextUrl?.pathname, API_URL);
+  log(`${req?.nextUrl?.href} -> ${targetUrl?.href}`);
+  return NextResponse.rewrite(new URL(req?.nextUrl?.pathname, API_URL));
 }

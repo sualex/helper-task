@@ -63,8 +63,7 @@ export function LoginDialog({ ...props }) {
         type="submit"
         variant="primary"
         size="large"
-        // disabled={isFetching}
-        disabled
+        disabled={isFetching}
       >
         Войти
       </Button>
