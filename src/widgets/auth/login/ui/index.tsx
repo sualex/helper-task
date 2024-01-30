@@ -1,10 +1,12 @@
 import { Button, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import * as React from "react";
 import { FormContainer } from "react-hook-form-mui";
 
+import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { getErrorMessage } from "@/shared/lib/error";
@@ -23,18 +25,18 @@ export function LoginDialog({ ...props }) {
 
   const loginMutation = useLoginMutation();
 
+  const router = useRouter();
+
   return (
     <FormContainer
       onSuccess={async (loginDto: LoginDto) => {
         setIsFetching(true);
         setErrorMessage("");
         try {
-          const result = await loginMutation?.trigger({
-            requestParameters: {
-              loginDto,
-            },
+          await authApi?.login({
+            loginDto,
           });
-          console.log("xxxxxxxxxxxxxxxxxxxxxxx ", result);
+          router.push("/");
         } catch (error) {
           setErrorMessage(await getErrorMessage(error));
         } finally {

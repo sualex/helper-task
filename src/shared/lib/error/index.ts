@@ -25,21 +25,10 @@ function toErrorWithMessage(maybeError: unknown): ErrorWithMessage {
 }
 
 export async function getErrorMessage(error: unknown) {
-  if (error instanceof ResponseError) {
-    try {
-      const { response } = error;
-      if (response) {
-        const contentType = response.headers.get("Content-Type");
-        if (contentType && contentType?.includes("application/json")) {
-          const responseData = await response.json();
-          if (responseData.message) {
-            return responseData?.message;
-          }
-        }
-      }
-    } catch {
-      //
-    }
+  try {
+    return (await (error as ResponseError)?.response?.json())?.message;
+  } catch {
+    //
   }
   return toErrorWithMessage(error).message;
 }
