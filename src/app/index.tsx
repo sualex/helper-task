@@ -4,7 +4,7 @@ import Head from "next/head";
 import { ReactNode } from "react";
 import { SWRDevTools } from "swr-devtools";
 
-import { LoginButton } from "@/entities/auth";
+import { LoginButton } from "@/features/login";
 import { Header } from "@/widgets/header";
 import { RootLayout } from "@/widgets/layout";
 
