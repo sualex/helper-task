@@ -42,7 +42,6 @@ export async function middleware(req: NextRequest) {
       return response;
     } catch (error) {
       const { message, status } = await getError(error);
-      console.log(error);
       const response = NextResponse.json({ message }, { status });
       response.cookies.delete("auth");
       return response;
