@@ -1,11 +1,5 @@
 import { css } from "@emotion/react";
-import {
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  NoSsr,
-} from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { NoSsr } from "@mui/material";
 
 import { useMediaDown } from "@/shared/lib";
 
@@ -13,12 +7,14 @@ import { IDialogProps } from "./types";
 import { ModalDialog } from "./ui/modal";
 import { StaticDialog } from "./ui/static";
 
+export * from "./ui/title";
+export * from "./ui/content";
+export * from "./ui/actions";
+
 export const Dialog = ({
   children,
   open,
   modal = false,
-  titleSlot = null,
-  actionsSlot = null,
   ...props
 }: IDialogProps) => {
   const isMobile = useMediaDown("sm");
@@ -32,34 +28,7 @@ export const Dialog = ({
         `}
         {...props}
       >
-        {titleSlot && (
-          <DialogTitle
-            component={Stack}
-            css={css`
-              padding: 30px 30px;
-            `}
-          >
-            {titleSlot}
-          </DialogTitle>
-        )}
-        {children && (
-          <DialogContent
-            css={css`
-              padding: 0 30px;
-            `}
-          >
-            {children}
-          </DialogContent>
-        )}
-        {actionsSlot && (
-          <DialogActions
-            css={css`
-              padding: 30px;
-            `}
-          >
-            {actionsSlot}
-          </DialogActions>
-        )}
+        {children}
       </Wrapper>
     </NoSsr>
   );

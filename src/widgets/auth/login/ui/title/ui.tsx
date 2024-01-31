@@ -5,7 +5,7 @@ import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
 
-export default function Title({ ...props }: TypographyProps) {
+export function Title({ ...props }: TypographyProps) {
   const isMobile = useMediaDown("sm");
   return (
     <Typography
@@ -13,7 +13,7 @@ export default function Title({ ...props }: TypographyProps) {
       css={css`
         font-size: 30px;
         font-weight: 500;
-        line-height: 42px;
+        line-height: normal;
         letter-spacing: 0em;
         text-align: left;
       `}

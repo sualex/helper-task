@@ -1,6 +1,4 @@
 import { useTheme } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as React from "react";
@@ -12,10 +10,15 @@ import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { getError } from "@/shared/lib/error";
 
-import LoginElement from "./login-element/ui";
-import PasswordElement from "./password-element/ui";
+export * from "./email";
+export * from "./password";
+export * from "./submit";
+export * from "./title";
 
-export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
+export const LoginForm = ({
+  children,
+  ...props
+}: FormContainerProps<LoginDto>) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
@@ -49,7 +52,7 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
           flex: isMobile ? 1 : "initial",
           display: "flex",
           flexDirection: "column",
-          gap: "25px",
+          // gap: "25px",
           // borderRadius: "4px",
           // padding: "30px",
           backgroundColor: theme.palette.common.white,
@@ -57,11 +60,12 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
       }}
       {...props}
     >
-      <Stack gap="1rem" padding="0 5px">
-        {errorMessage && <Typography color="error">{errorMessage}</Typography>}
-        <LoginElement name="email" autoFocus />
-        <PasswordElement name="password" />
-      </Stack>
+      {/*<Stack gap="1rem" padding="0 5px">*/}
+      {/*  {errorMessage && <Typography color="error">{errorMessage}</Typography>}*/}
+      {children}
+      {/*<LoginElement name="email" autoFocus />*/}
+      {/*<PasswordElement name="password" />*/}
+      {/*</Stack>*/}
     </FormContainer>
   );
 };

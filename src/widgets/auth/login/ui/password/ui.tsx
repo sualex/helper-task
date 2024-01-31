@@ -13,9 +13,9 @@ import {
 
 import IconLock from "@/shared/ui/icons/lock-solid.svg";
 
-export default function PasswordElement({
+export function Password({
   ...props
-}: Omit<TextFieldElementProps, "variant">) {
+}: Omit<TextFieldElementProps, "variant" | "name">) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShowPassword = useCallback(() => {
@@ -23,13 +23,13 @@ export default function PasswordElement({
   }, [showPassword]);
 
   const isAdornmentVisible = useWatch({
-    name: props?.name,
+    name: "password",
   });
 
   return (
     <TextFieldElement
+      name="password"
       type={showPassword ? "text" : "password"}
-      // label="Password"
       placeholder="Пароль"
       required
       validation={{

@@ -1,13 +1,18 @@
 import { css } from "@emotion/react";
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
 import { LoginForm } from "@/widgets/auth";
-import Title from "@/widgets/auth/login/ui/title/ui";
-import { Dialog } from "@/widgets/dialog";
+import { Email, Password, Submit, Title } from "@/widgets/auth/login";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@/widgets/dialog";
 
 import { LoginPageFooter } from "./footer";
 
@@ -25,24 +30,33 @@ export const LoginPage = () => {
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
-        <Dialog
-          open
-          titleSlot={<Title />}
-          actionsSlot={
-            <Stack flex={1}>
-              <Button
-                type="submit"
-                form="LoginForm"
-                variant="primary"
-                size="large"
-                // disabled={isFetching}
+        <Dialog open>
+          <LoginForm>
+            <DialogTitle>
+              <Title />
+            </DialogTitle>
+            <DialogContent>
+              <Stack
+                spacing={2}
+                css={css`
+                  padding: 0 5px;
+                `}
               >
-                Войти
-              </Button>
-            </Stack>
-          }
-        >
-          <LoginForm />
+                {/*{errorMessage && (*/}
+                {/*  <Typography color="error">{errorMessage}</Typography>*/}
+                {/*)}*/}
+                <Email />
+                <Password />
+              </Stack>
+            </DialogContent>
+            <DialogActions>
+              <Submit
+                css={css`
+                  flex: 1;
+                `}
+              />
+            </DialogActions>
+          </LoginForm>
         </Dialog>
       </Container>
     </Main>

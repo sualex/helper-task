@@ -5,13 +5,14 @@ import { TextFieldElement, TextFieldElementProps } from "react-hook-form-mui";
 
 import IconEnvelope from "@/shared/ui/icons/envelope.svg";
 
-export default function LoginElement({
+export function Email({
   ...props
-}: Omit<TextFieldElementProps, "variant">) {
+}: Omit<TextFieldElementProps, "variant" | "name">) {
   return (
     <TextFieldElement
+      autoFocus
+      name="email"
       inputRef={(input) => input && input.focus()}
-      // label="Phone"
       placeholder="E-mail"
       required
       validation={{
