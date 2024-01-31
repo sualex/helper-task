@@ -5,6 +5,7 @@ import {
   DialogTitle,
   NoSsr,
 } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 import { useMediaDown } from "@/shared/lib";
 
@@ -33,6 +34,7 @@ export const Dialog = ({
       >
         {titleSlot && (
           <DialogTitle
+            component={Stack}
             css={css`
               padding: 30px 30px;
             `}

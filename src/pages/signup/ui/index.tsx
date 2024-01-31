@@ -1,16 +1,17 @@
 import { css } from "@emotion/react";
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { LoginForm } from "@/widgets/auth";
-import Title from "@/widgets/auth/login/ui/title/ui";
+import { SignUpForm } from "@/widgets/auth/signup";
+import Title from "@/widgets/auth/signup/ui/title/ui";
 import { Dialog } from "@/widgets/dialog";
-import { Footer } from "@/widgets/footer";
 
-export const LoginPage = () => {
+import { SignUpPageFooter } from "./footer";
+
+export const SignUpPage = () => {
   const isMobile = useMediaDown("sm");
   return (
     <Main flex={1}>
@@ -18,6 +19,7 @@ export const LoginPage = () => {
         maxWidth="sm"
         disableGutters
         css={css`
+          max-width: 400px;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -31,41 +33,20 @@ export const LoginPage = () => {
             <Stack flex={1}>
               <Button
                 type="submit"
-                form="LoginForm"
+                form="SignUpForm"
                 variant="primary"
                 size="large"
-                // disabled={isFetching}
               >
-                Войти
+                Создать аккаунт
               </Button>
             </Stack>
           }
         >
-          <LoginForm />
+          <SignUpForm />
         </Dialog>
       </Container>
     </Main>
   );
 };
 
-LoginPage.footer = (
-  <Footer>
-    <Stack direction="row" alignItems="center" spacing={1}>
-      <Typography
-        css={css`
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 26px;
-          letter-spacing: 0em;
-          text-align: left;
-          color: #838383;
-        `}
-      >
-        Еще нет аккаунта?
-      </Typography>
-      <Button href="/signup" variant="link">
-        Зарегистрироваться
-      </Button>
-    </Stack>
-  </Footer>
-);
+SignUpPage.footer = <SignUpPageFooter />;
