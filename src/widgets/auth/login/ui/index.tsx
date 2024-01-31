@@ -15,7 +15,7 @@ import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
+export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
@@ -51,6 +51,7 @@ const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
           backgroundColor: theme.palette.common.white,
         },
       }}
+      {...props}
     >
       <Title />
       <Stack gap="1rem" padding="0 5px">
