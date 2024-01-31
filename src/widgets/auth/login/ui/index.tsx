@@ -1,4 +1,4 @@
-import { Button, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
@@ -13,7 +13,6 @@ import { getError } from "@/shared/lib/error";
 
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
-import Title from "./title/ui";
 
 export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
   const theme = useTheme();
@@ -41,32 +40,24 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
         }
       }}
       FormProps={{
+        id: "LoginForm",
         style: {
           flex: isMobile ? 1 : "initial",
           display: "flex",
           flexDirection: "column",
           gap: "25px",
           // borderRadius: "4px",
-          padding: "30px",
+          // padding: "30px",
           backgroundColor: theme.palette.common.white,
         },
       }}
       {...props}
     >
-      <Title />
       <Stack gap="1rem" padding="0 5px">
         {errorMessage && <Typography color="error">{errorMessage}</Typography>}
-        <LoginElement name="email" />
+        <LoginElement name="email" autoFocus />
         <PasswordElement name="password" />
       </Stack>
-      <Button
-        type="submit"
-        variant="primary"
-        size="large"
-        disabled={isFetching}
-      >
-        Войти
-      </Button>
     </FormContainer>
   );
 };

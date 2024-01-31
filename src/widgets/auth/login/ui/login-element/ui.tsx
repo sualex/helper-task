@@ -10,6 +10,7 @@ export default function LoginElement({
 }: Omit<TextFieldElementProps, "variant">) {
   return (
     <TextFieldElement
+      inputRef={(input) => input && input.focus()}
       // label="Phone"
       placeholder="E-mail"
       required
