@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Typography, useTheme } from "@mui/material";
+import { Skeleton, Typography, useTheme } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -30,7 +30,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
             text-align: left;
           `}
         >
-          {profile?.data?.name}
+          {profile ? profile?.data?.name : <Skeleton />}
         </Typography>
         <Typography
           css={css`
