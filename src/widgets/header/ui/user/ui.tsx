@@ -14,6 +14,8 @@ export const HeaderUser = ({ ...props }: StackProps) => {
     return <UserAvatar />;
   }
 
+  console.log("xxxxxxxxxxxxxxxxxxxx ", myProfile?.data);
+
   return myProfile?.data ? (
     <Button
       href={`/profile/${myProfile?.data?.slug}`}

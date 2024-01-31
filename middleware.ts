@@ -2,7 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 import * as api from "@/shared/api";
 import { getError } from "@/shared/lib/error";
-import { isLogin, isNavigation, isSignUp, logger } from "@/shared/lib/server";
+import {
+  isLogOut,
+  isLogin,
+  isNavigation,
+  isSignUp,
+  logger,
+} from "@/shared/lib/server";
 
 const API_URL = `https://frontend-test-api.yoldi.agency`;
 
@@ -26,7 +32,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
   //
-  if (isLogin(req) || isSignUp(req)) {
+  if (isLogin(req) || isLogOut(req) || isSignUp(req)) {
     try {
       let value;
       if (isLogin(req)) {
@@ -35,7 +41,8 @@ export async function middleware(req: NextRequest) {
             loginDto: await req?.json(),
           })
         )?.value;
-      } else {
+      }
+      if (isSignUp(req)) {
         value = (
           await authApi.signUp({
             signUpDto: await req?.json(),
@@ -43,11 +50,16 @@ export async function middleware(req: NextRequest) {
         )?.value;
       }
       const response = NextResponse.json({});
-      response.cookies.set({
-        name: "auth",
-        value,
-        httpOnly: true,
-      });
+      if (value) {
+        response.cookies.set({
+          name: "auth",
+          value,
+          httpOnly: true,
+        });
+      } else {
+        //logout
+        response.cookies.delete("auth");
+      }
       return response;
     } catch (error) {
       const { message, status } = await getError(error);

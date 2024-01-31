@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { Box, Container, useTheme } from "@mui/material";
-import Image from "next/image";
+import { Container, useTheme } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
@@ -25,19 +25,21 @@ export const ProfilePage = () => {
           flex-direction: column;
         `}
       >
-        <Box
+        <Stack
           css={css`
             position: relative;
             height: 200px;
+            background-color: #f3f3f3;
+            border-bottom: 1px solid #e6e6e6;
           `}
         >
-          <Image
-            alt="Cover"
-            src={isSm ? "/cover-small.png" : "/cover.png"}
-            fill
-            priority
-          />
-        </Box>
+          {/*<Image*/}
+          {/*  alt="Cover"*/}
+          {/*  src={isSm ? "/cover-small.png" : "/cover.png"}*/}
+          {/*  fill*/}
+          {/*  priority*/}
+          {/*/>*/}
+        </Stack>
         <Container
           maxWidth="md"
           css={css`

@@ -21,8 +21,10 @@ export function useMyProfile() {
   const router = useRouter();
   return useSWR(
     () => ["/api/profile"],
-    (url) => {
-      return profileApi?.myProfile();
+    async (url) => {
+      const prof = await profileApi?.myProfile();
+      console.log("xxxxxxxxxxxxxxxxxx oooooooo ", prof);
+      return prof;
     },
     {
       revalidateOnFocus: false,
