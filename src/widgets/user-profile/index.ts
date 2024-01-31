@@ -1,2 +1,2 @@
 export { UserProfile } from "./ui";
-export * from "./api";
+export * from "../../entities/user/model";

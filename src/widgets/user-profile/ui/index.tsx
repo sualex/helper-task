@@ -1,12 +1,12 @@
 import { css } from "@emotion/react";
-import { Avatar, Skeleton, Typography, useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import * as React from "react";
 
+import { useUser } from "@/entities/user/model";
+import { UserAvatar } from "@/entities/user/ui/avatar";
 import { Article } from "@/shared/ui";
-
-import { useUser } from "../api";
 
 export const UserProfile = ({ ...props }: StackProps) => {
   const router = useRouter();
@@ -18,36 +18,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
 
   return (
     <Article spacing={3} {...props}>
-      {!profile?.data ? (
-        <Skeleton
-          animation="wave"
-          variant="circular"
-          width={100}
-          height={100}
-          css={css`
-            background-color: #f3f3f3;
-            border: 1px solid #e6e6e6;
-          `}
-        />
-      ) : (
-        <Avatar
-          sx={{ width: 100, height: 100 }}
-          css={css`
-            &&& {
-              color: ${theme?.palette?.common?.black};
-              background-color: #f3f3f3;
-              border: 1px solid #e6e6e6;
-              font-size: 36px;
-              font-weight: 400;
-              line-height: 50px;
-              letter-spacing: 0em;
-              text-align: center;
-            }
-          `}
-        >
-          {profile?.data?.name?.[0]}
-        </Avatar>
-      )}
+      <UserAvatar profile={profile?.data} size={100} />
       <Stack spacing={1}>
         <Typography
           variant="h1"

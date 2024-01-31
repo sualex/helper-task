@@ -7,6 +7,7 @@ import * as React from "react";
 import { useMediaDown } from "@/shared/lib";
 import { Logo } from "@/widgets/header/ui/logo";
 import { Title } from "@/widgets/header/ui/title";
+import { HeaderUser } from "@/widgets/header/ui/user/ui";
 
 export function Header({
   position = "static",
@@ -41,7 +42,7 @@ export function Header({
                 padding-right: 9.5px;
               `}
             >
-              {children}
+              <HeaderUser />
             </Stack>
           </Container>
         </Toolbar>

@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import {
-  Avatar,
   ListItem,
   ListItemAvatar,
   ListItemButton,
@@ -11,6 +10,7 @@ import {
 } from "@mui/material";
 import * as React from "react";
 
+import { UserAvatar } from "@/entities/user/ui/avatar";
 import { ProfileDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { NextLinkBehaviour } from "@/shared/ui";
@@ -70,7 +70,7 @@ export const UserListItem = ({
             min-width: auto;
           `}
         >
-          <Avatar sx={{ width: 50, height: 50 }}>{profile?.name?.[0]}</Avatar>
+          <UserAvatar sx={{ width: 50, height: 50 }} profile={profile} />
         </ListItemAvatar>
         <ListItemText
           primary={profile?.name}

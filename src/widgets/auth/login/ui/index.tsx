@@ -6,6 +6,7 @@ import { useState } from "react";
 import * as React from "react";
 import { FormContainer, FormContainerProps } from "react-hook-form-mui";
 
+import { useMyProfile } from "@/entities/user";
 import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
@@ -23,6 +24,8 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
 
   const router = useRouter();
 
+  const { mutate } = useMyProfile();
+
   return (
     <FormContainer<LoginDto>
       onSuccess={async (loginDto) => {
@@ -32,6 +35,8 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
           await authApi?.login({
             loginDto,
           });
+          console.log("xxxxxxxxxxxxxxxxxxxxx aaaaaaaaaaaaaaa ");
+          await mutate();
           router.push("/");
         } catch (error) {
           setErrorMessage((await getError(error))?.message);

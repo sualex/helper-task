@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 import * as React from "react";
 
-import { SignUpButton } from "@/features/sign-up";
+import { SignUpButton } from "@/entities/user/ui/sign-up";
 import { Footer } from "@/widgets/footer";
 
 export const LoginPageFooter = ({ ...props }: StackProps) => {

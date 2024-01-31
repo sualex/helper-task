@@ -10,9 +10,8 @@ import { useRouter } from "next/router";
 import * as React from "react";
 
 import { UserListItem } from "@/entities/user";
+import { useUsers } from "@/entities/user/model";
 import { Article, Nav } from "@/shared/ui";
-
-import { useUsers } from "../api";
 
 export const UserList = ({ ...props }: ListProps) => {
   const router = useRouter();

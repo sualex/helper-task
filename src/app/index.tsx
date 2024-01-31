@@ -1,10 +1,8 @@
-import { css } from "@emotion/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ReactNode } from "react";
 import { SWRDevTools } from "swr-devtools";
 
-import { LoginButton } from "@/features/login";
 import { Header } from "@/widgets/header";
 import { RootLayout } from "@/widgets/layout";
 
@@ -24,15 +22,7 @@ const App = (props: AppProps) => {
       <SWRDevTools>
         <MuiProvider {...props}>
           <RootLayout>
-            {header || (
-              <Header>
-                <LoginButton
-                  css={css`
-                    width: 114px;
-                  `}
-                />
-              </Header>
-            )}
+            {header || <Header />}
             <Component {...pageProps} />
             {!!footer && footer}
           </RootLayout>
