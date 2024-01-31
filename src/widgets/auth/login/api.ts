@@ -5,7 +5,7 @@ import { LoginRequest } from "@/shared/api/yoldi";
 
 export function useLoginMutation() {
   return useSWRMutation(
-    "/api/user",
+    "/api/auth/login",
     (
       url,
       {

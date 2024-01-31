@@ -1,1 +1,1 @@
-export { LoginDialog } from "./login/ui";
+export { LoginForm } from "./login/ui";

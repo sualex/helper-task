@@ -2,34 +2,39 @@ import { Button, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import * as React from "react";
-import { FormContainer } from "react-hook-form-mui";
+import {
+  FieldValues,
+  FormContainer,
+  FormContainerProps,
+} from "react-hook-form-mui";
 
 import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { getError } from "@/shared/lib/error";
-import { useLoginMutation } from "@/widgets/auth/login/api";
 
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-export function LoginDialog({ ...props }) {
+const LoginFormContainer = <TFieldValues extends FieldValues = LoginDto>(
+  props: PropsWithChildren<FormContainerProps<TFieldValues>>
+) => <FormContainer {...props} />;
+
+export function LoginForm({ ...props }) {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
   const [isFetching, setIsFetching] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
-  const loginMutation = useLoginMutation();
-
   const router = useRouter();
 
   return (
-    <FormContainer
-      onSuccess={async (loginDto: LoginDto) => {
+    <LoginFormContainer
+      onSuccess={async (loginDto) => {
         setIsFetching(true);
         setErrorMessage("");
         try {
@@ -69,6 +74,6 @@ export function LoginDialog({ ...props }) {
       >
         Войти
       </Button>
-    </FormContainer>
+    </LoginFormContainer>
   );
 }

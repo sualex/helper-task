@@ -1,41 +1,49 @@
-import { Button, StackProps, useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { PropsWithChildren, useState } from "react";
 import * as React from "react";
-import { FormContainer } from "react-hook-form-mui";
+import {
+  FieldValues,
+  FormContainer,
+  FormContainerProps,
+} from "react-hook-form-mui";
 
-import { LoginDto } from "@/shared/api/yoldi";
+import { authApi } from "@/shared/api";
+import { SignUpDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { getError } from "@/shared/lib/error";
-import { useLoginMutation } from "@/widgets/auth/login/api";
 import NameElement from "@/widgets/auth/signup/ui/name-element/ui";
 
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-export function SignupDialog({ ...props }: StackProps) {
+const SignUpFormContainer = <TFieldValues extends FieldValues = SignUpDto>(
+  props: PropsWithChildren<FormContainerProps<TFieldValues>>
+) => <FormContainer {...props} />;
+
+export const SignupForm = ({ ...props }) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
   const [isFetching, setIsFetching] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
-  const loginMutation = useLoginMutation();
+  const router = useRouter();
 
   return (
-    <FormContainer
-      onSuccess={async (loginDto: LoginDto) => {
+    <SignUpFormContainer
+      onSuccess={async (signUpDto) => {
+        console.log("xxxxxxxxxxxxxxxxxxxxxxxx ", signUpDto);
         setIsFetching(true);
         setErrorMessage("");
         try {
-          const result = await loginMutation?.trigger({
-            requestParameters: {
-              loginDto,
-            },
+          await authApi?.signUp({
+            signUpDto,
           });
-          console.log("xxxxxxxxxxxxxxxxxxxxxxx ", result);
+          router.push("/");
         } catch (error) {
           setErrorMessage((await getError(error))?.message);
         } finally {
@@ -65,11 +73,10 @@ export function SignupDialog({ ...props }: StackProps) {
         type="submit"
         variant="primary"
         size="large"
-        // disabled={isFetching}
-        disabled
+        disabled={isFetching}
       >
-        Войти
+        Создать аккаунт
       </Button>
-    </FormContainer>
+    </SignUpFormContainer>
   );
-}
+};
