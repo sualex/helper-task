@@ -8,6 +8,9 @@ export const isNavigation = (req: NextRequest) =>
 export const isLogin = (req: NextRequest) =>
   req?.nextUrl?.pathname?.endsWith("/auth/login");
 
+export const isSignUp = (req: NextRequest) =>
+  req?.nextUrl?.pathname?.endsWith("/api/auth/sign-up");
+
 export const logger = (
   prepend = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`
 ) => {

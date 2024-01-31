@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import * as api from "@/shared/api";
-import { LoginDto } from "@/shared/api/yoldi";
 import { getError } from "@/shared/lib/error";
-import { isLogin, isNavigation, logger } from "@/shared/lib/server";
+import { isLogin, isNavigation, isSignUp, logger } from "@/shared/lib/server";
 
 const API_URL = `https://frontend-test-api.yoldi.agency`;
 
@@ -27,12 +26,22 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
   //
-  if (isLogin(req)) {
+  if (isLogin(req) || isSignUp(req)) {
     try {
-      const loginDto: LoginDto = await req?.json();
-      const { value } = await authApi.login({
-        loginDto,
-      });
+      let value;
+      if (isLogin(req)) {
+        value = (
+          await authApi.login({
+            loginDto: await req?.json(),
+          })
+        )?.value;
+      } else {
+        value = (
+          await authApi.signUp({
+            signUpDto: await req?.json(),
+          })
+        )?.value;
+      }
       const response = NextResponse.json({});
       response.cookies.set({
         name: "auth",
