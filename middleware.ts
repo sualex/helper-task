@@ -26,7 +26,7 @@ export async function middleware(req: NextRequest) {
   if (isNavigation(req)) {
     return NextResponse.next();
   }
-
+  //
   if (isLogin(req)) {
     try {
       const loginDto: LoginDto = await req?.json();
@@ -47,13 +47,13 @@ export async function middleware(req: NextRequest) {
       return response;
     }
   }
-
+  //
   const requestHeaders = new Headers(req.headers);
   const apiKey = req.cookies.get("auth")?.value;
   if (apiKey) {
     requestHeaders.set("X-API-KEY", apiKey);
   }
-
+  //
   const targetUrl = new URL(req?.nextUrl?.pathname, API_URL);
   log(`${req?.nextUrl?.href} -> ${targetUrl?.href}`);
   return NextResponse.rewrite(targetUrl, {
