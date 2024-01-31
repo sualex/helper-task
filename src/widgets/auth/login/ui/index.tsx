@@ -2,13 +2,9 @@ import { Button, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-import { PropsWithChildren, useState } from "react";
+import { useState } from "react";
 import * as React from "react";
-import {
-  FieldValues,
-  FormContainer,
-  FormContainerProps,
-} from "react-hook-form-mui";
+import { FormContainer } from "react-hook-form-mui";
 
 import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
@@ -18,10 +14,6 @@ import { getError } from "@/shared/lib/error";
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
-
-const LoginFormContainer = <TFieldValues extends FieldValues = LoginDto>(
-  props: PropsWithChildren<FormContainerProps<TFieldValues>>
-) => <FormContainer {...props} />;
 
 export function LoginForm({ ...props }) {
   const theme = useTheme();
@@ -33,7 +25,7 @@ export function LoginForm({ ...props }) {
   const router = useRouter();
 
   return (
-    <LoginFormContainer
+    <FormContainer<LoginDto>
       onSuccess={async (loginDto) => {
         setIsFetching(true);
         setErrorMessage("");
@@ -74,6 +66,6 @@ export function LoginForm({ ...props }) {
       >
         Войти
       </Button>
-    </LoginFormContainer>
+    </FormContainer>
   );
 }

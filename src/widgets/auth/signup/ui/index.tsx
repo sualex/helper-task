@@ -2,13 +2,9 @@ import { Button, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-import { PropsWithChildren, useState } from "react";
+import { useState } from "react";
 import * as React from "react";
-import {
-  FieldValues,
-  FormContainer,
-  FormContainerProps,
-} from "react-hook-form-mui";
+import { FormContainer } from "react-hook-form-mui";
 
 import { authApi } from "@/shared/api";
 import { SignUpDto } from "@/shared/api/yoldi";
@@ -20,10 +16,6 @@ import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-const SignUpFormContainer = <TFieldValues extends FieldValues = SignUpDto>(
-  props: PropsWithChildren<FormContainerProps<TFieldValues>>
-) => <FormContainer {...props} />;
-
 export const SignupForm = ({ ...props }) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
@@ -34,7 +26,7 @@ export const SignupForm = ({ ...props }) => {
   const router = useRouter();
 
   return (
-    <SignUpFormContainer
+    <FormContainer<SignUpDto>
       onSuccess={async (signUpDto) => {
         console.log("xxxxxxxxxxxxxxxxxxxxxxxx ", signUpDto);
         setIsFetching(true);
@@ -77,6 +69,6 @@ export const SignupForm = ({ ...props }) => {
       >
         Создать аккаунт
       </Button>
-    </SignUpFormContainer>
+    </FormContainer>
   );
 };
