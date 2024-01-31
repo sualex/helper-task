@@ -1,26 +1,25 @@
 import { css } from "@emotion/react";
-import { Button, Skeleton, Typography, useTheme } from "@mui/material";
+import { Button, Skeleton, Typography } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/router";
 import * as React from "react";
 
-import { useMyProfile, useUser } from "@/entities/user/model";
+import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
-import { authApi } from "@/shared/api";
+import { LogoutButton } from "@/entities/user/ui/logout";
 import { Article } from "@/shared/ui";
 import IconPenSolid from "@/shared/ui/icons/pen-solid.svg";
-import IconSignOutAltSolid from "@/shared/ui/icons/sign-out-alt-solid.svg";
+import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
   const router = useRouter();
-  const theme = useTheme();
 
   const profile = useUser({
     slug: router?.query?.slug as string,
   });
 
-  const myProfile = useMyProfile();
+  const isMyProfile = useIsMyProfile();
 
   return (
     <Article spacing={3} {...props}>
@@ -56,11 +55,13 @@ export const UserProfile = ({ ...props }: StackProps) => {
                 </Typography>
               </Stack>
             </Grid>
-            <Grid xs={12} md={4}>
-              <Button variant="secondary" startIcon={<IconPenSolid />}>
-                Редактировать
-              </Button>
-            </Grid>
+            {isMyProfile && (
+              <Grid xs={12} md={4}>
+                <Button variant="secondary" startIcon={<IconPenSolid />}>
+                  Редактировать
+                </Button>
+              </Grid>
+            )}
             <Grid xs={12} md={8}>
               <Typography
                 css={css`
@@ -82,21 +83,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
             </Grid>
           </Grid>
         </Stack>
-        <Button
-          variant="secondary"
-          startIcon={<IconSignOutAltSolid />}
-          css={css`
-            align-self: flex-start;
-          `}
-          onClick={() => {
-            authApi?.logout().then(async () => {
-              await myProfile?.mutate((currentData) => undefined);
-              router?.push("/");
-            });
-          }}
-        >
-          Выйти
-        </Button>
+        {isMyProfile && <LogoutButton />}
       </Stack>
     </Article>
   );
