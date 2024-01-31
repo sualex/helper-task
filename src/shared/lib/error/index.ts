@@ -1,4 +1,5 @@
 import { ResponseError } from "@/shared/api/yoldi";
+import HttpStatusCode from "@/shared/lib/error/http-status-code";
 
 export type ErrorWithMessage = {
   message: string;
@@ -24,11 +25,23 @@ function toErrorWithMessage(maybeError: unknown): ErrorWithMessage {
   }
 }
 
-export async function getErrorMessage(error: unknown) {
+export interface IError {
+  message: string;
+  status?: HttpStatusCode;
+}
+
+export async function getError(error: unknown) {
+  const result: IError = {
+    message: "Неизвестная ошибка",
+  };
   try {
-    return (await (error as ResponseError)?.response?.json())?.message;
+    const { response } = error as ResponseError;
+    const body = await response?.json();
+    result.message = body?.message || result.message;
+    result.status = response?.status || 500;
   } catch {
-    //
+    const { message } = toErrorWithMessage(error);
+    result.message = message || result.message;
   }
-  return toErrorWithMessage(error).message;
+  return result;
 }

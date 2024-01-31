@@ -9,7 +9,7 @@ import { FormContainer } from "react-hook-form-mui";
 import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
-import { getErrorMessage } from "@/shared/lib/error";
+import { getError } from "@/shared/lib/error";
 import { useLoginMutation } from "@/widgets/auth/login/api";
 
 import LoginElement from "./login-element/ui";
@@ -38,7 +38,7 @@ export function LoginDialog({ ...props }) {
           });
           router.push("/");
         } catch (error) {
-          setErrorMessage(await getErrorMessage(error));
+          setErrorMessage((await getError(error))?.message);
         } finally {
           setIsFetching(false);
         }

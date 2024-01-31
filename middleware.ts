@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import * as api from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
+import { getError } from "@/shared/lib/error";
 import { isLogin, isNavigation, logger } from "@/shared/lib/server";
 
 const API_URL = `https://frontend-test-api.yoldi.agency`;
@@ -40,10 +41,9 @@ export async function middleware(req: NextRequest) {
       });
       return response;
     } catch (error) {
-      const response = NextResponse.json(
-        { message: "Что-то пошло не так" },
-        { status: 500 }
-      );
+      const { message, status } = await getError(error);
+      console.log(error);
+      const response = NextResponse.json({ message }, { status });
       response.cookies.delete("auth");
       return response;
     }

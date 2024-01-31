@@ -7,7 +7,7 @@ import { FormContainer } from "react-hook-form-mui";
 
 import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
-import { getErrorMessage } from "@/shared/lib/error";
+import { getError } from "@/shared/lib/error";
 import { useLoginMutation } from "@/widgets/auth/login/api";
 import NameElement from "@/widgets/auth/signup/ui/name-element/ui";
 
@@ -37,7 +37,7 @@ export function SignupDialog({ ...props }: StackProps) {
           });
           console.log("xxxxxxxxxxxxxxxxxxxxxxx ", result);
         } catch (error) {
-          setErrorMessage(await getErrorMessage(error));
+          setErrorMessage((await getError(error))?.message);
         } finally {
           setIsFetching(false);
         }
