@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as React from "react";
-import { FormContainer } from "react-hook-form-mui";
+import { FormContainer, FormContainerProps } from "react-hook-form-mui";
 
 import { authApi } from "@/shared/api";
 import { SignUpDto } from "@/shared/api/yoldi";
@@ -16,7 +16,7 @@ import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-export const SignupForm = ({ ...props }) => {
+export const SignupForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
@@ -53,6 +53,7 @@ export const SignupForm = ({ ...props }) => {
           backgroundColor: theme.palette.common.white,
         },
       }}
+      {...props}
     >
       <Title />
       <Stack gap="1rem" padding="0 5px">

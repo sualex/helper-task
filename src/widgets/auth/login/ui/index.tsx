@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as React from "react";
-import { FormContainer } from "react-hook-form-mui";
+import { FormContainer, FormContainerProps } from "react-hook-form-mui";
 
 import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
@@ -15,7 +15,7 @@ import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
 import Title from "./title/ui";
 
-export function LoginForm({ ...props }) {
+const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
@@ -68,4 +68,4 @@ export function LoginForm({ ...props }) {
       </Button>
     </FormContainer>
   );
-}
+};
