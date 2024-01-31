@@ -2,10 +2,13 @@ import { css } from "@emotion/react";
 import { Button, Container, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import type { NextPage } from "next";
+import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { SignupForm } from "@/widgets/auth/signup";
+import { SignUpForm } from "@/widgets/auth/signup";
+import Title from "@/widgets/auth/signup/ui/title/ui";
+import { Dialog } from "@/widgets/dialog";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 
@@ -35,7 +38,24 @@ export const SignupPage: NextPage = () => {
             justify-content: ${isMobile ? "flex-start" : "center"};
           `}
         >
-          <SignupForm />
+          <Dialog
+            open
+            titleSlot={<Title />}
+            actionsSlot={
+              <Stack flex={1}>
+                <Button
+                  type="submit"
+                  form="SignUpForm"
+                  variant="primary"
+                  size="large"
+                >
+                  Создать аккаунт
+                </Button>
+              </Stack>
+            }
+          >
+            <SignUpForm />
+          </Dialog>
         </Container>
       </Main>
       <Footer>

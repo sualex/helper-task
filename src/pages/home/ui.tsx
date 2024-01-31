@@ -35,7 +35,6 @@ export const HomePage: NextPage = () => {
               flex: 1;
               display: flex;
               flex-direction: column;
-              // justify-content: ${isMobile ? "flex-start" : "center"};
               padding: 0 ${isMobile ? 20 : 0};
             }
           `}

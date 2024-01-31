@@ -31,12 +31,11 @@ export const LoginPage: NextPage = () => {
           maxWidth="sm"
           disableGutters
           css={css`
-            max-width: 400px;
             flex: 1;
             display: flex;
             flex-direction: column;
-            //align-items: stretch;
             justify-content: ${isMobile ? "flex-start" : "center"};
+            border: 1px solid red;
           `}
         >
           <Dialog

@@ -58,13 +58,17 @@ export const ProfilePage: NextPage = () => {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
-                // justify-content: ${isSm ? "flex-start" : "center"};
                 padding: 0 ${isSm ? 20 : 0};
-                margin-top: -50px;
               }
             `}
           >
-            <UserProfile />
+            <UserProfile
+              css={css`
+                &&& {
+                  margin-top: -50px;
+                }
+              `}
+            />
           </Container>
         </Container>
       </Main>

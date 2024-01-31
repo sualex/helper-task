@@ -1,12 +1,6 @@
 import { css } from "@emotion/react";
-import {
-  Avatar,
-  ListProps,
-  Skeleton,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Avatar, Skeleton, Typography, useTheme } from "@mui/material";
+import Stack, { StackProps } from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import * as React from "react";
 
@@ -14,7 +8,7 @@ import { Article } from "@/shared/ui";
 
 import { useUser } from "../api";
 
-export const UserProfile = ({ ...props }: ListProps) => {
+export const UserProfile = ({ ...props }: StackProps) => {
   const router = useRouter();
   const theme = useTheme();
 
@@ -23,8 +17,8 @@ export const UserProfile = ({ ...props }: ListProps) => {
   });
 
   return (
-    <Article spacing={3} position="relative">
-      {!profile?.data ? (
+    <Article spacing={3} {...props}>
+      {profile?.data ? (
         <Skeleton
           animation="wave"
           variant="circular"

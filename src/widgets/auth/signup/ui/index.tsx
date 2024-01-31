@@ -1,4 +1,4 @@
-import { Button, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
@@ -14,9 +14,8 @@ import NameElement from "@/widgets/auth/signup/ui/name-element/ui";
 
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
-import Title from "./title/ui";
 
-export const SignupForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
+export const SignUpForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
 
@@ -28,7 +27,6 @@ export const SignupForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
   return (
     <FormContainer<SignUpDto>
       onSuccess={async (signUpDto) => {
-        console.log("xxxxxxxxxxxxxxxxxxxxxxxx ", signUpDto);
         setIsFetching(true);
         setErrorMessage("");
         try {
@@ -43,33 +41,25 @@ export const SignupForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
         }
       }}
       FormProps={{
+        id: "SignUpForm",
         style: {
           flex: isMobile ? 1 : "initial",
           display: "flex",
           flexDirection: "column",
           gap: "25px",
           // borderRadius: "4px",
-          padding: "30px",
+          // padding: "30px",
           backgroundColor: theme.palette.common.white,
         },
       }}
       {...props}
     >
-      <Title />
       <Stack gap="1rem" padding="0 5px">
         {errorMessage && <Typography color="error">{errorMessage}</Typography>}
         <NameElement name="name" size="medium" />
         <LoginElement name="email" />
         <PasswordElement name="password" />
       </Stack>
-      <Button
-        type="submit"
-        variant="primary"
-        size="large"
-        disabled={isFetching}
-      >
-        Создать аккаунт
-      </Button>
     </FormContainer>
   );
 };
