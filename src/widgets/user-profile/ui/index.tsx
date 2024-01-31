@@ -18,7 +18,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
 
   return (
     <Article spacing={3} {...props}>
-      {profile?.data ? (
+      {!profile?.data ? (
         <Skeleton
           animation="wave"
           variant="circular"

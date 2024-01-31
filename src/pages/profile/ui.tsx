@@ -1,77 +1,63 @@
 import { css } from "@emotion/react";
-import { Box, Button, Container, useTheme } from "@mui/material";
-import type { NextPage } from "next";
+import { Box, Container, useTheme } from "@mui/material";
 import Image from "next/image";
 import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { Header } from "@/widgets/header";
 import { UserProfile } from "@/widgets/user-profile";
 
-export const ProfilePage: NextPage = () => {
+export const ProfilePage = () => {
   const isSm = useMediaDown("md");
   const theme = useTheme();
   return (
-    <>
-      <Header>
-        <Button
-          href="/login"
-          css={css`
-            width: 114px;
-          `}
-        >
-          Войти
-        </Button>
-      </Header>
-      <Main
-        flex={1}
+    <Main
+      flex={1}
+      css={css`
+        background-color: ${theme?.palette?.common?.white};
+      `}
+    >
+      <Container
+        maxWidth="desktop"
+        disableGutters
         css={css`
-          background-color: ${theme?.palette?.common?.white};
+          display: flex;
+          flex-direction: column;
         `}
       >
-        <Container
-          maxWidth="desktop"
-          disableGutters
+        <Box
           css={css`
-            display: flex;
-            flex-direction: column;
+            position: relative;
+            height: 200px;
           `}
         >
-          <Box
-            css={css`
-              position: relative;
-              height: 200px;
-            `}
-          >
-            <Image
-              alt="Cover"
-              src={isSm ? "/cover-small.png" : "/cover.png"}
-              fill
-              priority
-            />
-          </Box>
-          <Container
-            maxWidth="md"
+          <Image
+            alt="Cover"
+            src={isSm ? "/cover-small.png" : "/cover.png"}
+            fill
+            priority
+          />
+        </Box>
+        <Container
+          maxWidth="md"
+          css={css`
+            &&& {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              padding: 0 ${isSm ? 20 : 0};
+            }
+          `}
+        >
+          <UserProfile
             css={css`
               &&& {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                padding: 0 ${isSm ? 20 : 0};
+                margin-top: -50px;
               }
             `}
-          >
-            <UserProfile
-              css={css`
-                &&& {
-                  margin-top: -50px;
-                }
-              `}
-            />
-          </Container>
+          />
         </Container>
-      </Main>
-    </>
+      </Container>
+    </Main>
   );
 };
