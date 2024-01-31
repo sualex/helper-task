@@ -8,7 +8,7 @@ export function DialogActions({ ...props }: DialogActionsProps) {
   return (
     <MuiDialogActions
       css={css`
-        padding: 30px;
+        padding: 0;
       `}
       {...props}
     />

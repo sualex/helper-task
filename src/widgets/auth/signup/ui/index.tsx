@@ -11,7 +11,7 @@ import { authApi } from "@/shared/api";
 import { SignUpDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { getError } from "@/shared/lib/error";
-import NameElement from "@/widgets/auth/signup/ui/name-element/ui";
+import Name from "@/widgets/auth/ui/name/ui";
 
 import LoginElement from "./login-element/ui";
 import PasswordElement from "./password-element/ui";
@@ -60,7 +60,7 @@ export const SignUpForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
     >
       <Stack gap="1rem" padding="0 5px">
         {errorMessage && <Typography color="error">{errorMessage}</Typography>}
-        <NameElement name="name" size="medium" />
+        <Name name="name" size="medium" />
         <LoginElement name="email" />
         <PasswordElement name="password" />
       </Stack>

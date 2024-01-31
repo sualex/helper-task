@@ -57,30 +57,31 @@ export const UserProfile = ({ ...props }: StackProps) => {
             </Grid>
             {isMyProfile && (
               <Grid xs={12} md={4}>
-                <Button variant="secondary" startIcon={<IconPenSolid />}>
+                <Button
+                  variant="secondary"
+                  startIcon={<IconPenSolid />}
+                  disabled
+                >
                   Редактировать
                 </Button>
               </Grid>
             )}
-            <Grid xs={12} md={8}>
-              <Typography
-                css={css`
-                  font-size: 16px;
-                  font-weight: 400;
-                  line-height: 26px;
-                  letter-spacing: 0em;
-                  text-align: left;
-                  padding-top: 22px;
-                `}
-              >
-                Рыбатекст используется дизайнерами, проектировщиками и
-                фронтендерами, когда нужно быстро заполнить макеты или прототипы
-                содержимым. Это тестовый контент, который не должен нести
-                никакого смысла, лишь показать наличие самого текста или
-                продемонстрировать типографику в деле.
-                {/*{profile?.data?.description}*/}
-              </Typography>
-            </Grid>
+            {profile?.data?.description && (
+              <Grid xs={12} md={8}>
+                <Typography
+                  css={css`
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 26px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    padding-top: 22px;
+                  `}
+                >
+                  {profile?.data?.description}
+                </Typography>
+              </Grid>
+            )}
           </Grid>
         </Stack>
         {isMyProfile && <LogoutButton />}

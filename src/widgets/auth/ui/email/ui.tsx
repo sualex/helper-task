@@ -3,18 +3,23 @@ import InputAdornment from "@mui/material/InputAdornment";
 import * as React from "react";
 import { TextFieldElement, TextFieldElementProps } from "react-hook-form-mui";
 
-import IconUser from "@/shared/ui/icons/user.svg";
+import IconEnvelope from "@/shared/ui/icons/envelope.svg";
 
-export default function NameElement({
+export function Email({
   ...props
-}: Omit<TextFieldElementProps, "variant">) {
+}: Omit<TextFieldElementProps, "variant" | "name">) {
   return (
     <TextFieldElement
-      // label="Phone"
-      placeholder="Имя"
+      name="email"
+      placeholder="E-mail"
       required
       validation={{
         required: "Обязательное поле",
+        validate: (value) => {
+          return (
+            /[^@\s]+@[^@\s]+\.[^@\s]+/.test(value) || "Неверный формат E-mail"
+          );
+        },
       }}
       InputProps={{
         startAdornment: (
@@ -24,7 +29,7 @@ export default function NameElement({
               marginRight: 0,
             }}
           >
-            <IconUser />
+            <IconEnvelope />
           </InputAdornment>
         ),
       }}

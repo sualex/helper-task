@@ -1,4 +1,6 @@
-import { useTheme } from "@mui/material";
+import { css } from "@emotion/react";
+import { Typography, useTheme } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as React from "react";
@@ -9,11 +11,8 @@ import { authApi } from "@/shared/api";
 import { LoginDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
 import { getError } from "@/shared/lib/error";
-
-export * from "./email";
-export * from "./password";
-export * from "./submit";
-export * from "./title";
+import { Email, Password, Submit, Title } from "@/widgets/auth/login";
+import { DialogActions, DialogContent, DialogTitle } from "@/widgets/dialog";
 
 export const LoginForm = ({
   children,
@@ -60,12 +59,30 @@ export const LoginForm = ({
       }}
       {...props}
     >
-      {/*<Stack gap="1rem" padding="0 5px">*/}
-      {/*  {errorMessage && <Typography color="error">{errorMessage}</Typography>}*/}
-      {children}
-      {/*<LoginElement name="email" autoFocus />*/}
-      {/*<PasswordElement name="password" />*/}
-      {/*</Stack>*/}
+      <DialogTitle>
+        <Title />
+      </DialogTitle>
+      <DialogContent>
+        <Stack
+          spacing={2}
+          css={css`
+            padding: 0 5px;
+          `}
+        >
+          {errorMessage && (
+            <Typography color="error">{errorMessage}</Typography>
+          )}
+          <Email />
+          <Password />
+        </Stack>
+      </DialogContent>
+      <DialogActions>
+        <Submit
+          css={css`
+            flex: 1;
+          `}
+        />
+      </DialogActions>
     </FormContainer>
   );
 };

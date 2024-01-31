@@ -11,7 +11,7 @@ export function DialogContent({ ...props }: DialogContentProps) {
         padding: 0 30px;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 25px;
       `}
       {...props}
     />

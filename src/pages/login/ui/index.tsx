@@ -1,23 +1,25 @@
 import { css } from "@emotion/react";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import { useRouter } from "next/router";
 import * as React from "react";
 
+import { useMyProfile } from "@/entities/user";
+import { LoginDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { LoginForm } from "@/widgets/auth";
-import { Email, Password, Submit, Title } from "@/widgets/auth/login";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@/widgets/dialog";
+import { AuthForm } from "@/widgets/auth";
+import { Email } from "@/widgets/auth/ui/email";
+import { Password } from "@/widgets/auth/ui/password";
+import { Submit } from "@/widgets/auth/ui/submit";
+import { Dialog, DialogActions } from "@/widgets/dialog";
 
 import { LoginPageFooter } from "./footer";
 
 export const LoginPage = () => {
+  const router = useRouter();
   const isMobile = useMediaDown("sm");
+  const myProfile = useMyProfile();
   return (
     <Main flex={1}>
       <Container
@@ -31,32 +33,34 @@ export const LoginPage = () => {
         `}
       >
         <Dialog open>
-          <LoginForm>
-            <DialogTitle>
-              <Title />
-            </DialogTitle>
-            <DialogContent>
-              <Stack
-                spacing={2}
-                css={css`
-                  padding: 0 5px;
-                `}
-              >
-                {/*{errorMessage && (*/}
-                {/*  <Typography color="error">{errorMessage}</Typography>*/}
-                {/*)}*/}
-                <Email />
-                <Password />
-              </Stack>
-            </DialogContent>
+          <AuthForm<LoginDto>
+            onSuccess={async (loginDto) => {
+              await authApi?.login({
+                loginDto,
+              });
+              await myProfile?.mutate();
+              router.push("/");
+            }}
+          >
+            <Stack
+              spacing={2}
+              css={css`
+                padding: 0 5px;
+              `}
+            >
+              <Email inputRef={(input) => input && input.focus()} />
+              <Password />
+            </Stack>
             <DialogActions>
               <Submit
                 css={css`
                   flex: 1;
                 `}
-              />
+              >
+                Войти
+              </Submit>
             </DialogActions>
-          </LoginForm>
+          </AuthForm>
         </Dialog>
       </Container>
     </Main>

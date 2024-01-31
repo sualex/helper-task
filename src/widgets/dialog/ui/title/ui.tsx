@@ -7,7 +7,7 @@ export function DialogTitle({ ...props }: DialogTitleProps) {
     <MuiDialogTitle
       component={Stack}
       css={css`
-        padding: 30px 30px;
+        padding: 0 30px;
       `}
       {...props}
     />

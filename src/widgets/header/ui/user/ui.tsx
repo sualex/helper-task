@@ -18,9 +18,12 @@ export const HeaderUser = ({ ...props }: StackProps) => {
         color: ${theme?.palette?.common?.black};
         font-size: 16px;
         font-weight: 400;
-        line-height: 26px;
+        line-height: normal;
         letter-spacing: 0em;
         text-align: center;
+        .MuiButton-endIcon {
+          margin-left: 16px;
+        }
       `}
     >
       {myProfile?.data?.name}
