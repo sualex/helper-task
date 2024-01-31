@@ -6,6 +6,7 @@ import { useState } from "react";
 import * as React from "react";
 import { FormContainer, FormContainerProps } from "react-hook-form-mui";
 
+import { useMyProfile } from "@/entities/user";
 import { authApi } from "@/shared/api";
 import { SignUpDto } from "@/shared/api/yoldi";
 import { useMediaDown } from "@/shared/lib";
@@ -24,6 +25,8 @@ export const SignUpForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
 
   const router = useRouter();
 
+  const myProfile = useMyProfile();
+
   return (
     <FormContainer<SignUpDto>
       onSuccess={async (signUpDto) => {
@@ -33,7 +36,8 @@ export const SignUpForm = ({ ...props }: FormContainerProps<SignUpDto>) => {
           await authApi?.signUp({
             signUpDto,
           });
-          router.push("/");
+          const newProfile = await myProfile?.mutate();
+          router.push(`/profile/${newProfile?.slug}`);
         } catch (error) {
           setErrorMessage((await getError(error))?.message);
         } finally {

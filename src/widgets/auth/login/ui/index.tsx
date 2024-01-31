@@ -24,7 +24,7 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
 
   const router = useRouter();
 
-  const { mutate } = useMyProfile();
+  const myProfile = useMyProfile();
 
   return (
     <FormContainer<LoginDto>
@@ -35,7 +35,7 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
           await authApi?.login({
             loginDto,
           });
-          await mutate();
+          await myProfile?.mutate();
           router.push("/");
         } catch (error) {
           setErrorMessage((await getError(error))?.message);
