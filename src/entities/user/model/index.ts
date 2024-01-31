@@ -23,7 +23,6 @@ export function useMyProfile() {
     () => ["/api/profile"],
     async (url) => {
       const prof = await profileApi?.myProfile();
-      console.log("xxxxxxxxxxxxxxxxxx oooooooo ", prof);
       return prof;
     },
     {

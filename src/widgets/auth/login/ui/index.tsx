@@ -35,7 +35,6 @@ export const LoginForm = ({ ...props }: FormContainerProps<LoginDto>) => {
           await authApi?.login({
             loginDto,
           });
-          console.log("xxxxxxxxxxxxxxxxxxxxx aaaaaaaaaaaaaaa ");
           await mutate();
           router.push("/");
         } catch (error) {
