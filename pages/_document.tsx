@@ -13,7 +13,7 @@ import {
 } from "next/document";
 import * as React from "react";
 
-import theme, { inter } from "@/app/styles/theme";
+import { inter, theme } from "@/app/styles/theme";
 
 export default function MyDocument(
   props: DocumentProps & DocumentHeadTagsProps

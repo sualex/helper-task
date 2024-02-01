@@ -1,29 +1,16 @@
-import { css } from "@emotion/react";
-import { Typography } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 import * as React from "react";
 
 import { SignUpButton } from "@/entities/user/ui/sign-up";
-import { Footer } from "@/widgets/footer";
+import { PageFooter, PageFooterText } from "@/widgets/page-footer";
 
 export const LoginPageFooter = ({ ...props }: StackProps) => {
   return (
-    <Footer {...props}>
+    <PageFooter {...props}>
       <Stack direction="row" alignItems="center" spacing={1}>
-        <Typography
-          css={css`
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 26px;
-            letter-spacing: 0em;
-            text-align: left;
-            color: #838383;
-          `}
-        >
-          Еще нет аккаунта?
-        </Typography>
+        <PageFooterText>Еще нет аккаунта?</PageFooterText>
         <SignUpButton variant="link" />
       </Stack>
-    </Footer>
+    </PageFooter>
   );
 };

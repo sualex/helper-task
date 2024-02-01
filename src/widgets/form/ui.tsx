@@ -1,5 +1,5 @@
 import { Typography, useTheme } from "@mui/material";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import * as React from "react";
 import {
   FieldValues,
@@ -9,15 +9,11 @@ import {
 
 import { useMediaDown } from "@/shared/lib";
 import { getError } from "@/shared/lib/error";
-import { DialogContent, DialogTitle } from "@/widgets/dialog";
 
-export function AuthForm<T extends FieldValues>({
-  title,
+export function Form<T extends FieldValues>({
   children,
   ...props
-}: FormContainerProps<T> & {
-  title?: ReactNode;
-}) {
+}: FormContainerProps<T>) {
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
   const [isFetching, setIsFetching] = useState(false);
@@ -37,21 +33,18 @@ export function AuthForm<T extends FieldValues>({
       }}
       FormProps={{
         style: {
-          flex: isMobile ? 1 : "initial",
+          // flex: isMobile ? 1 : "initial",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: theme.palette.common.white,
-          gap: "25px",
-          padding: "30px 0",
+          // backgroundColor: theme.palette.common.white,
+          // gap: "25px",
+          // padding: "30px 0",
         },
       }}
       {...props}
     >
-      {title && <DialogTitle>{title}</DialogTitle>}
-      <DialogContent>
-        {errorMessage && <Typography color="error">{errorMessage}</Typography>}
-        {children}
-      </DialogContent>
+      {errorMessage && <Typography color="error">{errorMessage}</Typography>}
+      {children}
     </FormContainer>
   );
 }

@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
-import { DialogTitleProps, DialogTitle as MuiDialogTitle } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { DialogTitle as MuiDialogTitle } from "@mui/material";
+import Stack, { StackProps } from "@mui/material/Stack";
 
-export function DialogTitle({ ...props }: DialogTitleProps) {
+export function DialogTitle({ ...props }: StackProps) {
   return (
     <MuiDialogTitle
       component={Stack}

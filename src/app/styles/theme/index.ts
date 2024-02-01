@@ -9,7 +9,7 @@ export const inter = Inter({
   display: "swap",
 });
 
-export default createTheme({
+export const theme = createTheme({
   //  https://screensiz.es/
   breakpoints: {
     values: {

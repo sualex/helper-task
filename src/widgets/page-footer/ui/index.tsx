@@ -1,18 +1,21 @@
 import { css } from "@emotion/react";
 import { Toolbar, useTheme } from "@mui/material";
 import Container from "@mui/material/Container";
-import Stack, { StackProps } from "@mui/material/Stack";
+import { StackProps } from "@mui/material/Stack";
 import * as React from "react";
 
-export function Footer({ children, ...props }: StackProps) {
+import { Footer } from "@/shared/ui/footer";
+
+export * from "./text";
+
+export function PageFooter({ children, ...props }: StackProps) {
   const theme = useTheme();
   return (
     <>
-      <Stack
-        component="footer"
+      <Footer
         css={css`
           background-color: ${theme?.palette?.common?.white};
-          height: 72px;
+          border-top: 1px solid #e6e6e6;
         `}
         {...props}
       >
@@ -34,7 +37,7 @@ export function Footer({ children, ...props }: StackProps) {
             {children}
           </Container>
         </Toolbar>
-      </Stack>
+      </Footer>
     </>
   );
 }

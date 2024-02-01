@@ -3,8 +3,8 @@ import Head from "next/head";
 import { ReactNode } from "react";
 import { SWRDevTools } from "swr-devtools";
 
-import { Header } from "@/widgets/header";
 import { RootLayout } from "@/widgets/layout";
+import { PageHeader } from "@/widgets/page-header";
 
 import { MuiProvider } from "./providers";
 
@@ -22,7 +22,7 @@ const App = (props: AppProps) => {
       <SWRDevTools>
         <MuiProvider {...props}>
           <RootLayout>
-            {header || <Header />}
+            {header || <PageHeader />}
             <Component {...pageProps} />
             {!!footer && footer}
           </RootLayout>

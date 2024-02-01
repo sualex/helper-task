@@ -5,11 +5,11 @@ import Stack from "@mui/material/Stack";
 import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
-import { Logo } from "@/widgets/header/ui/logo";
-import { Title } from "@/widgets/header/ui/title";
-import { HeaderUser } from "@/widgets/header/ui/user/ui";
+import { Logo } from "@/widgets/page-header/ui/logo";
+import { Title } from "@/widgets/page-header/ui/title";
+import { HeaderUser } from "@/widgets/page-header/ui/user/ui";
 
-export function Header({
+export function PageHeader({
   position = "static",
   children,
   ...props

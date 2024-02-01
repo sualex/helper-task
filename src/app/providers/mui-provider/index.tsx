@@ -6,7 +6,7 @@ import { ThemeProvider as MuiThemeProvider } from "@mui/material/styles";
 import type { AppProps } from "next/app";
 import { PropsWithChildren, useEffect, useState } from "react";
 
-import theme from "@/app/styles/theme";
+import { theme } from "@/app/styles/theme";
 
 export const MuiProvider = ({
   children,

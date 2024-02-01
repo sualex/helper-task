@@ -8,11 +8,12 @@ import { useMyProfile } from "@/entities/user";
 import { LoginDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
-import { AuthForm } from "@/widgets/auth";
+import { Footer } from "@/shared/ui/footer";
+import { Form } from "@/widgets";
 import { Email } from "@/widgets/auth/ui/email";
 import { Password } from "@/widgets/auth/ui/password";
-import { Submit } from "@/widgets/auth/ui/submit";
-import { Dialog, DialogActions } from "@/widgets/dialog";
+import { OkButton } from "@/widgets/dialog/ok-button";
+import { StaticDialog } from "@/widgets/dialog/static-dialog";
 
 import { LoginPageFooter } from "./footer";
 
@@ -32,8 +33,8 @@ export const LoginPage = () => {
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
-        <Dialog open>
-          <AuthForm<LoginDto>
+        <StaticDialog>
+          <Form<LoginDto>
             onSuccess={async (loginDto) => {
               await authApi?.login({
                 loginDto,
@@ -43,25 +44,19 @@ export const LoginPage = () => {
             }}
           >
             <Stack
-              spacing={2}
+              // spacing={2}
               css={css`
-                padding: 0 5px;
+                //padding: 0 5px;
               `}
             >
               <Email inputRef={(input) => input && input.focus()} />
               <Password />
             </Stack>
-            <DialogActions>
-              <Submit
-                css={css`
-                  flex: 1;
-                `}
-              >
-                Войти
-              </Submit>
-            </DialogActions>
-          </AuthForm>
-        </Dialog>
+            <Footer>
+              <OkButton>Войти</OkButton>
+            </Footer>
+          </Form>
+        </StaticDialog>
       </Container>
     </Main>
   );
