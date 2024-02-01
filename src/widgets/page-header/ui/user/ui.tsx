@@ -4,7 +4,7 @@ import { StackProps } from "@mui/material/Stack";
 
 import { useMyProfile } from "@/entities/user";
 import { UserAvatar } from "@/entities/user/ui/avatar";
-import { LoginButton } from "@/entities/user/ui/login";
+import { LoginButton } from "@/features/login";
 
 export const HeaderUser = ({ ...props }: StackProps) => {
   const theme = useTheme();

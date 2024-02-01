@@ -7,7 +7,7 @@ import * as React from "react";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
-import { LogoutButton } from "@/entities/user/ui/logout";
+import { LogoutButton } from "@/features/logout";
 import { Article } from "@/shared/ui";
 import IconPenSolid from "@/shared/ui/icons/pen-solid.svg";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
