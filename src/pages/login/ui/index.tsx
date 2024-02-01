@@ -46,7 +46,7 @@ export const LoginPage = () => {
             <Stack
               // spacing={2}
               css={css`
-                //padding: 0 5px;
+                padding: 0 5px;
               `}
             >
               <Email inputRef={(input) => input && input.focus()} />

@@ -18,6 +18,7 @@ export function StaticDialog({ ...props }: PaperProps) {
         margin: 0;
         padding: 0;
         border: none;
+        background-color: transparent;
       `}
       {...props}
     />

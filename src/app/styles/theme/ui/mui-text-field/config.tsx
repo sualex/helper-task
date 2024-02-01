@@ -39,20 +39,16 @@ export const MuiTextField: Components<DefaultTheme>["MuiTextField"] = {
           //   // border: "none",
           // },
         },
-
         "&.Mui-disabled": {
           background: "#F3F3F3",
           // border: "none",
         },
-
         "& fieldset": {
-          // borderColor: "#D4D4D4",
           top: 0,
           "& legend": {
             display: "none",
           },
         },
-
         "&:hover fieldset": {
           ...(!ownerState?.disabled && {
             borderColor: "#838383",
@@ -60,6 +56,7 @@ export const MuiTextField: Components<DefaultTheme>["MuiTextField"] = {
         },
         "&.Mui-focused fieldset": {
           borderColor: "#838383",
+          borderWidth: "1px",
           // borderColor: "transparent",
         },
         "&.Mui-error.Mui-focused fieldset": {
