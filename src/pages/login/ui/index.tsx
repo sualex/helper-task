@@ -35,6 +35,7 @@ export const LoginPage = () => {
       >
         <StaticDialog>
           <Form<LoginDto>
+            autoFocusField="email"
             onSuccess={async (loginDto) => {
               await authApi?.login({
                 loginDto,
@@ -49,11 +50,11 @@ export const LoginPage = () => {
                 padding: 0 5px;
               `}
             >
-              <Email inputRef={(input) => input && input.focus()} />
+              <Email />
               <Password />
             </Stack>
             <Footer>
-              <OkButton>Войти</OkButton>
+              <OkButton type="submit">Войти</OkButton>
             </Footer>
           </Form>
         </StaticDialog>

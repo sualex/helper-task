@@ -23,17 +23,11 @@ export const SignUpPage = () => {
   const isMobile = useMediaDown("sm");
   const myProfile = useMyProfile();
   return (
-    <Main
-      flex={1}
-      css={css`
-        border: 4px solid magenta;
-      `}
-    >
+    <Main flex={1}>
       <Container
         maxWidth="sm"
         disableGutters
         css={css`
-          border: 2px solid green;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -42,6 +36,7 @@ export const SignUpPage = () => {
       >
         <StaticDialog>
           <Form<SignUpDto>
+            autoFocusField="name"
             onSuccess={async (signUpDto) => {
               await authApi?.signUp({
                 signUpDto,
@@ -53,10 +48,10 @@ export const SignUpPage = () => {
             <Stack
               // spacing={2}
               css={css`
-                //padding: 0 5px;
+                padding: 0 5px;
               `}
             >
-              <Name inputRef={(input) => input && input.focus()} />
+              <Name />
               <Email />
               <Password />
             </Stack>
