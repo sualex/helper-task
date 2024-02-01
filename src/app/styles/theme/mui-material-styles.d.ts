@@ -20,6 +20,14 @@ declare module "@mui/material/styles" {
   interface BreakpointOverrides {
     desktop: true;
   }
-  export interface PaletteOptions extends MuiPaletteOptions {}
-  export interface Palette extends MuiPalette {}
+  export interface PaletteOptions extends MuiPaletteOptions {
+    backgroundSecondary: PaletteColorOptions;
+    strokesPrimary: PaletteColorOptions;
+    strokesSecondary: PaletteColorOptions;
+  }
+  export interface Palette extends MuiPalette {
+    backgroundSecondary: SimplePaletteColorOptions;
+    strokesPrimary: SimplePaletteColorOptions;
+    strokesSecondary: SimplePaletteColorOptions;
+  }
 }

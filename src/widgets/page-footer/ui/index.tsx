@@ -15,7 +15,7 @@ export function PageFooter({ children, ...props }: StackProps) {
       <Footer
         css={css`
           background-color: ${theme?.palette?.common?.white};
-          border-top: 1px solid #e6e6e6;
+          border-top: 1px solid ${theme?.palette?.strokesSecondary?.main};
         `}
         {...props}
       >

@@ -29,6 +29,15 @@ export const theme = createTheme({
     text: {
       primary: "#000000",
     },
+    backgroundSecondary: {
+      main: "#F3F3F3",
+    },
+    strokesPrimary: {
+      main: "#D4D4D4",
+    },
+    strokesSecondary: {
+      main: "#E6E6E6",
+    },
   },
   typography: {
     fontFamily: inter.style.fontFamily,

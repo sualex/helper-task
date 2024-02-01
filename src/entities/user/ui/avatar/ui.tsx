@@ -19,8 +19,8 @@ export const UserAvatarStatic = ({
       css={css`
         &&& {
           color: ${theme?.palette?.common?.black};
-          background-color: #f3f3f3;
-          border: 1px solid #e6e6e6;
+          background-color: ${theme?.palette?.backgroundSecondary?.main};
+          border: 1px solid ${theme?.palette?.strokesSecondary?.main};
           font-size: ${size === 50 ? 18 : 36}px;
           font-weight: 400;
           line-height: ${size === 50 ? 25.2 : 50}px;
@@ -50,7 +50,6 @@ export const UserAvatar = ({
       sx={{ width: size, height: size }}
       css={css`
         background-color: rgb(243, 243, 243);
-        //border: 1px solid #e6e6e6;
       `}
     />
   ) : (

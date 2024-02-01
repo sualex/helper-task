@@ -7,10 +7,10 @@ export const MuiAppBar: Components<DefaultTheme>["MuiAppBar"] = {
     color: "inherit",
   },
   styleOverrides: {
-    root: () => {
+    root: ({ theme }) => {
       return css`
         box-shadow: none;
-        border-bottom: 1px solid #e6e6e6;
+        border-bottom: 1px solid ${theme?.palette?.strokesSecondary?.main};
       `;
     },
   },

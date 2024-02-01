@@ -32,9 +32,9 @@ export const UserListItem = ({
       css={css`
         &&& {
           :first-of-type {
-            border-top: 1px solid #e6e6e6;
+            border-top: 1px solid ${theme?.palette?.strokesSecondary?.main};
           }
-          border-bottom: 1px solid #e6e6e6;
+          border-bottom: 1px solid ${theme?.palette?.strokesSecondary?.main};
           .MuiListItemSecondaryAction-root,
           .MuiListItemText-secondary {
             color: #838383;
@@ -46,8 +46,8 @@ export const UserListItem = ({
           }
           .MuiAvatar-root {
             color: ${theme?.palette?.common?.black};
-            background-color: #f3f3f3;
-            border: 1px solid #e6e6e6;
+            background-color: ${theme?.palette?.backgroundSecondary?.main};
+            border: 1px solid ${theme?.palette?.strokesSecondary?.main};
           }
         }
       `}

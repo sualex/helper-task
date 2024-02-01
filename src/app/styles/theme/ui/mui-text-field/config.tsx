@@ -40,7 +40,7 @@ export const MuiTextField: Components<DefaultTheme>["MuiTextField"] = {
           // },
         },
         "&.Mui-disabled": {
-          background: "#F3F3F3",
+          background: theme?.palette?.backgroundSecondary?.main,
           // border: "none",
         },
         "& fieldset": {

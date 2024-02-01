@@ -29,8 +29,8 @@ export const ProfilePage = () => {
           css={css`
             position: relative;
             height: 200px;
-            background-color: #f3f3f3;
-            border-bottom: 1px solid #e6e6e6;
+            background-color: ${theme?.palette?.backgroundSecondary?.main};
+            border-bottom: 1px solid ${theme?.palette?.strokesSecondary?.main};
           `}
         >
           {/*<Image*/}

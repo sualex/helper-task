@@ -39,7 +39,7 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
         [`&.${buttonClasses.disabled}`]: {
           backgroundColor: `#D4D4D4`,
           // borderColor: theme.palette.green_100.main,
-          color: "#F3F3F3",
+          color: theme?.palette?.backgroundSecondary?.main,
         },
       }),
     },
@@ -59,7 +59,7 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
           [`&.${buttonClasses.disabled}`]: {
             borderColor: "transparent",
             backgroundColor: `#D4D4D4`,
-            color: `#F3F3F3`,
+            color: theme?.palette?.backgroundSecondary?.main,
           },
         };
       },
