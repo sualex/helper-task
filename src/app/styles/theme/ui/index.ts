@@ -8,6 +8,7 @@ import { MuiCssBaseline } from "./mui-css-base-line";
 import { MuiFormHelperText } from "./mui-form-helper-text";
 import { MuiTextField } from "./mui-text-field";
 import { MuiToolbar } from "./mui-toolbar";
+import { MuiTypography } from "./mui-typography";
 
 export const components: Components<DefaultTheme> = {
   MuiAppBar,
@@ -17,4 +18,5 @@ export const components: Components<DefaultTheme> = {
   MuiCssBaseline,
   MuiTextField,
   MuiFormHelperText,
+  MuiTypography,
 };

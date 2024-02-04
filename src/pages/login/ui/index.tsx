@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
 
@@ -12,6 +12,7 @@ import { useMediaDown } from "@/shared/lib";
 import { useCommon } from "@/shared/lib/useCommon";
 import { Main } from "@/shared/ui";
 import { Footer } from "@/shared/ui/footer";
+import { H1 } from "@/shared/ui/h1";
 import { Form } from "@/widgets";
 import { Email } from "@/widgets/auth/ui/email";
 import { Password } from "@/widgets/auth/ui/password";
@@ -36,7 +37,8 @@ export const LoginPage = () => {
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
-        <StaticDialog>
+        <StaticDialog gap={pxToRem(25)}>
+          <H1 padding={`0 ${pxToRem(30)}`}>Вход в Yoldi Agency</H1>
           <Form<LoginDto>
             autoFocusField="email"
             resolver={zodResolver(schema)}
@@ -58,19 +60,6 @@ export const LoginPage = () => {
               }
             `}
           >
-            <Typography
-              variant="h1"
-              css={css`
-                font-size: 30px;
-                font-weight: 500;
-                line-height: 42px;
-                letter-spacing: 0em;
-                text-align: left;
-                padding: 0 ${pxToRem(30)};
-              `}
-            >
-              Вход в Yoldi Agency
-            </Typography>
             <Stack
               spacing={pxToRem(15)}
               css={css`

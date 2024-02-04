@@ -1,16 +1,18 @@
 import { css } from "@emotion/react";
-import { Paper, PaperProps } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Paper, PaperProps, StackProps } from "@mui/material";
 
 import { useMediaDown } from "@/shared/lib";
 import { useCommon } from "@/shared/lib/useCommon";
+import { Section } from "@/shared/ui";
 
-export function StaticDialog({ ...props }: PaperProps) {
+export function StaticDialog({
+  ...props
+}: PaperProps & Pick<StackProps, "gap">) {
   const isMobile = useMediaDown("sm");
   const { pxToRem, theme } = useCommon();
   return (
     <Paper
-      component={Stack}
+      component={Section}
       role="dialog"
       aria-modal="false"
       square
