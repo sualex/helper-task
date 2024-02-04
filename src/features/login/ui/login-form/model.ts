@@ -1,11 +1,10 @@
 import * as zod from "zod";
 
+import { email, password } from "./ui/submit-button/model";
+
 export const schema = zod.object({
-  email: zod
-    .string({
-      required_error: "Обязательное поле",
-    })
-    .trim()
-    .min(1, { message: "Обязательное поле" }),
-  password: zod.string().trim().min(1, { message: "Обязательное поле" }),
+  email: email.email({
+    message: "Неверный формат E-mail",
+  }),
+  password,
 });

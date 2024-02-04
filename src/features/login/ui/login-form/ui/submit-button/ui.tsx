@@ -2,7 +2,7 @@ import { Button, ButtonProps } from "@mui/material";
 import * as React from "react";
 import { useWatch } from "react-hook-form-mui";
 
-import { schema } from "@/features/login/ui/login-form/model";
+import { schema } from "./model";
 
 export function LoginFormSubmitButton({ ...props }: ButtonProps) {
   const fields = useWatch();

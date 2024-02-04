@@ -26,8 +26,6 @@ export function Form<Fields extends FieldValues>({
   const [isFetching, setIsFetching] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
-  console.log("xxxxxxxxxxxxxxxxx rrrrrrrrrr ", resolver);
-
   const methods = useForm<Fields>({
     resolver,
   });

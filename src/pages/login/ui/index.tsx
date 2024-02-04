@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
 
 import { useMyProfile } from "@/entities/user";
-import { schema } from "@/features/login/ui/login-form/model";
+import { schema } from "@/features/login/ui/login-form";
 import { LoginFormSubmitButton } from "@/features/login/ui/login-form/ui/submit-button/ui";
 import { LoginDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
