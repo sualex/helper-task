@@ -1,5 +1,5 @@
 import { Typography, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import * as React from "react";
 import {
   FieldPath,
@@ -16,6 +16,7 @@ export function Form<Fields extends FieldValues>({
   autoFocusField,
   children,
   resolver,
+  FormProps = {},
   ...props
 }: FormContainerProps<Fields> & {
   autoFocusField?: FieldPath<Fields>;
@@ -38,6 +39,20 @@ export function Form<Fields extends FieldValues>({
     }
   }, [autoFocusField, methods]);
 
+  const { style, ...rest } = FormProps;
+
+  const $FormProps = useMemo<typeof FormProps>(
+    () => ({
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        ...style,
+      },
+      ...rest,
+    }),
+    [rest, style]
+  );
+
   return (
     <FormContainer
       formContext={methods}
@@ -51,16 +66,7 @@ export function Form<Fields extends FieldValues>({
           setIsFetching(false);
         }
       }}
-      FormProps={{
-        style: {
-          // flex: isMobile ? 1 : "initial",
-          display: "flex",
-          flexDirection: "column",
-          // backgroundColor: theme.palette.common.white,
-          // gap: "25px",
-          // padding: "30px 0",
-        },
-      }}
+      FormProps={$FormProps}
       {...props}
     >
       {errorMessage && <Typography color="error">{errorMessage}</Typography>}
