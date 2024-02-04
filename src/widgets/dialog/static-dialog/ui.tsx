@@ -7,7 +7,7 @@ import { Section } from "@/shared/ui";
 
 export function StaticDialog({
   ...props
-}: PaperProps & Pick<StackProps, "gap">) {
+}: PaperProps & Pick<StackProps, "spacing">) {
   const isMobile = useMediaDown("sm");
   const { pxToRem, theme } = useCommon();
   return (
@@ -18,6 +18,7 @@ export function StaticDialog({
       square
       elevation={0}
       css={css`
+        border: 1px solid red;
         flex: ${isMobile ? 1 : 0};
         margin: 0;
         padding: ${pxToRem(30)} 0;

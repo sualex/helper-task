@@ -41,7 +41,7 @@ export const SignUpPage = () => {
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
-        <StaticDialog gap={pxToRem(25)}>
+        <StaticDialog spacing={pxToRem(25)}>
           <H1 padding={`0 ${pxToRem(30)}`}>Регистрация в Yoldi Agency</H1>
           <Form<SignUpDto>
             autoFocusField="name"

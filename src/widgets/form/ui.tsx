@@ -16,6 +16,7 @@ export function Form<Fields extends FieldValues>({
   autoFocusField,
   children,
   resolver,
+  defaultValues,
   FormProps = {},
   ...props
 }: FormContainerProps<Fields> & {
@@ -29,6 +30,7 @@ export function Form<Fields extends FieldValues>({
 
   const methods = useForm<Fields>({
     resolver,
+    defaultValues,
   });
 
   useEffect(() => {

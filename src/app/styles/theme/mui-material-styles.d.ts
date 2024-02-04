@@ -18,7 +18,13 @@ declare module "@emotion/react" {
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
+    xs: true;
+    sm: true;
+    galaxyTab2: true;
+    md: true;
+    lg: true;
     desktop: true;
+    xl: true;
   }
   export interface PaletteOptions extends MuiPaletteOptions {
     backgroundSecondary: PaletteColorOptions;

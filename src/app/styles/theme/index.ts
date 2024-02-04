@@ -15,6 +15,7 @@ export const theme = createTheme({
     values: {
       xs: 0,
       sm: 400,
+      galaxyTab2: 600,
       md: 800,
       lg: 1200,
       desktop: 1280,
