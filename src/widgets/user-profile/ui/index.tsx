@@ -1,11 +1,12 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Dialog, Skeleton, Typography, useTheme } from "@mui/material";
+import { Button, Dialog, Skeleton, Typography, useTheme } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as React from "react";
+import { TextFieldElement } from "react-hook-form-mui";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
@@ -24,7 +25,6 @@ import { H1 } from "@/shared/ui/h1";
 import { Form } from "@/widgets";
 import { Email } from "@/widgets/auth/ui/email";
 import Name from "@/widgets/auth/ui/name/ui";
-import { Password } from "@/widgets/auth/ui/password";
 import { StaticDialog } from "@/widgets/dialog/static-dialog";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
@@ -44,8 +44,6 @@ export const UserProfile = ({ ...props }: StackProps) => {
   const isMobile = useMediaDown("sm");
 
   const theme = useTheme();
-
-  console.log("xxxxxxxxxxxxxxxxx ", profile?.data);
 
   return (
     <Article spacing={3} {...props}>
@@ -128,29 +126,55 @@ export const UserProfile = ({ ...props }: StackProps) => {
                           padding: 0 ${pxToRem(30)};
                         `}
                       >
-                        <Name />
+                        <Name label="Имя" placeholder="" InputProps={{}} />
                       </Stack>
                       <Stack
                         css={css`
                           padding: 0 ${pxToRem(30)};
                         `}
                       >
-                        <Email />
+                        <Email label="Адрес профиля" InputProps={{}} />
                       </Stack>
                       <Stack
                         css={css`
                           padding: 0 ${pxToRem(30)};
                         `}
                       >
-                        <Password />
+                        <TextFieldElement
+                          name="description"
+                          label="Описание"
+                          multiline
+                          rows={5}
+                          css={css`
+                            &&& {
+                              .MuiInputBase-root {
+                                padding-left: 8px;
+                                padding-right: 8px;
+                              }
+                            }
+                          `}
+                        />
                       </Stack>
                     </Stack>
                     <Footer
+                      direction="row"
+                      spacing={pxToRem(10)}
+                      justifyContent="space-between"
                       css={css`
                         padding: 0 ${pxToRem(30)};
                       `}
                     >
-                      <SignUpFormSubmitButton />
+                      <Button
+                        variant="secondary"
+                        size="large"
+                        fullWidth
+                        onClick={() => {
+                          setIsOpen(false);
+                        }}
+                      >
+                        Отмена
+                      </Button>
+                      <SignUpFormSubmitButton fullWidth />
                     </Footer>
                   </Form>
                 </Dialog>

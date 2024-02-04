@@ -6,7 +6,6 @@ export const MuiDialog: Components<DefaultTheme>["MuiDialog"] = {
   defaultProps: {},
   styleOverrides: {
     container: ({ theme, ownerState }) => {
-      console.log("xxxxxxxxxxxxxxxxxxxxx aaaaaaa ", ownerState);
       return css`
         //border: 2px solid red;
       `;
