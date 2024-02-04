@@ -54,11 +54,6 @@ export const LoginPage = () => {
               await myProfile?.mutate();
               router.push("/");
             }}
-            css={css`
-              > * {
-                padding: 0 ${pxToRem(30)};
-              }
-            `}
           >
             <Stack
               spacing={pxToRem(15)}
