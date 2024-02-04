@@ -24,7 +24,7 @@ const App = (props: AppProps) => {
           <RootLayout>
             {header || <PageHeader />}
             <Component {...pageProps} />
-            {/*{!!footer && footer}*/}
+            {footer || null}
           </RootLayout>
         </MuiProvider>
       </SWRDevTools>

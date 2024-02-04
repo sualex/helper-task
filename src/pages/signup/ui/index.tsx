@@ -1,15 +1,21 @@
 import { css } from "@emotion/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import * as React from "react";
 
 import { useMyProfile } from "@/entities/user";
-import { LoginFormSubmitButton } from "@/features/login/ui/login-form/ui/submit-button/ui";
+import {
+  SignUpFormSubmitButton,
+  schema,
+} from "@/features/sign-up/ui/sign-up-form";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
+import { useCommon } from "@/shared/lib/useCommon";
 import { Main } from "@/shared/ui";
 import { Footer } from "@/shared/ui/footer";
+import { H1 } from "@/shared/ui/h1";
 import { Form } from "@/widgets";
 import { Email } from "@/widgets/auth/ui/email";
 import Name from "@/widgets/auth/ui/name/ui";
@@ -22,6 +28,8 @@ export const SignUpPage = () => {
   const router = useRouter();
   const isMobile = useMediaDown("sm");
   const myProfile = useMyProfile();
+  const { pxToRem } = useCommon();
+
   return (
     <Main flex={1}>
       <Container
@@ -34,9 +42,16 @@ export const SignUpPage = () => {
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
-        <StaticDialog>
+        <StaticDialog gap={pxToRem(25)}>
+          <H1 padding={`0 ${pxToRem(30)}`}>Регистрация в Yoldi Agency</H1>
           <Form<SignUpDto>
             autoFocusField="name"
+            resolver={zodResolver(schema)}
+            FormProps={{
+              style: {
+                gap: pxToRem(25),
+              },
+            }}
             onSuccess={async (signUpDto) => {
               await authApi?.signUp({
                 signUpDto,
@@ -46,19 +61,39 @@ export const SignUpPage = () => {
             }}
           >
             <Stack
-              // spacing={2}
+              spacing={pxToRem(15)}
               css={css`
                 padding: 0 5px;
               `}
             >
-              <Name />
-              <Email />
-              <Password />
+              <Stack
+                css={css`
+                  padding: 0 ${pxToRem(30)};
+                `}
+              >
+                <Name />
+              </Stack>
+              <Stack
+                css={css`
+                  padding: 0 ${pxToRem(30)};
+                `}
+              >
+                <Email />
+              </Stack>
+              <Stack
+                css={css`
+                  padding: 0 ${pxToRem(30)};
+                `}
+              >
+                <Password />
+              </Stack>
             </Stack>
-            <Footer>
-              <LoginFormSubmitButton type="submit">
-                Создать аккаунт
-              </LoginFormSubmitButton>
+            <Footer
+              css={css`
+                padding: 0 ${pxToRem(30)};
+              `}
+            >
+              <SignUpFormSubmitButton />
             </Footer>
           </Form>
         </StaticDialog>
