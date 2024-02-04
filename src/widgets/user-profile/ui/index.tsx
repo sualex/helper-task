@@ -57,11 +57,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
             </Grid>
             {isMyProfile && (
               <Grid xs={12} md={4}>
-                <Button
-                  variant="secondary"
-                  startIcon={<IconPenSolid />}
-                  disabled
-                >
+                <Button variant="secondary" startIcon={<IconPenSolid />}>
                   Редактировать
                 </Button>
               </Grid>

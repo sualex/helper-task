@@ -29,7 +29,6 @@ export const SignUpPage = () => {
   const isMobile = useMediaDown("sm");
   const myProfile = useMyProfile();
   const { pxToRem } = useCommon();
-
   return (
     <Main flex={1}>
       <Container

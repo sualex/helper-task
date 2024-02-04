@@ -34,12 +34,13 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
         },
         [`&.${buttonClasses.focusVisible}`]: {
           borderColor: "#838383",
-          // boxShadow: "0px 0px 0px 4px #BCDCC0",
         },
         [`&.${buttonClasses.disabled}`]: {
           backgroundColor: `#D4D4D4`,
-          // borderColor: theme.palette.green_100.main,
           color: theme?.palette?.backgroundSecondary?.main,
+        },
+        [`& svg path`]: {
+          fill: theme?.palette?.backgroundSecondary?.main,
         },
       }),
     },
@@ -60,6 +61,9 @@ export const MuiButton: Components<DefaultTheme>["MuiButton"] = {
             borderColor: "transparent",
             backgroundColor: `#D4D4D4`,
             color: theme?.palette?.backgroundSecondary?.main,
+            [`& svg path`]: {
+              fill: theme?.palette?.backgroundSecondary?.main,
+            },
           },
         };
       },
