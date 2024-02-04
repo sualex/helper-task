@@ -14,8 +14,8 @@ import { getError } from "@/shared/lib/error";
 
 export function Form<Fields extends FieldValues>({
   autoFocusField,
-  defaultValues,
   children,
+  resolver,
   ...props
 }: FormContainerProps<Fields> & {
   autoFocusField?: FieldPath<Fields>;
@@ -26,8 +26,10 @@ export function Form<Fields extends FieldValues>({
   const [isFetching, setIsFetching] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
+  console.log("xxxxxxxxxxxxxxxxx rrrrrrrrrr ", resolver);
+
   const methods = useForm<Fields>({
-    defaultValues,
+    resolver,
   });
 
   useEffect(() => {

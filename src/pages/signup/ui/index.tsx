@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import * as React from "react";
 
 import { useMyProfile } from "@/entities/user";
+import { LoginFormSubmitButton } from "@/features/login/ui/login-form/ui/submit-button/ui";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
@@ -13,7 +14,6 @@ import { Form } from "@/widgets";
 import { Email } from "@/widgets/auth/ui/email";
 import Name from "@/widgets/auth/ui/name/ui";
 import { Password } from "@/widgets/auth/ui/password";
-import { OkButton } from "@/widgets/dialog/ok-button";
 import { StaticDialog } from "@/widgets/dialog/static-dialog";
 
 import { SignUpPageFooter } from "./footer";
@@ -56,7 +56,9 @@ export const SignUpPage = () => {
               <Password />
             </Stack>
             <Footer>
-              <OkButton type="submit">Создать аккаунт</OkButton>
+              <LoginFormSubmitButton type="submit">
+                Создать аккаунт
+              </LoginFormSubmitButton>
             </Footer>
           </Form>
         </StaticDialog>

@@ -1,10 +1,12 @@
 import { css } from "@emotion/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
-import * as React from "react";
 
 import { useMyProfile } from "@/entities/user";
+import { schema } from "@/features/login/ui/login-form/model";
+import { LoginFormSubmitButton } from "@/features/login/ui/login-form/ui/submit-button/ui";
 import { LoginDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
 import { Main } from "@/shared/ui";
@@ -12,7 +14,6 @@ import { Footer } from "@/shared/ui/footer";
 import { Form } from "@/widgets";
 import { Email } from "@/widgets/auth/ui/email";
 import { Password } from "@/widgets/auth/ui/password";
-import { OkButton } from "@/widgets/dialog/ok-button";
 import { StaticDialog } from "@/widgets/dialog/static-dialog";
 
 import { LoginPageFooter } from "./footer";
@@ -36,6 +37,7 @@ export const LoginPage = () => {
         <StaticDialog>
           <Form<LoginDto>
             autoFocusField="email"
+            resolver={zodResolver(schema)}
             onSuccess={async (loginDto) => {
               await authApi?.login({
                 loginDto,
@@ -54,7 +56,7 @@ export const LoginPage = () => {
               <Password />
             </Stack>
             <Footer>
-              <OkButton type="submit">Войти</OkButton>
+              <LoginFormSubmitButton />
             </Footer>
           </Form>
         </StaticDialog>
