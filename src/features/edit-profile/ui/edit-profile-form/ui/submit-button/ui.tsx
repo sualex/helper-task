@@ -6,9 +6,7 @@ import { schema } from "./model";
 
 export function SignUpFormSubmitButton({ ...props }: ButtonProps) {
   const fields = useWatch();
-
   const { success } = schema.safeParse(fields);
-
   return (
     <Button
       variant="primary"

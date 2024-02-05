@@ -10,22 +10,18 @@ import { TextFieldElement } from "react-hook-form-mui";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
-import { EditProfileButton } from "@/features/edit-profile";
+import { EditProfileLink } from "@/features/edit-profile";
 import {
   SignUpFormSubmitButton,
-  schema,
-} from "@/features/edit-profile/ui/edit-profile-form";
-import { Email } from "@/features/login/ui/login-form/ui/email";
+  editProfileFormSchema,
+} from "@/features/edit-profile";
+import { Email } from "@/features/login";
 import { LogoutButton } from "@/features/logout";
-import Name from "@/features/sign-up/ui/sign-up-form/ui/name/ui";
+import { Name } from "@/features/sign-up";
 import { ProfileDto } from "@/shared/api";
-import { useMediaDown } from "@/shared/lib";
-import { useCommon } from "@/shared/lib/useCommon";
-import { Article } from "@/shared/ui";
-import { Footer } from "@/shared/ui/footer";
-import { H1 } from "@/shared/ui/h1";
-import { Form } from "@/widgets";
-import { StaticDialog } from "@/widgets/static-dialog";
+import { useCommon, useMediaDown } from "@/shared/lib";
+import { Article, Footer, H1 } from "@/shared/ui";
+import { Form, StaticDialog } from "@/widgets";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
@@ -70,7 +66,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
             </Grid>
             {isMyProfile && (
               <Grid xs={12} md={4}>
-                <EditProfileButton
+                <EditProfileLink
                   onClick={() => {
                     setIsOpen((isOpen) => !isOpen);
                   }}
@@ -90,7 +86,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
                   <Form<ProfileDto>
                     defaultValues={profile?.data}
                     autoFocusField="name"
-                    resolver={zodResolver(schema)}
+                    resolver={zodResolver(editProfileFormSchema)}
                     FormProps={{
                       style: {
                         gap: pxToRem(25),
