@@ -1,11 +1,16 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Dialog, Skeleton, Typography, useTheme } from "@mui/material";
-import Stack, { StackProps } from "@mui/material/Stack";
+import {
+  Button,
+  Dialog,
+  Skeleton,
+  Stack,
+  StackProps,
+  Typography,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import * as React from "react";
 import { TextFieldElement } from "react-hook-form-mui";
 
 import { useUser } from "@/entities/user/model";
@@ -25,21 +30,15 @@ import { Form, StaticDialog } from "@/widgets";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
-  const router = useRouter();
+  const { pxToRem } = useCommon();
+  const isMobile = useMediaDown("sm");
 
+  const router = useRouter();
   const profile = useUser({
     slug: router?.query?.slug as string,
   });
-
   const isMyProfile = useIsMyProfile();
-
-  const { pxToRem } = useCommon();
-
   const [isOpen, setIsOpen] = useState(false);
-
-  const isMobile = useMediaDown("sm");
-
-  const theme = useTheme();
 
   return (
     <Article spacing={3} {...props}>
