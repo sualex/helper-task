@@ -30,7 +30,7 @@ export interface IError {
   status?: HttpStatusCode;
 }
 
-export async function getError(error: unknown) {
+export async function parseError(error: unknown) {
   const result: IError = {
     message: "Неизвестная ошибка",
   };

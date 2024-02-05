@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import * as api from "@/shared/api";
-import { getError } from "@/shared/lib/error";
+import { parseError } from "@/shared/lib/error";
 import {
   isLogOut,
   isLogin,
@@ -62,7 +62,7 @@ export async function middleware(req: NextRequest) {
       }
       return response;
     } catch (error) {
-      const { message, status } = await getError(error);
+      const { message, status } = await parseError(error);
       const response = NextResponse.json({ message }, { status });
       response.cookies.delete("auth");
       return response;

@@ -18,7 +18,6 @@ export function StaticDialog({
       square
       elevation={0}
       css={css`
-        border: 1px solid red;
         flex: ${isMobile ? 1 : 0};
         margin: 0;
         padding: ${pxToRem(30)} 0;

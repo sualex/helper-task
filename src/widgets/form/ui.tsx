@@ -1,4 +1,6 @@
+import { css } from "@emotion/react";
 import { Typography, useTheme } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import { useEffect, useMemo, useState } from "react";
 import * as React from "react";
 import {
@@ -9,8 +11,8 @@ import {
   useForm,
 } from "react-hook-form-mui";
 
-import { useMediaDown } from "@/shared/lib";
-import { getError } from "@/shared/lib/error";
+import { useCommon, useMediaDown } from "@/shared/lib";
+import { parseError } from "@/shared/lib/error";
 
 export function Form<Fields extends FieldValues>({
   autoFocusField,
@@ -18,11 +20,14 @@ export function Form<Fields extends FieldValues>({
   resolver,
   defaultValues,
   FormProps = {},
+  onSuccess,
   ...props
 }: FormContainerProps<Fields> & {
   autoFocusField?: FieldPath<Fields>;
   defaultValues?: Fields;
 }) {
+  const { pxToRem } = useCommon();
+
   const theme = useTheme();
   const isMobile = useMediaDown("sm");
   const [isFetching, setIsFetching] = useState(false);
@@ -59,19 +64,29 @@ export function Form<Fields extends FieldValues>({
     <FormContainer
       formContext={methods}
       onSuccess={async (fields) => {
-        setIsFetching(true);
-        try {
-          await props?.onSuccess?.(fields);
-        } catch (error) {
-          setErrorMessage((await getError(error))?.message);
-        } finally {
-          setIsFetching(false);
+        if (typeof onSuccess === "function") {
+          setIsFetching(true);
+          try {
+            await onSuccess(fields);
+          } catch (error) {
+            setErrorMessage((await parseError(error))?.message);
+          } finally {
+            setIsFetching(false);
+          }
         }
       }}
       FormProps={$FormProps}
       {...props}
     >
-      {errorMessage && <Typography color="error">{errorMessage}</Typography>}
+      {errorMessage && (
+        <Stack
+          css={css`
+            padding: 0 ${pxToRem(30)};
+          `}
+        >
+          <Typography color="error">{errorMessage}</Typography>
+        </Stack>
+      )}
       {children}
     </FormContainer>
   );

@@ -52,22 +52,17 @@ export const LoginPage = () => {
               router.push("/");
             }}
           >
-            <Stack
-              spacing={pxToRem(15)}
-              css={css`
-                padding: 0 5px;
-              `}
-            >
+            <Stack spacing={pxToRem(15)}>
               <Stack
                 css={css`
-                  padding: 0 ${pxToRem(30)};
+                  padding: 0 ${pxToRem(35)};
                 `}
               >
                 <Email />
               </Stack>
               <Stack
                 css={css`
-                  padding: 0 ${pxToRem(30)};
+                  padding: 0 ${pxToRem(35)};
                 `}
               >
                 <Password />
