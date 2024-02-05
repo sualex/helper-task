@@ -32,9 +32,6 @@ export function Password({
       type={showPassword ? "text" : "password"}
       placeholder="Пароль"
       required
-      // validation={{
-      //   required: "Обязательное поле",
-      // }}
       InputProps={{
         startAdornment: (
           <InputAdornment

@@ -6,10 +6,13 @@ import { useRouter } from "next/router";
 import * as React from "react";
 
 import { useMyProfile } from "@/entities/user";
+import { Email } from "@/features/login/ui/login-form/ui/email";
+import { Password } from "@/features/login/ui/login-form/ui/password";
 import {
   SignUpFormSubmitButton,
   schema,
 } from "@/features/sign-up/ui/sign-up-form";
+import Name from "@/features/sign-up/ui/sign-up-form/ui/name/ui";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
 import { useCommon } from "@/shared/lib/useCommon";
@@ -17,10 +20,7 @@ import { Main } from "@/shared/ui";
 import { Footer } from "@/shared/ui/footer";
 import { H1 } from "@/shared/ui/h1";
 import { Form } from "@/widgets";
-import { Email } from "@/widgets/auth/ui/email";
-import Name from "@/widgets/auth/ui/name/ui";
-import { Password } from "@/widgets/auth/ui/password";
-import { StaticDialog } from "@/widgets/dialog/static-dialog";
+import { StaticDialog } from "@/widgets/static-dialog";
 
 import { SignUpPageFooter } from "./footer";
 

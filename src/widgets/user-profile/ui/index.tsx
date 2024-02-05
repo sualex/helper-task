@@ -15,7 +15,9 @@ import {
   SignUpFormSubmitButton,
   schema,
 } from "@/features/edit-profile/ui/edit-profile-form";
+import { Email } from "@/features/login/ui/login-form/ui/email";
 import { LogoutButton } from "@/features/logout";
+import Name from "@/features/sign-up/ui/sign-up-form/ui/name/ui";
 import { ProfileDto } from "@/shared/api";
 import { useMediaDown } from "@/shared/lib";
 import { useCommon } from "@/shared/lib/useCommon";
@@ -23,9 +25,7 @@ import { Article } from "@/shared/ui";
 import { Footer } from "@/shared/ui/footer";
 import { H1 } from "@/shared/ui/h1";
 import { Form } from "@/widgets";
-import { Email } from "@/widgets/auth/ui/email";
-import Name from "@/widgets/auth/ui/name/ui";
-import { StaticDialog } from "@/widgets/dialog/static-dialog";
+import { StaticDialog } from "@/widgets/static-dialog";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {

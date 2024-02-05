@@ -3,7 +3,7 @@ import { NoSsr } from "@mui/material";
 
 import { useMediaDown } from "@/shared/lib";
 
-import { StaticDialog } from "./static-dialog";
+import { StaticDialog } from "../static-dialog";
 import { IDialogProps } from "./types";
 import { ModalDialog } from "./ui/modal";
 

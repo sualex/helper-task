@@ -1,22 +1,19 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Container } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Container, Stack } from "@mui/material";
 import { useRouter } from "next/router";
 
 import { useMyProfile } from "@/entities/user";
-import { schema } from "@/features/login/ui/login-form";
-import { LoginFormSubmitButton } from "@/features/login/ui/login-form/ui/submit-button/ui";
+import {
+  Email,
+  LoginFormSubmitButton,
+  Password,
+  loginFormValidationSchema,
+} from "@/features/login";
 import { LoginDto, authApi } from "@/shared/api";
-import { useMediaDown } from "@/shared/lib";
-import { useCommon } from "@/shared/lib/useCommon";
-import { Main } from "@/shared/ui";
-import { Footer } from "@/shared/ui/footer";
-import { H1 } from "@/shared/ui/h1";
-import { Form } from "@/widgets";
-import { Email } from "@/widgets/auth/ui/email";
-import { Password } from "@/widgets/auth/ui/password";
-import { StaticDialog } from "@/widgets/dialog/static-dialog";
+import { useCommon, useMediaDown } from "@/shared/lib";
+import { Footer, H1, Main } from "@/shared/ui";
+import { Form, StaticDialog } from "@/widgets";
 
 import { LoginPageFooter } from "./footer";
 
@@ -37,11 +34,11 @@ export const LoginPage = () => {
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
-        <StaticDialog gap={pxToRem(25)}>
+        <StaticDialog spacing={pxToRem(25)}>
           <H1 padding={`0 ${pxToRem(30)}`}>Вход в Yoldi Agency</H1>
           <Form<LoginDto>
             autoFocusField="email"
-            resolver={zodResolver(schema)}
+            resolver={zodResolver(loginFormValidationSchema)}
             FormProps={{
               style: {
                 gap: pxToRem(25),

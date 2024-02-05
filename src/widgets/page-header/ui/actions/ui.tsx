@@ -4,9 +4,9 @@ import { StackProps } from "@mui/material/Stack";
 
 import { useMyProfile } from "@/entities/user";
 import { UserAvatar } from "@/entities/user/ui/avatar";
-import { LoginButton } from "@/features/login";
+import { LoginLink } from "@/features/login";
 
-export const HeaderUser = ({ ...props }: StackProps) => {
+export const HeaderActions = ({ ...props }: StackProps) => {
   const theme = useTheme();
   const myProfile = useMyProfile();
   return myProfile?.data ? (
@@ -29,6 +29,6 @@ export const HeaderUser = ({ ...props }: StackProps) => {
       {myProfile?.data?.name}
     </Button>
   ) : (
-    <LoginButton />
+    <LoginLink />
   );
 };

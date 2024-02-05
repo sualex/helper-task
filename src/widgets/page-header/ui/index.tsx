@@ -5,9 +5,9 @@ import Stack from "@mui/material/Stack";
 import * as React from "react";
 
 import { useMediaDown } from "@/shared/lib";
+import { HeaderActions } from "@/widgets/page-header/ui/actions/ui";
 import { Logo } from "@/widgets/page-header/ui/logo";
 import { Title } from "@/widgets/page-header/ui/title";
-import { HeaderUser } from "@/widgets/page-header/ui/user/ui";
 
 export function PageHeader({
   position = "static",
@@ -42,7 +42,7 @@ export function PageHeader({
                 padding-right: 9.5px;
               `}
             >
-              <HeaderUser />
+              <HeaderActions />
             </Stack>
           </Container>
         </Toolbar>

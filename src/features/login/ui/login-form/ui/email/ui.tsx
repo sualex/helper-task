@@ -13,14 +13,6 @@ export function Email({
       name="email"
       placeholder="E-mail"
       required
-      // validation={{
-      //   required: "Обязательное поле",
-      //   validate: (value) => {
-      //     return (
-      //       /[^@\s]+@[^@\s]+\.[^@\s]+/.test(value) || "Неверный формат E-mail"
-      //     );
-      //   },
-      // }}
       InputProps={{
         startAdornment: (
           <InputAdornment

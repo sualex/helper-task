@@ -7,9 +7,12 @@ export const email = zod
   .trim()
   .min(1, { message: "Обязательное поле" });
 
-export const password = zod.string().trim().min(1, { message: "Обязательное поле" });
+export const password = zod
+  .string()
+  .trim()
+  .min(1, { message: "Обязательное поле" });
 
-export const schema = zod.object({
+export const loginFormSubmitButtonValidationSchema = zod.object({
   email,
   password,
 });
