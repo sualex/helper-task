@@ -53,18 +53,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
           <Grid container rowSpacing="8px">
             <Grid xs={12} md={8}>
               <Stack spacing={1}>
-                <Typography
-                  variant="h1"
-                  css={css`
-                    font-size: 30px;
-                    font-weight: 500;
-                    line-height: 42px;
-                    letter-spacing: 0em;
-                    text-align: left;
-                  `}
-                >
-                  {profile ? profile?.data?.name : <Skeleton />}
-                </Typography>
+                <H1>{profile ? profile?.data?.name : <Skeleton />}</H1>
                 <Typography
                   css={css`
                     color: #838383;
