@@ -13,9 +13,6 @@ export default function Name({
       name="name"
       placeholder="Имя"
       required
-      validation={{
-        required: "Обязательное поле",
-      }}
       InputProps={{
         startAdornment: (
           <InputAdornment
