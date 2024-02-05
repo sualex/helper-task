@@ -73,7 +73,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
                 <Dialog
                   open={isOpen}
                   fullScreen={isMobile}
-                  scroll="body"
+                  scroll={!isMobile ? "body" : "paper"}
                   fullWidth
                   maxWidth={!isMobile && "galaxyTab2"}
                   PaperComponent={StaticDialog}
