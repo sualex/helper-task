@@ -1,1 +1,2 @@
-export { SignUpButton } from "./sign-up-button";
+export * from "./sign-up-form";
+export * from "./sign-up-link";

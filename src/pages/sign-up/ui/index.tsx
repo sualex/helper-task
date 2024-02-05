@@ -6,21 +6,16 @@ import { useRouter } from "next/router";
 import * as React from "react";
 
 import { useMyProfile } from "@/entities/user";
-import { Email } from "@/features/login/ui/login-form/ui/email";
-import { Password } from "@/features/login/ui/login-form/ui/password";
+import { Email, Password } from "@/features/login";
 import {
+  Name,
   SignUpFormSubmitButton,
-  schema,
-} from "@/features/sign-up/ui/sign-up-form";
-import Name from "@/features/sign-up/ui/sign-up-form/ui/name/ui";
+  signUpFormValidationSchema,
+} from "@/features/sign-up";
 import { SignUpDto, authApi } from "@/shared/api";
-import { useMediaDown } from "@/shared/lib";
-import { useCommon } from "@/shared/lib/useCommon";
-import { Main } from "@/shared/ui";
-import { Footer } from "@/shared/ui/footer";
-import { H1 } from "@/shared/ui/h1";
-import { Form } from "@/widgets";
-import { StaticDialog } from "@/widgets/static-dialog";
+import { useCommon, useMediaDown } from "@/shared/lib";
+import { Footer, H1, Main } from "@/shared/ui";
+import { Form, StaticDialog } from "@/widgets";
 
 import { SignUpPageFooter } from "./footer";
 
@@ -45,7 +40,7 @@ export const SignUpPage = () => {
           <H1 padding={`0 ${pxToRem(30)}`}>Регистрация в Yoldi Agency</H1>
           <Form<SignUpDto>
             autoFocusField="name"
-            resolver={zodResolver(schema)}
+            resolver={zodResolver(signUpFormValidationSchema)}
             FormProps={{
               style: {
                 gap: pxToRem(25),

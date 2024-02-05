@@ -1,7 +1,7 @@
 import Stack, { StackProps } from "@mui/material/Stack";
 import * as React from "react";
 
-import { SignUpButton } from "@/features/sign-up";
+import { SignUpLink } from "@/features/sign-up";
 import { PageFooter, PageFooterText } from "@/widgets/page-footer";
 
 export const LoginPageFooter = ({ ...props }: StackProps) => {
@@ -9,7 +9,7 @@ export const LoginPageFooter = ({ ...props }: StackProps) => {
     <PageFooter {...props}>
       <Stack direction="row" alignItems="center" spacing={1}>
         <PageFooterText>Еще нет аккаунта?</PageFooterText>
-        <SignUpButton variant="link" />
+        <SignUpLink variant="link" />
       </Stack>
     </PageFooter>
   );

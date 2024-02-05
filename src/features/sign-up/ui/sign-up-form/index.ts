@@ -1,2 +1,2 @@
-export * from "./ui/submit-button";
-export { schema } from "./model";
+export * from "./ui";
+export { signUpFormValidationSchema } from "./model";

@@ -5,7 +5,7 @@ import { TextFieldElement, TextFieldElementProps } from "react-hook-form-mui";
 
 import IconUser from "@/shared/ui/icons/user.svg";
 
-export default function Name({
+export function Name({
   ...props
 }: Omit<TextFieldElementProps, "variant" | "name">) {
   return (
