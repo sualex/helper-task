@@ -25,8 +25,8 @@ export function LoginForm({ children, ...props }: IFormProps<LoginDto>) {
       autoFocusField="email"
       resolver={zodResolver(
         zod.object({
-          email: requiredEmail,
-          password: requiredString,
+          email: requiredEmail(),
+          password: requiredString(),
         })
       )}
       FormProps={{

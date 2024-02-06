@@ -11,8 +11,8 @@ export function Submit({ ...props }: ButtonProps) {
   const schema = useMemo(
     () =>
       zod.object({
-        email: requiredString,
-        password: requiredString,
+        email: requiredString(),
+        password: requiredString(),
       }),
     []
   );
