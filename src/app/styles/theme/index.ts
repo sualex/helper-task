@@ -39,6 +39,9 @@ export const theme = createTheme({
     strokesSecondary: {
       main: "#E6E6E6",
     },
+    gray: {
+      main: "#838383",
+    },
   },
   typography: {
     fontFamily: inter.style.fontFamily,

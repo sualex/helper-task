@@ -30,10 +30,12 @@ declare module "@mui/material/styles" {
     backgroundSecondary: PaletteColorOptions;
     strokesPrimary: PaletteColorOptions;
     strokesSecondary: PaletteColorOptions;
+    gray: PaletteColorOptions;
   }
   export interface Palette extends MuiPalette {
     backgroundSecondary: SimplePaletteColorOptions;
     strokesPrimary: SimplePaletteColorOptions;
     strokesSecondary: SimplePaletteColorOptions;
+    gray: SimplePaletteColorOptions;
   }
 }

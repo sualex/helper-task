@@ -51,11 +51,11 @@ export const MuiTextField: Components<DefaultTheme>["MuiTextField"] = {
         },
         "&:hover fieldset": {
           ...(!ownerState?.disabled && {
-            borderColor: "#838383",
+            borderColor: theme?.palette?.gray?.main,
           }),
         },
         "&.Mui-focused fieldset": {
-          borderColor: "#838383",
+          borderColor: theme?.palette?.gray?.main,
           borderWidth: "1px",
           // borderColor: "transparent",
         },

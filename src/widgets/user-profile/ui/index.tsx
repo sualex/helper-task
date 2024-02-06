@@ -30,7 +30,7 @@ import { Form, StaticDialog } from "@/widgets";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
-  const { pxToRem } = useCommon();
+  const { pxToRem, theme } = useCommon();
   const isMobile = useMediaDown("sm");
 
   const router = useRouter();
@@ -51,12 +51,11 @@ export const UserProfile = ({ ...props }: StackProps) => {
                 <H1>{profile ? profile?.data?.name : <Skeleton />}</H1>
                 <Typography
                   css={css`
-                    color: #838383;
+                    color: ${theme?.palette?.gray?.main};
                     font-size: 16px;
                     font-weight: 400;
-                    line-height: 26px;
+                    line-height: normal;
                     letter-spacing: 0em;
-                    text-align: left;
                   `}
                 >
                   {profile?.data?.email}

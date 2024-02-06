@@ -37,7 +37,7 @@ export const UserListItem = ({
           border-bottom: 1px solid ${theme?.palette?.strokesSecondary?.main};
           .MuiListItemSecondaryAction-root,
           .MuiListItemText-secondary {
-            color: #838383;
+            color: ${theme?.palette?.gray?.main};
             font-size: 16px;
             font-weight: 400;
             line-height: 26px;
