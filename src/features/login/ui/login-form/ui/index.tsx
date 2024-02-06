@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Stack } from "@mui/material";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import * as zod from "zod";
@@ -19,7 +18,7 @@ import { Password } from "./password";
 
 export { Email, Password };
 
-export function LoginForm({ children, ...props }: IFormProps<LoginDto>) {
+export function LoginForm({ ...props }: IFormProps<LoginDto>) {
   const router = useRouter();
   const { pxToRem } = useCommon();
   const myProfile = useMyProfile();
@@ -33,7 +32,7 @@ export function LoginForm({ children, ...props }: IFormProps<LoginDto>) {
           password: requiredString(),
         })
       )}
-      onSuccess={async (loginDto) => {
+      onSuccess={async (loginDto: LoginDto) => {
         try {
           setIsFetching(true);
           await authApi?.login({
@@ -50,26 +49,17 @@ export function LoginForm({ children, ...props }: IFormProps<LoginDto>) {
       <Header>
         <H1 padding={`0 ${pxToRem(30)}`}>Вход в Yoldi Agency</H1>
       </Header>
-      <Section spacing={pxToRem(15)}>
-        <Err padding={`0 ${pxToRem(35)}`} />
-        <Stack
-          css={css`
+      <Section
+        spacing={pxToRem(15)}
+        css={css`
+          &&& > * {
             padding: 0 ${pxToRem(35)};
-          `}
-        >
-          <Email name="email" placeholder="E-mail" disabled={isFetching} />
-        </Stack>
-        <Stack
-          css={css`
-            padding: 0 ${pxToRem(35)};
-          `}
-        >
-          <Password
-            name="password"
-            placeholder="Пароль"
-            disabled={isFetching}
-          />
-        </Stack>
+          }
+        `}
+      >
+        <Err />
+        <Email name="email" placeholder="E-mail" disabled={isFetching} />
+        <Password name="password" placeholder="Пароль" disabled={isFetching} />
       </Section>
       <Footer
         css={css`

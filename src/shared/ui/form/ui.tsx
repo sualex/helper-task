@@ -1,7 +1,4 @@
-import { css } from "@emotion/react";
-import { Typography } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import * as React from "react";
 import {
   FieldPath,
@@ -30,7 +27,6 @@ export function Form<Fields extends FieldValues>({
   ...props
 }: IFormProps<Fields>) {
   const { pxToRem } = useCommon();
-  const [errorMessage, setErrorMessage] = useState<string>();
 
   const methods = useForm<Fields>({
     resolver,
@@ -74,22 +70,12 @@ export function Form<Fields extends FieldValues>({
             setTimeout(() => {
               form?.clearErrors("root.serverError");
             }, 3000);
-            // setErrorMessage((await parseError(error))?.message);
           }
         }
       }}
       FormProps={$FormProps}
       {...props}
     >
-      {errorMessage && (
-        <Stack
-          css={css`
-            padding: 0 ${pxToRem(30)};
-          `}
-        >
-          <Typography color="error">{errorMessage}</Typography>
-        </Stack>
-      )}
       {children}
     </FormContainer>
   );
