@@ -5,3 +5,5 @@ export * from "./article";
 export * from "./nav";
 export * from "./footer";
 export * from "./h1";
+export * from "./form";
+export * from "./static-dialog";

@@ -14,8 +14,7 @@ import {
 } from "@/features/sign-up";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
-import { Footer, H1, Main } from "@/shared/ui";
-import { Form, StaticDialog } from "@/widgets";
+import { Footer, Form, H1, Main, StaticDialog } from "@/shared/ui";
 
 import { SignUpPageFooter } from "./footer";
 

@@ -1,2 +1,1 @@
-export * from "./form";
-export * from "./static-dialog";
+export * from "../shared/ui/static-dialog";

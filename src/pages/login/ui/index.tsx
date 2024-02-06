@@ -12,8 +12,7 @@ import {
 } from "@/features/login";
 import { LoginDto, authApi } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
-import { Footer, H1, Main } from "@/shared/ui";
-import { Form, StaticDialog } from "@/widgets";
+import { Footer, Form, H1, Main, StaticDialog } from "@/shared/ui";
 
 import { LoginPageFooter } from "./footer";
 

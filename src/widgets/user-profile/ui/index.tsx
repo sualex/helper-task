@@ -25,8 +25,7 @@ import { LogoutButton } from "@/features/logout";
 import { Name } from "@/features/sign-up";
 import { ProfileDto } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
-import { Article, Footer, H1 } from "@/shared/ui";
-import { Form, StaticDialog } from "@/widgets";
+import { Article, Footer, Form, H1, StaticDialog } from "@/shared/ui";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
