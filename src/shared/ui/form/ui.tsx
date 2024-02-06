@@ -14,6 +14,11 @@ import {
 import { useCommon, useMediaDown } from "@/shared/lib";
 import { parseError } from "@/shared/lib/error";
 
+export interface IFormProps<Fields extends FieldValues>
+  extends FormContainerProps<Fields> {
+  autoFocusField?: FieldPath<Fields>;
+}
+
 export function Form<Fields extends FieldValues>({
   autoFocusField,
   children,
@@ -22,10 +27,7 @@ export function Form<Fields extends FieldValues>({
   FormProps = {},
   onSuccess,
   ...props
-}: FormContainerProps<Fields> & {
-  autoFocusField?: FieldPath<Fields>;
-  defaultValues?: Fields;
-}) {
+}: IFormProps<Fields>) {
   const { pxToRem } = useCommon();
 
   const theme = useTheme();

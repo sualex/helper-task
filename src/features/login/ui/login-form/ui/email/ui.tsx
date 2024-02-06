@@ -5,13 +5,9 @@ import { TextFieldElement, TextFieldElementProps } from "react-hook-form-mui";
 
 import IconEnvelope from "@/shared/ui/icons/envelope.svg";
 
-export function Email({
-  ...props
-}: Omit<TextFieldElementProps, "variant" | "name">) {
+export function Email({ ...props }: Omit<TextFieldElementProps, "variant">) {
   return (
     <TextFieldElement
-      name="email"
-      placeholder="E-mail"
       required
       InputProps={{
         startAdornment: (

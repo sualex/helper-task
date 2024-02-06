@@ -4,11 +4,9 @@ import { useWatch } from "react-hook-form-mui";
 
 import { loginFormSubmitButtonValidationSchema } from "./model";
 
-export function LoginFormSubmitButton({ ...props }: ButtonProps) {
+export function Submit({ ...props }: ButtonProps) {
   const fields = useWatch();
-
   const { success } = loginFormSubmitButtonValidationSchema.safeParse(fields);
-
   return (
     <Button
       variant="primary"

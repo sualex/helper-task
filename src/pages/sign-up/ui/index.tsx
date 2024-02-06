@@ -64,21 +64,21 @@ export const SignUpPage = () => {
                   padding: 0 ${pxToRem(30)};
                 `}
               >
-                <Name />
+                <Name name="name" placeholder="Имя" />
               </Stack>
               <Stack
                 css={css`
                   padding: 0 ${pxToRem(30)};
                 `}
               >
-                <Email />
+                <Email name="email" placeholder="E-mail" />
               </Stack>
               <Stack
                 css={css`
                   padding: 0 ${pxToRem(30)};
                 `}
               >
-                <Password />
+                <Password name="password" placeholder="Пароль" />
               </Stack>
             </Stack>
             <Footer

@@ -5,13 +5,9 @@ import { TextFieldElement, TextFieldElementProps } from "react-hook-form-mui";
 
 import IconUser from "@/shared/ui/icons/user.svg";
 
-export function Name({
-  ...props
-}: Omit<TextFieldElementProps, "variant" | "name">) {
+export function Name({ ...props }: Omit<TextFieldElementProps, "variant">) {
   return (
     <TextFieldElement
-      name="name"
-      placeholder="Имя"
       required
       InputProps={{
         startAdornment: (
