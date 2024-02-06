@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Typography, useTheme } from "@mui/material";
+import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useEffect, useMemo, useState } from "react";
 import * as React from "react";
@@ -11,7 +11,7 @@ import {
   useForm,
 } from "react-hook-form-mui";
 
-import { useCommon, useMediaDown } from "@/shared/lib";
+import { useCommon } from "@/shared/lib";
 import { parseError } from "@/shared/lib/error";
 
 export interface IFormProps<Fields extends FieldValues>
@@ -24,15 +24,12 @@ export function Form<Fields extends FieldValues>({
   children,
   resolver,
   defaultValues,
+  formContext,
   FormProps = {},
   onSuccess,
   ...props
 }: IFormProps<Fields>) {
   const { pxToRem } = useCommon();
-
-  const theme = useTheme();
-  const isMobile = useMediaDown("sm");
-  const [isFetching, setIsFetching] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>();
 
   const methods = useForm<Fields>({
@@ -40,13 +37,15 @@ export function Form<Fields extends FieldValues>({
     defaultValues,
   });
 
+  const form = useMemo(() => formContext || methods, [formContext, methods]);
+
   useEffect(() => {
     if (typeof autoFocusField === "string") {
       setTimeout(() => {
-        methods.setFocus(autoFocusField);
+        form?.setFocus(autoFocusField);
       }, 5);
     }
-  }, [autoFocusField, methods]);
+  }, [autoFocusField, form]);
 
   const { style, ...rest } = FormProps;
 
@@ -55,25 +54,27 @@ export function Form<Fields extends FieldValues>({
       style: {
         display: "flex",
         flexDirection: "column",
+        gap: pxToRem(25),
         ...style,
       },
       ...rest,
     }),
-    [rest, style]
+    [pxToRem, rest, style]
   );
 
   return (
     <FormContainer
-      formContext={methods}
+      formContext={form}
       onSuccess={async (fields) => {
         if (typeof onSuccess === "function") {
-          setIsFetching(true);
           try {
             await onSuccess(fields);
           } catch (error) {
-            setErrorMessage((await parseError(error))?.message);
-          } finally {
-            setIsFetching(false);
+            form?.setError("root.serverError", await parseError(error));
+            setTimeout(() => {
+              form?.clearErrors("root.serverError");
+            }, 3000);
+            // setErrorMessage((await parseError(error))?.message);
           }
         }
       }}

@@ -41,7 +41,12 @@ export const MuiTextField: Components<DefaultTheme>["MuiTextField"] = {
         },
         "&.Mui-disabled": {
           background: theme?.palette?.backgroundSecondary?.main,
-          // border: "none",
+          "& fieldset": {
+            borderColor: "transparent",
+          },
+          [`& svg path`]: {
+            fill: theme?.palette?.gray?.main,
+          },
         },
         "& fieldset": {
           top: 0,

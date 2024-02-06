@@ -6,7 +6,7 @@ import * as zod from "zod";
 
 import { requiredString } from "@/shared/lib/validation";
 
-export function Submit({ ...props }: ButtonProps) {
+export function Submit({ disabled, ...props }: ButtonProps) {
   const fields = useWatch();
   const schema = useMemo(
     () =>
@@ -22,7 +22,7 @@ export function Submit({ ...props }: ButtonProps) {
       variant="primary"
       size="large"
       type="submit"
-      disabled={!success}
+      disabled={disabled || !success}
       {...props}
     >
       Войти
