@@ -2,13 +2,14 @@ import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Stack } from "@mui/material";
 import { useRouter } from "next/router";
+import * as zod from "zod";
 
 import { useMyProfile } from "@/entities/user";
 import { LoginDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
+import { requiredEmail, requiredString } from "@/shared/lib/validation";
 import { Footer, Form, IFormProps } from "@/shared/ui";
 
-import { schema } from "../model";
 import { Submit } from "./actions/submit";
 import { Email } from "./email";
 import { Password } from "./password";
@@ -22,7 +23,12 @@ export function LoginForm({ children, ...props }: IFormProps<LoginDto>) {
   return (
     <Form<LoginDto>
       autoFocusField="email"
-      resolver={zodResolver(schema)}
+      resolver={zodResolver(
+        zod.object({
+          email: requiredEmail,
+          password: requiredString,
+        })
+      )}
       FormProps={{
         style: {
           gap: pxToRem(25),

@@ -1,12 +1,22 @@
 import { Button, ButtonProps } from "@mui/material";
+import { useMemo } from "react";
 import * as React from "react";
 import { useWatch } from "react-hook-form-mui";
+import * as zod from "zod";
 
-import { loginFormSubmitButtonValidationSchema } from "./model";
+import { requiredString } from "@/shared/lib/validation";
 
 export function Submit({ ...props }: ButtonProps) {
   const fields = useWatch();
-  const { success } = loginFormSubmitButtonValidationSchema.safeParse(fields);
+  const schema = useMemo(
+    () =>
+      zod.object({
+        email: requiredString,
+        password: requiredString,
+      }),
+    []
+  );
+  const { success } = schema.safeParse(fields);
   return (
     <Button
       variant="primary"
