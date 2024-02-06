@@ -108,14 +108,23 @@ export const UserProfile = ({ ...props }: StackProps) => {
                           padding: 0 ${pxToRem(30)};
                         `}
                       >
-                        <Name label="Имя" placeholder="" InputProps={{}} />
+                        <Name
+                          name="name"
+                          label="Имя"
+                          placeholder=""
+                          InputProps={{}}
+                        />
                       </Stack>
                       <Stack
                         css={css`
                           padding: 0 ${pxToRem(30)};
                         `}
                       >
-                        <Email label="Адрес профиля" InputProps={{}} />
+                        <Email
+                          name="email"
+                          label="Адрес профиля"
+                          InputProps={{}}
+                        />
                       </Stack>
                       <Stack
                         css={css`
