@@ -5,11 +5,11 @@ import { useState } from "react";
 import * as zod from "zod";
 
 import { useMyProfile } from "@/entities/user";
-import { Err } from "@/features/login/ui/login-form/ui/error";
 import { LoginDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
 import { Footer, Form, H1, IFormProps, Section } from "@/shared/ui";
+import { RootError } from "@/shared/ui/form/root-error";
 import { Header } from "@/shared/ui/header";
 
 import { Submit } from "./actions/submit";
@@ -57,7 +57,7 @@ export function LoginForm({ ...props }: IFormProps<LoginDto>) {
           }
         `}
       >
-        <Err />
+        <RootError />
         <Email name="email" placeholder="E-mail" disabled={isFetching} />
         <Password name="password" placeholder="Пароль" disabled={isFetching} />
       </Section>
