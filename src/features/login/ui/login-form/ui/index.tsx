@@ -8,8 +8,8 @@ import { useMyProfile } from "@/entities/user";
 import { LoginDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
-import { Footer, Form, H1, IFormProps, Section } from "@/shared/ui";
-import { RootError } from "@/shared/ui/form/root-error";
+import { Footer, Form, H1, IFormProps } from "@/shared/ui";
+import { FieldSection } from "@/shared/ui/form/field-section";
 import { Header } from "@/shared/ui/header";
 
 import { Submit } from "./actions/submit";
@@ -49,18 +49,10 @@ export function LoginForm({ ...props }: IFormProps<LoginDto>) {
       <Header>
         <H1 padding={`0 ${pxToRem(30)}`}>Вход в Yoldi Agency</H1>
       </Header>
-      <Section
-        spacing={pxToRem(15)}
-        css={css`
-          &&& > * {
-            padding: 0 ${pxToRem(35)};
-          }
-        `}
-      >
-        <RootError />
+      <FieldSection>
         <Email name="email" placeholder="E-mail" disabled={isFetching} />
         <Password name="password" placeholder="Пароль" disabled={isFetching} />
-      </Section>
+      </FieldSection>
       <Footer
         css={css`
           padding: 0 ${pxToRem(30)};
