@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/router";
-import * as React from "react";
 import { useState } from "react";
 import * as zod from "zod";
 

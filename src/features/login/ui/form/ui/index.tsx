@@ -28,7 +28,7 @@ export function LoginForm({ ...props }: IFormProps<LoginDto>) {
           password: requiredString(),
         })
       )}
-      onSuccess={async (loginDto: LoginDto) => {
+      onSuccess={async (loginDto) => {
         try {
           setIsFetching(true);
           await authApi?.login({
