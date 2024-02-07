@@ -1,15 +1,18 @@
 import { Components, TextFieldProps } from "@mui/material";
 import { DefaultTheme } from "@mui/private-theming";
 
-export function inputPaddingFromSize(size: TextFieldProps["size"]) {
+export function inputPaddingFromSize(
+  size: TextFieldProps["size"],
+  multiline: TextFieldProps["multiline"]
+) {
   return !size || size === "medium"
     ? {
         //medium
-        padding: "13px 10px 14px 10px",
+        padding: `${multiline ? 0 : 13}px 10px ${multiline ? 0 : 14}px 10px`,
       }
     : {
         //small
-        padding: "7px 10px 6px 10px",
+        padding: `${multiline ? 0 : 6}px 10px ${multiline ? 0 : 7}px 10px`,
       };
 }
 
@@ -31,8 +34,8 @@ export const MuiTextField: Components<DefaultTheme>["MuiTextField"] = {
       "& .MuiInputBase-root": {
         marginTop: ownerState.label ? theme.spacing(3.5) : 0,
         borderRadius: 5,
-        "& input": {
-          ...inputPaddingFromSize(ownerState?.size),
+        "& input,textarea": {
+          ...inputPaddingFromSize(ownerState?.size, ownerState?.multiline),
           borderRadius: 5,
           // "&.Mui-disabled": {
           //   background: "#F3F3F3",
