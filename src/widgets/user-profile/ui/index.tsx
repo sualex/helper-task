@@ -1,31 +1,14 @@
 import { css } from "@emotion/react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Button,
-  Dialog,
-  Skeleton,
-  Stack,
-  StackProps,
-  Typography,
-} from "@mui/material";
+import { Skeleton, Stack, StackProps, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { TextFieldElement } from "react-hook-form-mui";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
-import { Email } from "@/entities/user/ui/email";
-import { Name } from "@/entities/user/ui/name";
 import { EditProfileLink } from "@/features/edit-profile";
-import {
-  SignUpFormSubmitButton,
-  editProfileFormSchema,
-} from "@/features/edit-profile";
 import { LogoutLink } from "@/features/logout";
-import { ProfileDto } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
-import { Article, Footer, Form, H1, StaticDialog } from "@/shared/ui";
+import { Article, H1 } from "@/shared/ui";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
@@ -37,7 +20,6 @@ export const UserProfile = ({ ...props }: StackProps) => {
     slug: router?.query?.slug as string,
   });
   const isMyProfile = useIsMyProfile();
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Article
@@ -73,112 +55,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
             </Grid>
             {isMyProfile && (
               <Grid xs={12} md={4}>
-                <EditProfileLink
-                  onClick={() => {
-                    setIsOpen((isOpen) => !isOpen);
-                  }}
-                />
-                <Dialog
-                  open={isOpen}
-                  fullScreen={isMobile}
-                  scroll={!isMobile ? "body" : "paper"}
-                  fullWidth
-                  maxWidth={!isMobile && "galaxyTab2"}
-                  PaperComponent={StaticDialog}
-                  PaperProps={{
-                    spacing: pxToRem(25),
-                  }}
-                >
-                  <H1 padding={`0 ${pxToRem(30)}`}>Редактировать профиль</H1>
-                  <Form<ProfileDto>
-                    defaultValues={profile?.data}
-                    autoFocusField="name"
-                    resolver={zodResolver(editProfileFormSchema)}
-                    FormProps={{
-                      style: {
-                        gap: pxToRem(25),
-                      },
-                    }}
-                    onSuccess={async (signUpDto) => {
-                      // await authApi?.signUp({
-                      //   signUpDto,
-                      // });
-                      // const newProfile = await myProfile?.mutate();
-                      // router.push(`/profile/${newProfile?.slug}`);
-                    }}
-                  >
-                    <Stack
-                      spacing={pxToRem(15)}
-                      css={css`
-                        //padding: 0 5px;
-                      `}
-                    >
-                      <Stack
-                        css={css`
-                          padding: 0 ${pxToRem(30)};
-                        `}
-                      >
-                        <Name
-                          name="name"
-                          label="Имя"
-                          placeholder=""
-                          InputProps={{}}
-                        />
-                      </Stack>
-                      <Stack
-                        css={css`
-                          padding: 0 ${pxToRem(30)};
-                        `}
-                      >
-                        <Email
-                          name="email"
-                          label="Адрес профиля"
-                          InputProps={{}}
-                        />
-                      </Stack>
-                      <Stack
-                        css={css`
-                          padding: 0 ${pxToRem(30)};
-                        `}
-                      >
-                        <TextFieldElement
-                          name="description"
-                          label="Описание"
-                          multiline
-                          rows={5}
-                          css={css`
-                            &&& {
-                              .MuiInputBase-root {
-                                padding-left: 8px;
-                                padding-right: 8px;
-                              }
-                            }
-                          `}
-                        />
-                      </Stack>
-                    </Stack>
-                    <Footer
-                      direction="row"
-                      spacing={pxToRem(10)}
-                      justifyContent="space-between"
-                      css={css`
-                        padding: 0 ${pxToRem(30)};
-                      `}
-                    >
-                      <Button
-                        variant="secondary"
-                        size="large"
-                        fullWidth
-                        onClick={() => {
-                          setIsOpen(false);
-                        }}
-                      >
-                        Отмена
-                      </Button>
-                      <SignUpFormSubmitButton fullWidth />
-                    </Footer>
-                  </Form>
-                </Dialog>
+                <EditProfileLink />
               </Grid>
             )}
             {profile?.data?.description && (

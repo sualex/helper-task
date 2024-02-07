@@ -7,14 +7,20 @@ import { Section } from "@/shared/ui";
 
 import { RootError } from "../root-error";
 
-export function FieldSection({ children, ...props }: StackProps) {
+export function FieldSection({
+  children,
+  gutter = 35,
+  ...props
+}: StackProps & {
+  gutter?: number;
+}) {
   const { pxToRem } = useCommon();
   return (
     <Section
       spacing={pxToRem(15)}
       css={css`
         &&& > * {
-          padding: 0 ${pxToRem(35)};
+          padding: 0 ${pxToRem(gutter)};
         }
       `}
       {...props}

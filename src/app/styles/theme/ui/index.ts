@@ -8,6 +8,7 @@ import { MuiContainer } from "./mui-container";
 import { MuiCssBaseline } from "./mui-css-base-line";
 import { MuiDialog } from "./mui-dialog";
 import { MuiFormHelperText } from "./mui-form-helper-text";
+import { MuiInputLabel } from "./mui-input-label";
 import { MuiTextField } from "./mui-text-field";
 import { MuiToolbar } from "./mui-toolbar";
 import { MuiTypography } from "./mui-typography";
@@ -23,4 +24,5 @@ export const components: Components<DefaultTheme> = {
   MuiTypography,
   MuiDialog,
   MuiContainer,
+  MuiInputLabel,
 };
