@@ -74,7 +74,9 @@ export const UserListItem = ({
         </ListItemAvatar>
         <ListItemText
           primary={profile?.name}
-          secondary={isMobile ? profile?.email : null}
+          secondary={
+            isMobile ? <Typography noWrap>{profile?.email}</Typography> : null
+          }
           css={css`
             &&& {
               .MuiListItemText-primary {

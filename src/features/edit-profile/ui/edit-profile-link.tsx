@@ -1,5 +1,6 @@
 import { Button, ButtonProps, Dialog } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { clearBodyLocks, lock } from "tua-body-scroll-lock";
 
 import { useUser } from "@/entities/user";
 import { EditProfileForm } from "@/features/edit-profile";
@@ -15,6 +16,26 @@ export const EditProfileLink = ({ ...props }: ButtonProps) => {
   const profile = useUser();
   //eslint-disable-next-line unused-imports/no-unused-vars
   const { cover, email, image, ...defaultValues } = profile?.data || {};
+
+  useEffect(() => {
+    if (!isOpen) {
+      clearBodyLocks();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        const modalPaper = document.querySelector(
+          ".MuiModal-root .MuiPaper-root"
+        );
+        if (modalPaper) {
+          lock(modalPaper as HTMLElement);
+        }
+      }, 1);
+    }
+    return () => {};
+  }, [isOpen]);
 
   return (
     <>
