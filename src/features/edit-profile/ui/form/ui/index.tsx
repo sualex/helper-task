@@ -35,9 +35,6 @@ export function EditProfileForm({
   const profile = useUser();
   const myProfile = useMyProfile();
 
-  console.log("xxxxxxxxxxxxxxxxx myProfile ", myProfile?.data);
-  // console.log("xxxxxxxxxxxxxxxxx profile ", profile?.data);
-
   return (
     <Form<UpdateProfileDto>
       autoFocusField="name"
