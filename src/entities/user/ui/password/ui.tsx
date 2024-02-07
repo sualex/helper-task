@@ -29,6 +29,7 @@ export function Password({ ...props }: Omit<TextFieldElementProps, "variant">) {
       type={showPassword ? "text" : "password"}
       required
       InputProps={{
+        autoComplete: "new-password",
         startAdornment: (
           <InputAdornment
             position="end"
