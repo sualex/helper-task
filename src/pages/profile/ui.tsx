@@ -17,14 +17,7 @@ export const ProfilePage = () => {
         background-color: ${theme?.palette?.common?.white};
       `}
     >
-      <Container
-        maxWidth="desktop"
-        disableGutters
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
+      <Container maxWidth="desktop">
         <Stack
           css={css`
             position: relative;
@@ -51,13 +44,7 @@ export const ProfilePage = () => {
             }
           `}
         >
-          <UserProfile
-            css={css`
-              &&& {
-                margin-top: -50px;
-              }
-            `}
-          />
+          <UserProfile />
         </Container>
       </Container>
     </Main>

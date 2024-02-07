@@ -40,9 +40,19 @@ export const UserProfile = ({ ...props }: StackProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Article spacing={3} {...props}>
-      <UserAvatar profile={profile?.data} size={100} />
-      <Stack spacing="60px">
+    <Article
+      spacing={3}
+      css={css`
+        &&& {
+          margin-top: -50px;
+        }
+      `}
+      {...props}
+    >
+      <Stack padding={`0 ${pxToRem(isMobile ? 30 : 0)}`}>
+        <UserAvatar profile={profile?.data} size={100} />
+      </Stack>
+      <Stack spacing={pxToRem(60)} padding={`0 ${pxToRem(isMobile ? 30 : 0)}`}>
         <Stack>
           <Grid container rowSpacing="8px">
             <Grid xs={12} md={8}>
