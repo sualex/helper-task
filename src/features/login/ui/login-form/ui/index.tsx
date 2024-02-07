@@ -38,11 +38,11 @@ export function LoginForm({ ...props }: IFormProps<LoginDto>) {
           await authApi?.login({
             loginDto,
           });
+          await myProfile?.mutate();
+          router.push("/");
         } finally {
           setIsFetching(false);
         }
-        await myProfile?.mutate();
-        router.push("/");
       }}
       {...props}
     >

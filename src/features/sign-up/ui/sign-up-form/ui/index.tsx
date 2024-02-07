@@ -7,7 +7,7 @@ import * as zod from "zod";
 
 import { useMyProfile } from "@/entities/user";
 import { Name } from "@/features/sign-up/ui/sign-up-form/ui/name";
-import { LoginDto, authApi } from "@/shared/api";
+import { SignUpDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
 import { Footer, Form, H1, IFormProps } from "@/shared/ui";
@@ -18,33 +18,34 @@ import { Submit } from "./actions/submit";
 import { Email } from "./email";
 import { Password } from "./password";
 
-export { Email, Password };
+export { Email, Password, Name };
 
-export function SignUpForm({ ...props }: IFormProps<LoginDto>) {
+export function SignUpForm({ ...props }: IFormProps<SignUpDto>) {
   const router = useRouter();
   const { pxToRem } = useCommon();
   const myProfile = useMyProfile();
   const [isFetching, setIsFetching] = useState(false);
   return (
-    <Form<LoginDto>
-      autoFocusField="email"
+    <Form<SignUpDto>
+      autoFocusField="name"
       resolver={zodResolver(
         zod.object({
+          name: requiredString(),
           email: requiredEmail(),
           password: requiredString(),
         })
       )}
-      onSuccess={async (loginDto: LoginDto) => {
+      onSuccess={async (signUpDto) => {
         try {
           setIsFetching(true);
-          await authApi?.login({
-            loginDto,
+          await authApi?.signUp({
+            signUpDto,
           });
+          const newProfile = await myProfile?.mutate();
+          router.push(`/profile/${newProfile?.slug}`);
         } finally {
           setIsFetching(false);
         }
-        await myProfile?.mutate();
-        router.push("/");
       }}
       {...props}
     >

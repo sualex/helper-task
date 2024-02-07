@@ -1,7 +1,7 @@
 import Stack, { StackProps } from "@mui/material/Stack";
 import * as React from "react";
 
-import { SignUpLink } from "@/features/_sign-up";
+import { SignUpLink } from "@/features/sign-up";
 import { PageFooter, PageFooterText } from "@/widgets/page-footer";
 
 export const LoginPageFooter = ({ ...props }: StackProps) => {
