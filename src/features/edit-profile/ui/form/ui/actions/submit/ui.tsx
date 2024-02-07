@@ -8,9 +8,6 @@ import { requiredString } from "@/shared/lib/validation";
 
 export function Submit({ disabled, ...props }: ButtonProps) {
   const fields = useWatch();
-
-  console.log("xxxxxxxxxxxxxxxx ", fields);
-
   const schema = useMemo(
     () =>
       zod.object({

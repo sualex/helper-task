@@ -16,9 +16,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
   const isMobile = useMediaDown("sm");
 
   const router = useRouter();
-  const profile = useUser({
-    slug: router?.query?.slug as string,
-  });
+  const profile = useUser();
   const isMyProfile = useIsMyProfile();
 
   return (

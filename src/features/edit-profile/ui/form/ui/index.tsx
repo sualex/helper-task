@@ -1,10 +1,17 @@
 import { css } from "@emotion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Stack from "@mui/material/Stack";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { Dispatch, SetStateAction, useState } from "react";
 import * as zod from "zod";
 
-import { Description, Name, Slug, useMyProfile } from "@/entities/user";
+import {
+  Description,
+  Name,
+  Slug,
+  useMyProfile,
+  useUser,
+} from "@/entities/user";
 import { Cancel } from "@/features/edit-profile/ui/form/ui/actions/cancel";
 import { UpdateProfileDto, profileApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
@@ -15,10 +22,22 @@ import { Header } from "@/shared/ui/header";
 
 import { Submit } from "./actions/submit";
 
-export function EditProfileForm({ ...props }: IFormProps<UpdateProfileDto>) {
+export function EditProfileForm({
+  setIsOpen,
+  ...props
+}: IFormProps<UpdateProfileDto> & {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}) {
+  const router = useRouter();
   const { pxToRem } = useCommon();
   const [isFetching, setIsFetching] = useState(false);
+
+  const profile = useUser();
   const myProfile = useMyProfile();
+
+  console.log("xxxxxxxxxxxxxxxxx myProfile ", myProfile?.data);
+  // console.log("xxxxxxxxxxxxxxxxx profile ", profile?.data);
+
   return (
     <Form<UpdateProfileDto>
       autoFocusField="name"
@@ -31,12 +50,17 @@ export function EditProfileForm({ ...props }: IFormProps<UpdateProfileDto>) {
       )}
       onSuccess={async (updateProfileDto) => {
         try {
-          console.log("xxxxxxxxxxxxxxxxxxxxx ", updateProfileDto);
           setIsFetching(true);
-          await profileApi?.updateMyProfile({
+          const newProfile = await profileApi?.updateMyProfile({
             updateProfileDto,
           });
-          await myProfile?.mutate();
+          if (newProfile?.slug !== profile?.data?.slug) {
+            await myProfile?.mutate();
+            router.push(`/profile/${newProfile?.slug}`);
+            return;
+          }
+          await profile?.mutate();
+          setIsOpen(false);
         } finally {
           setIsFetching(false);
         }
@@ -85,7 +109,7 @@ export function EditProfileForm({ ...props }: IFormProps<UpdateProfileDto>) {
           padding: 0 ${pxToRem(30)};
         `}
       >
-        <Cancel fullWidth />
+        <Cancel fullWidth onClick={() => setIsOpen(false)} />
         <Submit disabled={isFetching} fullWidth />
       </Footer>
     </Form>

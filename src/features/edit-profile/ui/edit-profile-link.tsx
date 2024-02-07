@@ -1,7 +1,7 @@
 import { Button, ButtonProps, Dialog } from "@mui/material";
 import { useState } from "react";
 
-import { useMyProfile } from "@/entities/user";
+import { useUser } from "@/entities/user";
 import { EditProfileForm } from "@/features/edit-profile";
 import { useCommon, useMediaDown } from "@/shared/lib";
 import { StaticDialog } from "@/shared/ui";
@@ -11,9 +11,13 @@ export const EditProfileLink = ({ ...props }: ButtonProps) => {
   const { pxToRem } = useCommon();
   const isMobile = useMediaDown("sm");
   const [isOpen, setIsOpen] = useState(false);
-  const myProfile = useMyProfile();
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const { cover, email, image, ...defaultValues } = myProfile?.data || {};
+
+  const profile = useUser();
+
+  // const myProfile = useMyProfile();
+  // // eslint-disable-next-line unused-imports/no-unused-vars
+  const { cover, email, image, ...defaultValues } = profile?.data || {};
+
   return (
     <>
       <Button
@@ -37,7 +41,7 @@ export const EditProfileLink = ({ ...props }: ButtonProps) => {
           spacing: pxToRem(25),
         }}
       >
-        <EditProfileForm defaultValues={defaultValues} />
+        <EditProfileForm defaultValues={defaultValues} setIsOpen={setIsOpen} />
       </Dialog>
     </>
   );

@@ -4,11 +4,13 @@ import useSWR from "swr";
 import { profileApi, userApi } from "@/shared/api";
 import { UserRequest } from "@/shared/api/yoldi";
 
-export function useUser(requestParameters: UserRequest) {
+export function useUser() {
   const router = useRouter();
+  const query = router.query as unknown;
+  const requestParameters = query as UserRequest;
   return useSWR(
-    () => router?.isReady && ["/api/user", requestParameters.slug],
-    (url) => {
+    () => requestParameters?.slug && ["/api/user", requestParameters.slug],
+    () => {
       return userApi?.user(requestParameters);
     },
     {
