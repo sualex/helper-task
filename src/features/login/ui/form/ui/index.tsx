@@ -5,6 +5,8 @@ import { useState } from "react";
 import * as zod from "zod";
 
 import { useMyProfile } from "@/entities/user";
+import { Email } from "@/entities/user/ui/email";
+import { Password } from "@/entities/user/ui/password";
 import { LoginDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
@@ -13,10 +15,6 @@ import { FieldSection } from "@/shared/ui/form/field-section";
 import { Header } from "@/shared/ui/header";
 
 import { Submit } from "./actions/submit";
-import { Email } from "./email";
-import { Password } from "./password";
-
-export { Email, Password };
 
 export function LoginForm({ ...props }: IFormProps<LoginDto>) {
   const router = useRouter();

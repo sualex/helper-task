@@ -6,7 +6,9 @@ import { useState } from "react";
 import * as zod from "zod";
 
 import { useMyProfile } from "@/entities/user";
-import { Name } from "@/features/sign-up/ui/form/ui/name";
+import { Email } from "@/entities/user/ui/email";
+import { Name } from "@/entities/user/ui/name";
+import { Password } from "@/entities/user/ui/password";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
@@ -15,10 +17,6 @@ import { FieldSection } from "@/shared/ui/form/field-section";
 import { Header } from "@/shared/ui/header";
 
 import { Submit } from "./actions/submit";
-import { Email } from "./email";
-import { Password } from "./password";
-
-export { Email, Password, Name };
 
 export function SignUpForm({ ...props }: IFormProps<SignUpDto>) {
   const router = useRouter();

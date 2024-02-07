@@ -15,14 +15,14 @@ import { TextFieldElement } from "react-hook-form-mui";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
+import { Email } from "@/entities/user/ui/email";
+import { Name } from "@/entities/user/ui/name";
 import { EditProfileLink } from "@/features/edit-profile";
 import {
   SignUpFormSubmitButton,
   editProfileFormSchema,
 } from "@/features/edit-profile";
-import { Email } from "@/features/login";
 import { LogoutButton } from "@/features/logout";
-import { Name } from "@/features/sign-up";
 import { ProfileDto } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
 import { Article, Footer, Form, H1, StaticDialog } from "@/shared/ui";
