@@ -13,8 +13,6 @@ export const EditProfileLink = ({ ...props }: ButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const profile = useUser();
-
-  // const myProfile = useMyProfile();
   // // eslint-disable-next-line unused-imports/no-unused-vars
   const { cover, email, image, ...defaultValues } = profile?.data || {};
 

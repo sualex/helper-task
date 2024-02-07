@@ -84,7 +84,6 @@ export function EditProfileForm({
             name="slug"
             label="Адрес профиля"
             placeholder=""
-            InputProps={{}}
             disabled={isFetching}
           />
         </Stack>

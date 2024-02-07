@@ -1,22 +1,38 @@
 import { css } from "@emotion/react";
+import { NoSsr, Typography } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useRouter } from "next/router";
 import * as React from "react";
 import { TextFieldElement, TextFieldElementProps } from "react-hook-form-mui";
 
-import IconUser from "@/shared/ui/icons/user.svg";
+import { useCommon } from "@/shared/lib";
 
 export function Slug({ ...props }: Omit<TextFieldElementProps, "variant">) {
+  const router = useRouter();
+  const { theme, pxToRem } = useCommon();
   return (
     <TextFieldElement
       InputProps={{
         startAdornment: (
           <InputAdornment
-            position="end"
-            sx={{
-              marginRight: 0,
-            }}
+            position="start"
+            css={css`
+              &&& {
+                margin-right: 0;
+                margin-left: -8px;
+                padding: 0 20px;
+                max-height: revert;
+                height: 50px;
+                background: ${theme?.palette?.backgroundSecondary?.main};
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-right: 1px solid ${theme?.palette?.strokesPrimary?.main};
+              }
+            `}
           >
-            <IconUser />
+            <NoSsr>
+              <Typography>{`${window.location.host}/${router?.route?.split("/")?.[1]}`}</Typography>
+            </NoSsr>
           </InputAdornment>
         ),
       }}
