@@ -29,6 +29,7 @@ export function useMyProfile() {
     {
       revalidateOnFocus: false,
       shouldRetryOnError: false,
+      // keepPreviousData: true,
     }
   );
 }

@@ -30,6 +30,8 @@ export const HeaderActions = ({ ...props }: StackProps) => {
         >
           {myProfile?.data?.name}
         </Button>
+      ) : myProfile?.isValidating ? (
+        <></>
       ) : (
         <LoginLink />
       )}
