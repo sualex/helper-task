@@ -17,7 +17,8 @@ const App = (props: AppProps) => {
   return (
     <>
       <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <title>Yoldi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <SWRDevTools>
         <MuiProvider {...props}>
