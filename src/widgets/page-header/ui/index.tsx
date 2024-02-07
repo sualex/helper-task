@@ -25,7 +25,7 @@ export function PageHeader({
             component="nav"
             maxWidth="desktop"
             css={css`
-              display: flex;
+              flex-direction: row;
               align-items: center;
               justify-content: space-between;
               padding: 0 ${theme?.spacing(2.5)};

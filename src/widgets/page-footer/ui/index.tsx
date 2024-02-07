@@ -28,7 +28,7 @@ export function PageFooter({ children, ...props }: StackProps) {
             component="nav"
             maxWidth="desktop"
             css={css`
-              display: flex;
+              flex-direction: row;
               align-items: center;
               justify-content: center;
               padding: 0 ${theme?.spacing(2.5)};

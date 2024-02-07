@@ -27,11 +27,7 @@ export const SignUpPage = () => {
     <Main flex={1}>
       <Container
         maxWidth="sm"
-        disableGutters
         css={css`
-          flex: 1;
-          display: flex;
-          flex-direction: column;
           justify-content: ${isMobile ? "flex-start" : "center"};
         `}
       >
