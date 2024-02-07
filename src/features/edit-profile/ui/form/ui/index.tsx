@@ -4,11 +4,11 @@ import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import * as zod from "zod";
 
-import { Name, useMyProfile } from "@/entities/user";
+import { Description, Name, Slug, useMyProfile } from "@/entities/user";
 import { Cancel } from "@/features/edit-profile/ui/form/ui/actions/cancel";
 import { UpdateProfileDto, profileApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
-import { requiredEmail, requiredString } from "@/shared/lib/validation";
+import { nullableString, requiredString } from "@/shared/lib/validation";
 import { Footer, Form, H1, IFormProps } from "@/shared/ui";
 import { FieldSection } from "@/shared/ui/form/field-section";
 import { Header } from "@/shared/ui/header";
@@ -17,19 +17,21 @@ import { Submit } from "./actions/submit";
 
 export function EditProfileForm({ ...props }: IFormProps<UpdateProfileDto>) {
   const { pxToRem } = useCommon();
-  const myProfile = useMyProfile();
   const [isFetching, setIsFetching] = useState(false);
+  const myProfile = useMyProfile();
   return (
     <Form<UpdateProfileDto>
       autoFocusField="name"
       resolver={zodResolver(
         zod.object({
-          email: requiredEmail(),
-          password: requiredString(),
+          name: requiredString(),
+          slug: requiredString(),
+          description: nullableString(),
         })
       )}
       onSuccess={async (updateProfileDto) => {
         try {
+          console.log("xxxxxxxxxxxxxxxxxxxxx ", updateProfileDto);
           setIsFetching(true);
           await profileApi?.updateMyProfile({
             updateProfileDto,
@@ -47,10 +49,30 @@ export function EditProfileForm({ ...props }: IFormProps<UpdateProfileDto>) {
       <FieldSection gutter={30}>
         <Stack>
           <Name
+            required
             name="name"
             label="Имя"
             placeholder=""
             InputProps={{}}
+            disabled={isFetching}
+          />
+        </Stack>
+        <Stack>
+          <Slug
+            required
+            name="slug"
+            label="Адрес профиля"
+            placeholder=""
+            InputProps={{}}
+            disabled={isFetching}
+          />
+        </Stack>
+        <Stack>
+          <Description
+            name="description"
+            label="Описание"
+            placeholder=""
+            rows={5}
             disabled={isFetching}
           />
         </Stack>

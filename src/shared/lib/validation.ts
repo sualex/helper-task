@@ -1,5 +1,14 @@
 import * as zod from "zod";
 
+export const nullableString = ({ min = 0, message = "" } = {}) =>
+  zod
+    .string({
+      required_error: message,
+    })
+    .trim()
+    .min(min, { message })
+    .nullable();
+
 export const requiredString = ({
   min = 1,
   message = "Обязательное поле",
