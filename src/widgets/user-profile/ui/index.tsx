@@ -22,7 +22,7 @@ import {
   SignUpFormSubmitButton,
   editProfileFormSchema,
 } from "@/features/edit-profile";
-import { LogoutButton } from "@/features/logout";
+import { LogoutLink } from "@/features/logout";
 import { ProfileDto } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
 import { Article, Footer, Form, H1, StaticDialog } from "@/shared/ui";
@@ -189,7 +189,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
             )}
           </Grid>
         </Stack>
-        {isMyProfile && <LogoutButton />}
+        {isMyProfile && <LogoutLink />}
       </Stack>
     </Article>
   );

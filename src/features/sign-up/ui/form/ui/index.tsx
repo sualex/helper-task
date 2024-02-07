@@ -5,10 +5,7 @@ import * as React from "react";
 import { useState } from "react";
 import * as zod from "zod";
 
-import { useMyProfile } from "@/entities/user";
-import { Email } from "@/entities/user/ui/email";
-import { Name } from "@/entities/user/ui/name";
-import { Password } from "@/entities/user/ui/password";
+import { Email, Name, Password, useMyProfile } from "@/entities/user";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";

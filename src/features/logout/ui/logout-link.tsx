@@ -7,7 +7,7 @@ import { useMyProfile } from "@/entities/user";
 import { authApi } from "@/shared/api";
 import IconSignOutAltSolid from "@/shared/ui/icons/sign-out-alt-solid.svg";
 
-export const LogoutButton = ({ ...props }: ButtonProps) => {
+export const LogoutLink = ({ ...props }: ButtonProps) => {
   const router = useRouter();
   const myProfile = useMyProfile();
   return (

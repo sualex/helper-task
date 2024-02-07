@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import * as zod from "zod";
 
-import { useMyProfile } from "@/entities/user";
-import { Email } from "@/entities/user/ui/email";
-import { Password } from "@/entities/user/ui/password";
+import { Email, Password, useMyProfile } from "@/entities/user";
 import { LoginDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
