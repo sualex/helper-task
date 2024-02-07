@@ -1,2 +1,2 @@
-export * from "./sign-up-form";
+export * from "./form";
 export * from "./sign-up-link";

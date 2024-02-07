@@ -6,7 +6,7 @@ import { useState } from "react";
 import * as zod from "zod";
 
 import { useMyProfile } from "@/entities/user";
-import { Name } from "@/features/sign-up/ui/sign-up-form/ui/name";
+import { Name } from "@/features/sign-up/ui/form/ui/name";
 import { SignUpDto, authApi } from "@/shared/api";
 import { useCommon } from "@/shared/lib";
 import { requiredEmail, requiredString } from "@/shared/lib/validation";
