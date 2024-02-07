@@ -7,7 +7,7 @@ export const MuiContainer: Components<DefaultTheme>["MuiContainer"] = {
     disableGutters: true,
   },
   styleOverrides: {
-    root: ({ theme }) => {
+    root: () => {
       return css`
         flex: 1;
         display: flex;

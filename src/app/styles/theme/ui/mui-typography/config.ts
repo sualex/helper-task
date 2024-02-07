@@ -7,7 +7,7 @@ export const MuiTypography: Components<DefaultTheme>["MuiTypography"] = {
   variants: [
     {
       props: { variant: "h1" },
-      style: ({ theme }) => ({
+      style: () => ({
         fontSize: 30,
         fontWeight: 500,
         lineHeight: "42px",

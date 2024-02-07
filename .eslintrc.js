@@ -92,6 +92,7 @@ module.exports = {
       files: ["src/shared/api/**/*.ts"],
       rules: {
         "unicorn/filename-case": "off",
+        "@typescript-eslint/no-explicit-any": "off"
       },
     },
   ],

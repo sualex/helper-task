@@ -6,7 +6,7 @@ export const MuiFormHelperText: Components<DefaultTheme>["MuiFormHelperText"] =
   {
     defaultProps: {},
     styleOverrides: {
-      root: ({ theme }) => css`
+      root: () => css`
         font-size: 0.8rem;
         margin-left: 0;
       `,

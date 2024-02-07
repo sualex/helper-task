@@ -19,10 +19,11 @@ export const LogoutLink = ({ ...props }: ButtonProps) => {
       `}
       onClick={() => {
         authApi?.logout().then(async () => {
-          await myProfile?.mutate((currentData) => undefined);
+          await myProfile?.mutate(() => undefined);
           router?.push("/");
         });
       }}
+      {...props}
     >
       Выйти
     </Button>

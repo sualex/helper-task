@@ -20,10 +20,9 @@ export function useUser() {
 }
 
 export function useMyProfile() {
-  const router = useRouter();
   return useSWR(
     () => ["/api/profile"],
-    async (url) => {
+    async () => {
       const prof = await profileApi?.myProfile();
       return prof;
     },

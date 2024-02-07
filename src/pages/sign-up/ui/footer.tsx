@@ -6,7 +6,7 @@ import { PageFooter, PageFooterText } from "@/widgets/page-footer";
 
 export const SignUpPageFooter = ({ ...props }: StackProps) => {
   return (
-    <PageFooter>
+    <PageFooter {...props}>
       <Stack direction="row" alignItems="center" spacing={1}>
         <PageFooterText>Уже есть аккаунт?</PageFooterText>
         <LoginLink href="/login" variant="link">

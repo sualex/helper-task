@@ -9,7 +9,7 @@ import { useCommon } from "@/shared/lib";
 
 export function Slug({ ...props }: Omit<TextFieldElementProps, "variant">) {
   const router = useRouter();
-  const { theme, pxToRem } = useCommon();
+  const { theme } = useCommon();
   return (
     <TextFieldElement
       InputProps={{

@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 import { Skeleton, Stack, StackProps, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { useRouter } from "next/router";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
@@ -15,7 +14,6 @@ export const UserProfile = ({ ...props }: StackProps) => {
   const { pxToRem, theme } = useCommon();
   const isMobile = useMediaDown("sm");
 
-  const router = useRouter();
   const profile = useUser();
   const isMyProfile = useIsMyProfile();
 
