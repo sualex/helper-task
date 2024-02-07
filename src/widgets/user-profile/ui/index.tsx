@@ -15,6 +15,7 @@ import { TextFieldElement } from "react-hook-form-mui";
 
 import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
+import { Name } from "@/features/_sign-up";
 import { EditProfileLink } from "@/features/edit-profile";
 import {
   SignUpFormSubmitButton,
@@ -22,7 +23,6 @@ import {
 } from "@/features/edit-profile";
 import { Email } from "@/features/login";
 import { LogoutButton } from "@/features/logout";
-import { Name } from "@/features/sign-up";
 import { ProfileDto } from "@/shared/api";
 import { useCommon, useMediaDown } from "@/shared/lib";
 import { Article, Footer, Form, H1, StaticDialog } from "@/shared/ui";
