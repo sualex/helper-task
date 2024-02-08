@@ -37,7 +37,7 @@ export function useMyProfile() {
 export function useUsers() {
   return useSWR(
     "/api/user",
-    (url) => {
+    () => {
       return userApi?.users();
     },
     {

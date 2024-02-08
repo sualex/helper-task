@@ -21,7 +21,6 @@ export default function MyDocument(
   return (
     <Html lang="ru" className={inter.className}>
       <Head>
-        <title>Yoldi</title>
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="prefetch" href="/cover.png" />

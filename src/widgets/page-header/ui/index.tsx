@@ -9,11 +9,7 @@ import { HeaderActions } from "@/widgets/page-header/ui/actions/ui";
 import { Logo } from "@/widgets/page-header/ui/logo";
 import { Title } from "@/widgets/page-header/ui/title";
 
-export function PageHeader({
-  position = "static",
-  children,
-  ...props
-}: AppBarProps) {
+export function PageHeader({ position = "static", ...props }: AppBarProps) {
   const theme = useTheme();
   const isSm = useMediaDown("md");
   return (

@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { ReactNode } from "react";
 import { SWRDevTools } from "swr-devtools";
 
@@ -20,6 +21,9 @@ const App = (props: AppProps) => {
   };
   return (
     <>
+      <Head>
+        <title>Yoldi</title>
+      </Head>
       <SWRDevTools>
         <MuiProvider {...props}>
           {header || <PageHeader />}

@@ -4,12 +4,11 @@ import * as React from "react";
 
 import { UserListItem } from "@/entities/user";
 import { useUsers } from "@/entities/user/model";
-import { useCommon, useMediaDown } from "@/shared/lib";
+import { useCommon } from "@/shared/lib";
 import { Article, H1, Nav } from "@/shared/ui";
 
 export const UserList = ({ ...props }: ListProps) => {
   const { pxToRem } = useCommon();
-  const isMobile = useMediaDown("sm");
   const users = useUsers();
   return (
     <Article spacing={pxToRem(30)} padding={`${pxToRem(25)} 0`}>
