@@ -4,7 +4,9 @@ import { Container } from "@mui/material";
 import { useCommon, useMediaDown } from "@/shared/lib";
 import { UserList } from "@/widgets/user-list";
 
-export const HomePage = () => {
+HomePage.bgcolor = "common.white";
+
+export function HomePage() {
   const { pxToRem } = useCommon();
   const sm = useMediaDown("md");
   return (
@@ -17,6 +19,4 @@ export const HomePage = () => {
       <UserList />
     </Container>
   );
-};
-
-HomePage.bgcolor = "common.white";
+}

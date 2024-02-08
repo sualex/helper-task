@@ -8,7 +8,9 @@ import { StaticDialog } from "@/shared/ui";
 
 import { SignUpPageFooter } from "./footer";
 
-export const SignUpPage = () => {
+SignUpPage.footer = <SignUpPageFooter />;
+
+export function SignUpPage() {
   const isMobile = useMediaDown("sm");
   const { pxToRem } = useCommon();
   return (
@@ -23,6 +25,4 @@ export const SignUpPage = () => {
       </StaticDialog>
     </Container>
   );
-};
-
-SignUpPage.footer = <SignUpPageFooter />;
+}

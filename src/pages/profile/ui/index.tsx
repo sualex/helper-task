@@ -6,7 +6,9 @@ import * as React from "react";
 import { useMediaDown } from "@/shared/lib";
 import { UserProfile } from "@/widgets/user-profile";
 
-export const ProfilePage = () => {
+ProfilePage.bgcolor = "common.white";
+
+export function ProfilePage() {
   const isSm = useMediaDown("md");
   const theme = useTheme();
   return (
@@ -41,6 +43,4 @@ export const ProfilePage = () => {
       </Container>
     </Container>
   );
-};
-
-ProfilePage.bgcolor = "common.white";
+}
