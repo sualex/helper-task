@@ -6,24 +6,19 @@ import { useUser } from "@/entities/user/model";
 import { UserAvatar } from "@/entities/user/ui/avatar";
 import { EditProfileLink } from "@/features/edit-profile";
 import { LogoutLink } from "@/features/logout";
-import { useCommon, useMediaDown } from "@/shared/lib";
+import { useCommon } from "@/shared/lib";
 import { Article, H1 } from "@/shared/ui";
 import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
   const { pxToRem, theme } = useCommon();
-  const sm = useMediaDown("sm");
-
   const profile = useUser();
   const isMyProfile = useIsMyProfile();
-
   return (
     <Article
       spacing={pxToRem(35)}
       css={css`
-        &&& {
-          margin-top: -50px;
-        }
+        margin-top: -50px;
       `}
       {...props}
     >
