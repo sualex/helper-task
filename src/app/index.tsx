@@ -1,5 +1,4 @@
 import type { AppProps } from "next/app";
-import Head from "next/head";
 import { ReactNode } from "react";
 import { SWRDevTools } from "swr-devtools";
 
@@ -16,10 +15,6 @@ const App = (props: AppProps) => {
   };
   return (
     <>
-      <Head>
-        <title>Yoldi</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <SWRDevTools>
         <MuiProvider {...props}>
           <RootLayout>
