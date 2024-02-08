@@ -10,9 +10,7 @@ import { useCommon, useMediaDown } from "@/shared/lib";
 export function Slug({ ...props }: Omit<TextFieldElementProps, "variant">) {
   const router = useRouter();
   const { theme } = useCommon();
-
   const sm = useMediaDown("sm");
-
   return (
     <TextFieldElement
       InputProps={{
@@ -36,7 +34,7 @@ export function Slug({ ...props }: Omit<TextFieldElementProps, "variant">) {
               `}
             >
               <NoSsr>
-                <Typography>{`${window.location.host}/${router?.route?.split("/")?.[1]}`}</Typography>
+                <Typography>{`${window.location.host}/${router?.route?.split("/")?.[1]}/`}</Typography>
               </NoSsr>
             </InputAdornment>
           ),
