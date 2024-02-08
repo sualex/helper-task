@@ -1,16 +1,16 @@
 import { css } from "@emotion/react";
-import { Container, useTheme } from "@mui/material";
+import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import * as React from "react";
 
-import { useMediaDown } from "@/shared/lib";
+import { useCommon, useMediaDown } from "@/shared/lib";
 import { UserProfile } from "@/widgets/user-profile";
 
 ProfilePage.bgcolor = "common.white";
 
 export function ProfilePage() {
-  const isSm = useMediaDown("md");
-  const theme = useTheme();
+  const sm = useMediaDown("md");
+  const { theme, pxToRem } = useCommon();
   return (
     <Container maxWidth="desktop">
       <Stack
@@ -35,7 +35,7 @@ export function ProfilePage() {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 0 ${isSm ? 20 : 0};
+            padding: 0 ${pxToRem(sm ? 20 : 0)};
           }
         `}
       >
