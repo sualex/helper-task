@@ -31,7 +31,7 @@ export async function middleware(req: NextRequest) {
   if (isNavigation(req)) {
     return NextResponse.next();
   }
-  //
+  //todo move to api routes
   if (isLogin(req) || isLogOut(req) || isSignUp(req)) {
     try {
       let value;
