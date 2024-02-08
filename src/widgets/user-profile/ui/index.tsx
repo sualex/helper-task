@@ -19,10 +19,13 @@ export const UserProfile = ({ ...props }: StackProps) => {
 
   return (
     <Article
-      spacing={3}
+      spacing={pxToRem(35)}
       css={css`
         &&& {
           margin-top: -50px;
+          > * {
+            //border: 1px solid red;
+          }
         }
       `}
       {...props}
@@ -76,6 +79,7 @@ export const UserProfile = ({ ...props }: StackProps) => {
         </Stack>
         {isMyProfile && <LogoutLink />}
       </Stack>
+      <div />
     </Article>
   );
 };
