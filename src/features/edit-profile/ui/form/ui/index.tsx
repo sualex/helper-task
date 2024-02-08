@@ -51,8 +51,8 @@ export function EditProfileForm({
           const newProfile = await profileApi?.updateMyProfile({
             updateProfileDto,
           });
+          await myProfile?.mutate();
           if (newProfile?.slug !== profile?.data?.slug) {
-            await myProfile?.mutate();
             router.push(`/profile/${newProfile?.slug}`);
             return;
           }
