@@ -22,6 +22,9 @@ export const MuiProvider = ({
           styles={css`
             #__next {
               visibility: ${!mounted ? "hidden" : "visible"};
+              min-height: 100vh;
+              display: flex;
+              flex-direction: column;
             }
           `}
         />
