@@ -1,22 +1,22 @@
 import { css } from "@emotion/react";
 import { Container } from "@mui/material";
 
-import { useCommon } from "@/shared/lib";
-import { Main } from "@/shared/ui";
+import { useCommon, useMediaDown } from "@/shared/lib";
 import { UserList } from "@/widgets/user-list";
 
 export const HomePage = () => {
-  const { theme } = useCommon();
+  const { pxToRem } = useCommon();
+  const sm = useMediaDown("md");
   return (
-    <Main
-      flex={1}
+    <Container
+      maxWidth="md"
       css={css`
-        background-color: ${theme?.palette?.common?.white};
+        padding: 0 ${pxToRem(sm ? 20 : 0)};
       `}
     >
-      <Container maxWidth="md">
-        <UserList />
-      </Container>
-    </Main>
+      <UserList />
+    </Container>
   );
 };
+
+HomePage.bgcolor = "common.white";

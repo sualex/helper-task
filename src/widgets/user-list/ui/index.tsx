@@ -12,30 +12,23 @@ export const UserList = ({ ...props }: ListProps) => {
   const isMobile = useMediaDown("sm");
   const users = useUsers();
   return (
-    <Article spacing={3}>
-      <div />
-      <div />
-      <H1 padding={`0 ${pxToRem(isMobile ? 20 : 0)}`}>Список аккаунтов</H1>
+    <Article spacing={pxToRem(30)} padding={`${pxToRem(25)} 0`}>
+      <H1>Список аккаунтов</H1>
       {!users?.data ? (
         <LinearProgress />
       ) : (
-        <>
-          <Nav
-            aria-label="Cписок элементов"
-            padding={`0 ${pxToRem(isMobile ? 20 : 0)}`}
+        <Nav aria-label="Cписок элементов">
+          <List
+            css={css`
+              padding: 0;
+            `}
+            {...props}
           >
-            <List
-              css={css`
-                padding: 0;
-              `}
-              {...props}
-            >
-              {users?.data?.map((profile) => {
-                return <UserListItem key={profile?.slug} profile={profile} />;
-              })}
-            </List>
-          </Nav>
-        </>
+            {users?.data?.map((profile) => {
+              return <UserListItem key={profile?.slug} profile={profile} />;
+            })}
+          </List>
+        </Nav>
       )}
     </Article>
   );
