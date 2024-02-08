@@ -31,7 +31,7 @@ export function ProfilePage() {
       <Container
         maxWidth="md"
         css={css`
-          padding: 0 ${pxToRem(sm ? 20 : 0)};
+          padding: 0 ${pxToRem(sm ? 30 : 0)};
         `}
       >
         <UserProfile />

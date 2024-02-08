@@ -23,17 +23,14 @@ export const UserProfile = ({ ...props }: StackProps) => {
       css={css`
         &&& {
           margin-top: -50px;
-          > * {
-            //border: 1px solid red;
-          }
         }
       `}
       {...props}
     >
-      <Stack padding={`0 ${pxToRem(sm ? 30 : 0)}`}>
+      <Stack>
         <UserAvatar profile={profile?.data} size={100} />
       </Stack>
-      <Stack spacing={pxToRem(60)} padding={`0 ${pxToRem(sm ? 30 : 0)}`}>
+      <Stack spacing={pxToRem(60)}>
         <Stack>
           <Grid container rowSpacing="8px">
             <Grid xs={12} md={8}>
