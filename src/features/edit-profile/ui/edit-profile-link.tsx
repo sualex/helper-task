@@ -10,7 +10,7 @@ import IconPenSolid from "@/shared/ui/icons/pen-solid.svg";
 
 export const EditProfileLink = ({ ...props }: ButtonProps) => {
   const { pxToRem } = useCommon();
-  const isMobile = useMediaDown("sm");
+  const sm = useMediaDown("sm");
   const [isOpen, setIsOpen] = useState(false);
 
   const profile = useUser();
@@ -51,10 +51,10 @@ export const EditProfileLink = ({ ...props }: ButtonProps) => {
       </Button>
       <Dialog
         open={isOpen}
-        fullScreen={isMobile}
-        scroll={!isMobile ? "body" : "paper"}
+        fullScreen={sm}
+        scroll={!sm ? "body" : "paper"}
         fullWidth
-        maxWidth={!isMobile && "galaxyTab2"}
+        maxWidth={!sm && "galaxyTab2"}
         PaperComponent={StaticDialog}
         PaperProps={{
           spacing: pxToRem(25),

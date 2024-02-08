@@ -3,22 +3,22 @@ import { Paper, PaperProps, StackProps } from "@mui/material";
 
 import { useMediaDown } from "@/shared/lib";
 import { useCommon } from "@/shared/lib/useCommon";
-import { Section } from "@/shared/ui";
+import { Article } from "@/shared/ui";
 
 export function StaticDialog({
   ...props
 }: PaperProps & Pick<StackProps, "spacing">) {
-  const isMobile = useMediaDown("sm");
+  const sm = useMediaDown("sm");
   const { pxToRem, theme } = useCommon();
   return (
     <Paper
-      component={Section}
+      component={Article}
       role="dialog"
       aria-modal="false"
       square
       elevation={0}
       css={css`
-        flex: ${isMobile ? 1 : 0};
+        flex: ${sm ? 1 : 0};
         margin: 0;
         padding: ${pxToRem(30)} 0;
         border: none;

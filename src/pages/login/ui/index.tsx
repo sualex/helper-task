@@ -10,13 +10,13 @@ import { LoginPageFooter } from "./footer";
 LoginPage.footer = <LoginPageFooter />;
 
 export function LoginPage() {
-  const isMobile = useMediaDown("sm");
+  const sm = useMediaDown("sm");
   const { pxToRem } = useCommon();
   return (
     <Container
       maxWidth="sm"
       css={css`
-        justify-content: ${isMobile ? "flex-start" : "center"};
+        justify-content: ${sm ? "flex-start" : "center"};
       `}
     >
       <StaticDialog spacing={pxToRem(25)}>

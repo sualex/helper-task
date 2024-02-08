@@ -12,7 +12,7 @@ import { useIsMyProfile } from "@/widgets/user-profile/model";
 
 export const UserProfile = ({ ...props }: StackProps) => {
   const { pxToRem, theme } = useCommon();
-  const isMobile = useMediaDown("sm");
+  const sm = useMediaDown("sm");
 
   const profile = useUser();
   const isMyProfile = useIsMyProfile();
@@ -27,10 +27,10 @@ export const UserProfile = ({ ...props }: StackProps) => {
       `}
       {...props}
     >
-      <Stack padding={`0 ${pxToRem(isMobile ? 30 : 0)}`}>
+      <Stack padding={`0 ${pxToRem(sm ? 30 : 0)}`}>
         <UserAvatar profile={profile?.data} size={100} />
       </Stack>
-      <Stack spacing={pxToRem(60)} padding={`0 ${pxToRem(isMobile ? 30 : 0)}`}>
+      <Stack spacing={pxToRem(60)} padding={`0 ${pxToRem(sm ? 30 : 0)}`}>
         <Stack>
           <Grid container rowSpacing="8px">
             <Grid xs={12} md={8}>

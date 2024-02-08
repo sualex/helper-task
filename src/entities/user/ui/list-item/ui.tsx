@@ -21,14 +21,12 @@ export const UserListItem = ({
 }: ListItemProps & {
   profile: ProfileDto;
 }) => {
-  const isMobile = useMediaDown("sm");
+  const sm = useMediaDown("sm");
   const theme = useTheme();
   return (
     <ListItem
       disablePadding
-      secondaryAction={
-        !isMobile ? <Typography>{profile?.email}</Typography> : null
-      }
+      secondaryAction={!sm ? <Typography>{profile?.email}</Typography> : null}
       css={css`
         &&& {
           :first-of-type {
@@ -59,7 +57,7 @@ export const UserListItem = ({
         href={`/profile/${profile?.slug}`}
         css={css`
           gap: 20px;
-          padding: ${isMobile ? "4px 8px" : "8px 16px"};
+          padding: ${sm ? "4px 8px" : "8px 16px"};
           :hover {
             background-color: rgba(0, 0, 0, 0.01);
           }
@@ -75,7 +73,7 @@ export const UserListItem = ({
         <ListItemText
           primary={profile?.name}
           secondary={
-            isMobile ? <Typography noWrap>{profile?.email}</Typography> : null
+            sm ? <Typography noWrap>{profile?.email}</Typography> : null
           }
           css={css`
             &&& {

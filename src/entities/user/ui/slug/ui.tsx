@@ -11,12 +11,12 @@ export function Slug({ ...props }: Omit<TextFieldElementProps, "variant">) {
   const router = useRouter();
   const { theme } = useCommon();
 
-  const isMobile = useMediaDown("sm");
+  const sm = useMediaDown("sm");
 
   return (
     <TextFieldElement
       InputProps={{
-        ...(!isMobile && {
+        ...(!sm && {
           startAdornment: (
             <InputAdornment
               position="start"
