@@ -1,9 +1,15 @@
+import { css } from "@emotion/react";
 import { Button, ButtonProps } from "@mui/material";
-import * as React from "react";
 
 export const LoginLink = ({ ...props }: ButtonProps) => {
   return (
-    <Button href="/login" {...props}>
+    <Button
+      href="/login"
+      css={css`
+        min-width: 114px;
+      `}
+      {...props}
+    >
       Войти
     </Button>
   );
