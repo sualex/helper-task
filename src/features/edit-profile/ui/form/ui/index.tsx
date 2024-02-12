@@ -14,7 +14,7 @@ import {
 } from "@/entities/user";
 import { Cancel } from "@/features/edit-profile/ui/form/ui/actions/cancel";
 import { UpdateProfileDto, profileApi } from "@/shared/api";
-import { useCommon } from "@/shared/lib";
+import { useCommon, useMediaDown } from "@/shared/lib";
 import { nullableString, requiredString } from "@/shared/lib/validation";
 import { Footer, Form, H1, IFormProps } from "@/shared/ui";
 import { FieldSection } from "@/shared/ui/form/field-section";
@@ -34,6 +34,8 @@ export function EditProfileForm({
 
   const profile = useUser();
   const myProfile = useMyProfile();
+
+  const sm = useMediaDown("sm");
 
   return (
     <Form<UpdateProfileDto>
@@ -92,7 +94,7 @@ export function EditProfileForm({
             name="description"
             label="Описание"
             placeholder=""
-            rows={5}
+            rows={sm ? 10 : 5}
             disabled={isFetching}
           />
         </Stack>
@@ -102,7 +104,7 @@ export function EditProfileForm({
         spacing={pxToRem(10)}
         justifyContent="space-between"
         css={css`
-          padding: 0 ${pxToRem(30)};
+          padding: ${sm ? pxToRem(58) : 0} ${pxToRem(30)} 0 ${pxToRem(30)};
         `}
       >
         <Cancel fullWidth onClick={() => setIsOpen(false)} />
