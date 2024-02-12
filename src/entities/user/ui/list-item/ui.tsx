@@ -57,7 +57,7 @@ export const UserListItem = ({
         href={`/profile/${profile?.slug}`}
         css={css`
           gap: 20px;
-          padding: ${sm ? "4px 8px" : "8px 16px"};
+          padding: ${sm ? "4px 0" : "8px 0"};
           :hover {
             background-color: rgba(0, 0, 0, 0.01);
           }
@@ -73,7 +73,11 @@ export const UserListItem = ({
         <ListItemText
           primary={profile?.name}
           secondary={
-            sm ? <Typography noWrap>{profile?.email}</Typography> : null
+            sm ? (
+              <Typography noWrap color={theme?.palette?.gray?.main}>
+                {profile?.email}
+              </Typography>
+            ) : null
           }
           css={css`
             &&& {

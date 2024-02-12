@@ -16,18 +16,21 @@ export const UserList = ({ ...props }: ListProps) => {
       {!users?.data ? (
         <LinearProgress />
       ) : (
-        <Nav aria-label="Cписок элементов">
-          <List
-            css={css`
-              padding: 0;
-            `}
-            {...props}
-          >
-            {users?.data?.map((profile) => {
-              return <UserListItem key={profile?.slug} profile={profile} />;
-            })}
-          </List>
-        </Nav>
+        <>
+          <Nav aria-label="Cписок элементов">
+            <List
+              css={css`
+                padding: 0;
+              `}
+              {...props}
+            >
+              {users?.data?.map((profile) => {
+                return <UserListItem key={profile?.slug} profile={profile} />;
+              })}
+            </List>
+          </Nav>
+          <div />
+        </>
       )}
     </Article>
   );
