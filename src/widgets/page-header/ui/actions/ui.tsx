@@ -1,13 +1,14 @@
 import { css } from "@emotion/react";
-import { Button, useTheme } from "@mui/material";
+import { Button } from "@mui/material";
 import Stack, { StackProps } from "@mui/material/Stack";
 
 import { useMyProfile } from "@/entities/user";
 import { UserAvatar } from "@/entities/user/ui/avatar";
 import { LoginLink } from "@/features/login";
+import { useCommon } from "@/shared/lib";
 
 export const HeaderActions = ({ ...props }: StackProps) => {
-  const theme = useTheme();
+  const { theme, pxToRem } = useCommon();
   const myProfile = useMyProfile();
   return (
     <Stack {...props}>
@@ -33,7 +34,11 @@ export const HeaderActions = ({ ...props }: StackProps) => {
       ) : myProfile?.isValidating ? (
         <></>
       ) : (
-        <LoginLink />
+        <LoginLink
+          css={css`
+            min-width: ${pxToRem(114)};
+          `}
+        />
       )}
     </Stack>
   );

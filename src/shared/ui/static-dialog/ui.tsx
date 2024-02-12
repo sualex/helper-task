@@ -21,7 +21,10 @@ export function StaticDialog({
         flex: ${sm ? 1 : 0};
         margin: 0;
         padding: ${pxToRem(30)} 0;
-        border: none;
+        border: ${sm
+          ? "none"
+          : `1px solid ${theme?.palette?.strokesSecondary?.main}`};
+        border-radius: ${pxToRem(sm ? 0 : 5)};
         background-color: ${theme?.palette?.common?.white};
       `}
       {...props}
